@@ -57,6 +57,7 @@
         <footer class="footer">
             <div class="container">
                 <span class="text-muted"><?php echo $auteur; ?></span>
+                <span>Team: 26</span>
             </div>
         </footer>
     </body>

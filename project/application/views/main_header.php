@@ -3,7 +3,7 @@
     <span class="navbar-toggler-icon"></span>
     </button>
     
-    <!--<img src="../../assets/images/tm_logo.png" alt="test" height="50" width="100">-->
+    <img src="../../assets/images/tm_logo.png" alt="test" height="50" width="100">
     <?php /* echo toonAfbeelding("tm_logo.png", 'alt="Bootstrap" style="width:70%;height:70%"'); ?>
     <?php echo toonAfbeelding("logos/bootstrap.png", 'alt="Bootstrap" style="width:70%;height:70%"'); ?>
     <?php echo toonAfbeelding("logos/jQuery.gif", 'alt="jQuery" style="width:70%;height:70%"'); */?>
@@ -18,6 +18,6 @@
             <li class="nav-item">
             </li>
         </ul>
-        <?php echo smallDivAnchor('../inloggen.php', 'Inloggen', 'class="btn btn-outline-primary my-2 my-sm-0"'); ?>
+        <?php echo DivAnchor('home/meldAan', 'Inloggen'); ?>
     </div>
 </nav>
