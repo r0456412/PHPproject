@@ -14,9 +14,7 @@ class Gebruiker_model extends CI_Model {
     }
 
     function getGebruiker($email, $wachtwoord) {
-        // geef gebruiker-object met $email en $wachtwoord EN geactiveerd = 1
         $this->db->where('email', $email);
-        $this->db->where('geactiveerd', 1);
         $query = $this->db->get('gebruiker');
         
         if ($query->num_rows() == 1) {
@@ -37,13 +35,13 @@ class Gebruiker_model extends CI_Model {
         $gebruiker = new stdClass();
         $gebruiker->laatstAangemeld = date("Y-m-d H-i-s");
         $this->db->where('id', $id);
-        $this->db->update('tv_gebruiker', $gebruiker);
+        $this->db->update('gebruiker', $gebruiker);
     }
 
     function controleerEmailVrij($email) {
         // is email al dan niet aanwezig
         $this->db->where('email', $email);
-        $query = $this->db->get('tv_gebruiker');
+        $query = $this->db->get('gebruiker');
 
         if ($query->num_rows() == 0) {
             return true;
@@ -78,7 +76,7 @@ class Gebruiker_model extends CI_Model {
         $gebruiker = new stdClass();
         $gebruiker->wachtwoord = password_hash($niewWachtwoord, PASSWORD_DEFAULT);
         $this->db->where('email', $email);
-        $this->db->update('tv_gebruiker', $gebruiker);
+        $this->db->update('gebruiker', $gebruiker);
     }
 
 }

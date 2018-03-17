@@ -18,4 +18,6 @@ class Home extends CI_Controller {
             
             $this->template->load('main_master', $partials, $data);
 	} 
+        
+        
 }

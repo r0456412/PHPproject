@@ -36,7 +36,7 @@ class Gebruiker extends CI_Controller {
         {
             $this->load->library('email');
             
-            $this->email->from('kimmoelants@gmail.com');
+            $this->email->from('phpteam26@gmail.com');
             $this->email->to($geadresseerde);
             $this->email->subject($titel);
             $this->email->message($boodschap);
@@ -89,15 +89,13 @@ class Gebruiker extends CI_Controller {
         public function toonMelding($titel, $boodschap, $link = null)
 	{
             $data['titel'] = $titel;
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['boodschap'] = $boodschap;
             $data['link'] = $link;
             
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             
-            $partials = array('hoofding' => 'main_header',
-                'menu' => 'main_menu',
-                'inhoud' => 'gebruiker_melding',
-                'voetnoot' => 'main_footer');
+            $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'gebruiker_melding',);
             $this->template->load('main_master', $partials, $data);   
         }
         
@@ -131,8 +129,47 @@ class Gebruiker extends CI_Controller {
                     array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Terug'));
         }
         public function toonMeldingEmailBestaatNiet(){
-            $this->toonMelding('Fout', 'Onbekend e-mailadres.',
-                    array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Terug'));
+            $this->toonMelding('Fout', 'Onbekend e-mailadres.',array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Terug'));
         }   
+        public function toonMeldingNiewWachtwoordVerstuurd(){
+            $this->toonMelding('Fout', 'Een nieuw wachtwoord in naar u verzonden.',array('url' => 'login/inloggen', 'tekst' => 'Terug'));
+        }  
+        
+        public function wachtwoordVergeten(){
+            $data['titel'] = 'Wachtwoord vergeten';
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
+            
+            $data['gebruiker']  = $this->authex->getGebruikerInfo();
+            
+            $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'wachtwoord_vergeten',);
+            
+            $this->template->load('main_master', $partials, $data);
+        }
+        
+        public function wachtwoordOpvragen(){
+            $gebruiker = new stdClass();
+            $gebruiker->email = $this->input->post('email');
+
+            if(!filter_var($gebruiker->email, FILTER_VALIDATE_EMAIL)){
+                redirect('gebruiker/toonMeldingGeenEmail');
+            }
+            
+            if(!$this->gebruiker_model->controleerEmailVrij( $gebruiker->email)){
+                $nieuwWachtwoord = bin2hex(openssl_random_pseudo_bytes(4));
+                $boodschap = 'U nieuwe wachtwoord: ' . $nieuwWachtwoord;
+                
+                $this->gebruiker_model->veranderWachtwoord($nieuwWachtwoord,$gebruiker->email);
+                
+                $titel = 'TV-Shop';
+                 if($this->stuurMail($gebruiker->email, $boodschap, $titel)){
+                     redirect('gebruiker/toonMeldingNiewWachtwoordVerstuurd');
+                 }else{
+                     redirect('gebruiker/toonMeldingRegistratieNOK');
+                 }   
+            }
+            else{
+                redirect('gebruiker/toonMeldingEmailBestaatNiet');
+            }
+        }
 }
 

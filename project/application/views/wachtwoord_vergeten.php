@@ -9,7 +9,7 @@
                         </div>
                         <?php
                             $attributes = array('name' => 'wachtwoordVergeten');
-                            echo form_open('login/wachtwoordOpvragen', $attributes);
+                            echo form_open('gebruiker/wachtwoordOpvragen', $attributes);
                         ?>
                         <div class="card-body">
                         <p>Enter your email here.</p>
