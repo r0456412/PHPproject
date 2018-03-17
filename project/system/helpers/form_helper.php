@@ -439,7 +439,7 @@ if ( ! function_exists('form_dropdown'))
 			}
 		}
 
-		return $form."</select>\n";
+		return $form."</select>\n";    
 	}
 }
 

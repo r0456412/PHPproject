@@ -1,0 +1,63 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+}
+#navbar{
+    text-align: center;
+}
+a.inlogKnop{
+    text-decoration: none;
+    color: white;
+    padding: 5px 20px 5px 20px;
+    border: 1px solid #009cab;
+    border-radius: 5px;
+    position: absolute;
+    right: 50px;
+    bottom: 25%;
+    transition: 0.5s;
+}
+a.inlogKnop:hover{
+    background-color: #009cab;
+    transition: 0.5s;
+}
+
+a.menuKnop{
+    text-decoration: none;
+    color: white;
+    padding: 5px 20px 5px 20px;
+    border: 1px solid #009cab;
+    border-radius: 5px;
+    right: 100px;
+    bottom: 25%;
+    transition: 0.5s;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #009cab;
+}
+body > .container {
+  padding: 100px 15px 10px;
+  min-width: 430px;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.teamNr{
+    margin: 0 5px;
+} 
+
+@media (max-width: 576px) {
+    .footer{
+        font-size: 12px;
+    }
+}

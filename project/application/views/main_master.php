@@ -1,46 +1,37 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <title>Internationale dagen</title>
-<!--        <link rel="stylesheet" href="../css/style.css">-->
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <?php echo pasStylesheetAan("/css/main_style.css"); ?>
+        <?php echo pasStylesheetAan("/css/login_style.css"); ?>
 
-        <style>
-            html {
-                position: relative;
-                min-height: 100%;
-            }
-            body {
-                margin-bottom: 60px;
-            }
-            h3{
-                margin-top: 50px;
-            }
-            .footer {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                height: 60px;
-                line-height: 60px; 
-                background-color: #f5f5f5;
-            }
-        </style>
+
+        <title><?php echo $titel; ?></title>  
     </head>
-
     <body>
-        <!-- Page Content -->
-        <?php echo $hoofding; ?>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3><?php echo $titel; ?></h3>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"id="navbar">
+                <?php echo anchor('home', toonAfbeelding("images/tm_logo.png", "height=50px"), 'class="navbar-brand"') ?>
+                
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>             
+                <div class="collapse navbar-collapse justify-content-between">
+                      <?php echo $menu?>           
                 </div>
-            </div>
+            </nav>  
+            
+      </header>
+
+        <!-- Page Content -->
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12 hero-feature">
                     <div class="thumbnail" style="padding: 20px">
@@ -53,11 +44,14 @@
                 </div>
             </div>        
         </div>
+
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <span class="text-muted"><?php echo $auteur; ?></span>
-                <span>Team: 26</span>
+                <div class="row">
+                    <span class="mr-auto"><?php echo $auteur; ?></span>
+                    <span>Team 26 T. Van Echepoel</span>
+                </div>
             </div>
         </footer>
     </body>

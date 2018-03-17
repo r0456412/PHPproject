@@ -1,54 +1,55 @@
-<div class="panel-group" id="accordion">
-    
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                    Inschuifbare groep 1</a>
-            </h4>
-        </div>
-        <div id="collapse1" class="panel-collapse collapse in">
-            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
-        </div>
-    </div>
-    
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                    Inschuifbare groep 2</a>
-            </h4>
-        </div>
-        <div id="collapse2" class="panel-collapse collapse">
-            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
-        </div>
-    </div>
-    
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                    Inschuifbare groep 3</a>
-            </h4>
-        </div>
-        <div id="collapse3" class="panel-collapse collapse">
-            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
-        </div>
-    </div>
-    
-</div> <!-- accordion -->
-
-<hr>
-
 <?php
-echo "<p>" . anchor('home', 'Terug') . "</p>\n";
+
+// +----------------------------------------------------------
+// | TV Shop
+// +----------------------------------------------------------
+// | 2ITF - 201x-201x
+// +----------------------------------------------------------
+// | Aanmelden
+// |
+// +----------------------------------------------------------
+// | Thomas More
+// +----------------------------------------------------------
+
 ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3>Login here</h3>
+                        </div>
+                        <?php
+                            $attributes = array('name' => 'inlogformulier');
+                            echo form_open('login/inloggenControleren', $attributes);
+                        ?>
+                        <div class="card-body">
+                                <div class="form-group">
+                                    <?php echo form_label('E-mail:', 'email'); ?>
+                                    <?php echo form_input(array('name' => 'email', 'id' => 'email', 'size' => '30', 'class' => 'form-control form-control-lg rounded-2', 'required' => 'true')); ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php echo form_label('Password', 'password'); ?></td>
+                                    <?php 
+                                        $data = array('name' => 'password', 'id' => 'password', 'size' => '30', 'class' => 'form-control form-control-lg rounded-2', 'required' => 'true', 'autocomplete="off"');
+                                        echo form_password($data);
+                                    ?>
+                                </div>
+                                <div>
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <?php echo anchor('login/wachtwoordVergeten', 'Wachtwoord vergeten?'); ?>
+                                </div>
+                                <?php echo form_submit(array('name' => 'loginKnop', 'value' => 'Login', 'class' => 'btn btn-primary btn-lg float-right loginKnop')); ?>
+                            </form>
+                        </div>
+                        <?php echo form_close(); ?>     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
