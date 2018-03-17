@@ -20,7 +20,7 @@ class Gebruiker_model extends CI_Model {
     function get($id) {
         // geef gebruiker-object met opgegeven $id   
         $this->db->where('id', $id);
-        $query = $this->db->get('tv_gebruiker');
+        $query = $this->db->get('gebruiker');
         return $query->row();
     }
 
@@ -28,7 +28,7 @@ class Gebruiker_model extends CI_Model {
         // geef gebruiker-object met $email en $wachtwoord EN geactiveerd = 1
         $this->db->where('email', $email);
         $this->db->where('geactiveerd', 1);
-        $query = $this->db->get('tv_gebruiker');
+        $query = $this->db->get('gebruiker');
         
         if ($query->num_rows() == 1) {
             $gebruiker = $query->row();
