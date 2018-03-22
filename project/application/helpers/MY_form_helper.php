@@ -1,24 +1,25 @@
 <?php
 
-function form_dropdownpro($name = '', $objects = [], $valuefield, $textfield, $selected = [], $extra = '') {
+function form_dropdownpro($valuefield, $textfield, $name = '', $objects = [], $selected = [], $extra = '') {
     $options[0] = '-- Select --';
+		
     foreach ($objects as $object) {
-        $options[$object->{$valuefield}] = $object->{$textfield};
+        $options[$object->$valuefield] = $object->$textfield;
     }
 
     return form_dropdown($name, $options, $selected, $extra);
 }
 
-function form_radiogroup($name = '', $objects = [], $valuefield, $textfield) {
+function form_radiogroup($valuefield, $textfield, $name = '', $objects = []) {
     $result = '';
 
     $i = 0;
     foreach ($objects as $object) {
-        $data = array('name' => $name,
-            'id' => $name . $i,
-            'value' => $object->{$valuefield});
-
-        $result .= "<div>" . form_radio($data) . $object->{$textfield} . "</div>\n";
+        $data = array('name' => $name, 
+			'id' => $name . $i,
+            'value' => $object->$valuefield);
+			
+        $result .= "<div>" . form_radio($data) . $object->$textfield . "</div>\n";
         $i++;
     }
 

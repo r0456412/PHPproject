@@ -22,6 +22,7 @@ class Gebruiker extends CI_Controller {
         public function maakGebruiker()
 	{
             $data['titel'] = 'Registreren';
+            $data['auteur'] = "Lorenzo M.| <u>Arne V.D.P.</u> | Kim M. | Eloy B. | Sander J.";
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             
             $partials = array('hoofding' => 'main_header',
