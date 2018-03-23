@@ -59,7 +59,7 @@ class Gebruiker extends CI_Controller {
             $gebruiker->land = $this->input->post('land');
             $gebruiker->wachtwoord = $this->input->post('wachtwoord');
             
-            if(strlen($gebruiker->naam) < 3 || strlen($gebruiker->wachtwoord) < 4 || !filter_var($gebruiker->email, FILTER_VALIDATE_EMAIL)){
+            if( strlen($gebruiker->wachtwoord) < 4 || !filter_var($gebruiker->email, FILTER_VALIDATE_EMAIL)){
                 redirect('gebruiker/toonMeldingRegistratieNOK');
             }
             $id = $this->authex->registreer($gebruiker->titel, $gebruiker->voornaam, $gebruiker->achternaam, $gebruiker->geslacht, $gebruiker->insituut, $gebruiker->biografie, $gebruiker->position, $gebruiker->telefoonnummer, $gebruiker->email, $gebruiker->studiegebied, $gebruiker->contactpersoon, $gebruiker->soort, $gebruiker->straat, $gebruiker->postcode, $gebruiker->land, $gebruiker->wachtwoord);
@@ -100,7 +100,7 @@ class Gebruiker extends CI_Controller {
         
         public function toonMeldingRegistratieNOK(){
             $this->toonMelding('Fout',
-                    'Gelieve alle tekstvakken (naam, email én wachtwoord correct in te vullen',
+                    'Please enter all text boxes (first name, last name, email and password correctly)',
                     array('url' => 'gebruiker/maakGebruiker', 'tekst' => 'Terug'));
         }
         public function toonMeldingEmailBestaat(){
