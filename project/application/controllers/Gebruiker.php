@@ -53,18 +53,27 @@ class Gebruiker extends CI_Controller {
         public function registreer()
         {    
             $gebruiker = new stdClass();
-            $gebruiker->naam = $this->input->post('naam');
-            $gebruiker->email = $this->input->post('email');
+            $gebruiker->titel = $this->input->post('titel');
+            $gebruiker->voornaam = $this->input->post('voornaam');
+            $gebruiker->achternaam = $this->input->post('achternaam');
+            $gebruiker->geslacht = $this->input->post('geslacht');
+            $gebruiker->insituut = $this->input->post('instituut');
+            $gebruiker->biografie = $this->input->post('biografie');
+            $gebruiker->position = $this->input->post('positie');
+            $gebruiker->telefoonnummer = $this->input->post('telefoonnummer');
+            $gebruiker->email = $this->input->post('mail');
+            $gebruiker->studiegebied = $this->input->post('studiegebied');
+            $gebruiker->contactpersoon = $this->input->post('contactpersoon');
+            $gebruiker->soort = 'Gastspreker';
+            $gebruiker->straat = $this->input->post('adres');
+            $gebruiker->postcode = $this->input->post('postcode');
+            $gebruiker->land = $this->input->post('land');
             $gebruiker->wachtwoord = $this->input->post('wachtwoord');
-            $gebruiker->tweedeWachtwoord = $this->input->post('tweedeWachtwoord');
-          
-            if ($gebruiker->wachtwoord != $gebruiker->tweedeWachtwoord) {
-                redirect('gebruiker/toonMeldingVesrschillendWachtwoord');
-            }
+            
             if(strlen($gebruiker->naam) < 3 || strlen($gebruiker->wachtwoord) < 4 || !filter_var($gebruiker->email, FILTER_VALIDATE_EMAIL)){
                 redirect('gebruiker/toonMeldingRegistratieNOK');
             }
-            $id = $this->authex->registreer($gebruiker->naam,$gebruiker->email ,$gebruiker->wachtwoord);
+            $id = $this->authex->registreer($gebruiker->titel, $gebruiker->voornaam, $gebruiker->achternaam, $gebruiker->geslacht, $gebruiker->insituut, $gebruiker->biografie, $gebruiker->position, $gebruiker->telefoonnummer, $gebruiker->email, $gebruiker->studiegebied, $gebruiker->contactpersoon, $gebruiker->soort, $gebruiker->straat, $gebruiker->postcode, $gebruiker->land, $gebruiker->wachtwoord);
             if($id == 0){
                 redirect('gebruiker/toonMeldingEmailBestaat');
             }else{

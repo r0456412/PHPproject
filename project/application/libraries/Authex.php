@@ -62,12 +62,12 @@ class Authex {
         $CI->session->unset_userdata('gebruiker_id');
     }
 
-    function registreer($naam, $email, $wachtwoord) {
+    function registreer($titel, $voornaam, $achternaam, $geslacht, $insituut, $biografie, $position, $telefoonnummer, $email, $studiegebied, $contactpersoon, $soort, $straat, $postcode, $land, $wachtwoord) {
         // nieuwe gebruiker registreren als email nog niet bestaat
         $CI = & get_instance();
 
         if ($CI->gebruiker_model->controleerEmailVrij($email)) {
-            $id = $CI->gebruiker_model->voegToe($naam, $email, $wachtwoord);
+            $id = $CI->gebruiker_model->voegToe($titel, $voornaam, $achternaam, $geslacht, $insituut, $biografie, $position, $telefoonnummer, $email, $studiegebied, $contactpersoon, $soort, $straat, $postcode, $land, $wachtwoord);
             return $id;
         } else {
             return 0;

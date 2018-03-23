@@ -27,7 +27,7 @@
     </tr>
     <tr>
         <td><?php echo form_label('Gender:', 'geslacht'); ?></td>
-        <td><?php echo form_dropdown('gender', $geslachten); ?></td>
+        <td><?php echo form_dropdown('gender', $geslachten, '', 'id="geslacht"'); ?></td>
     </tr>
     <tr>
         <td><?php echo form_label('E-mail:', 'mail'); ?></td>
@@ -67,19 +67,15 @@
     </tr>
     <tr>
         <td><?php echo form_label('Address:', 'adres'); ?></td>
-        <td><?php echo form_input(array('name' => 'address', 'id' => 'adres', 'size' => '24'));
-        echo form_label('Nr.', 'nummer');
-        echo form_input(array('name' => 'nr', 'id' => 'nummer', 'size' => '4'));?></td>
+        <td><?php echo form_input(array('name' => 'address', 'id' => 'adres', 'size' => '35'));?></td>
     </tr>
     <tr>
         <td><?php echo form_label('Zip code:', 'postcode'); ?></td>
-        <td><?php echo form_input(array('name' => 'zip code', 'id' => 'postcode', 'size' => '10'));
-        echo form_label('City:', 'stad');
-        echo form_input(array('name' => 'city', 'id' => 'stad', 'size' => '17'));?></td>
+        <td><?php echo form_input(array('name' => 'zip code', 'id' => 'postcode', 'size' => '35'));?></td>
     </tr>
     <tr>
         <td><?php echo form_label('Country:', 'land'); ?></td>
-        <td><?php echo form_dropdown('country', $landen); ?></td>
+        <td><?php echo form_dropdown('country', $landen, '', 'id="land"'); ?></td>
     </tr>
     <tr>
         <td><?php echo form_submit('knop', 'Send'); ?></td>
