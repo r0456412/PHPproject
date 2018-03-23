@@ -132,7 +132,7 @@ class Gebruiker extends CI_Controller {
             $this->toonMelding('Fout', 'Onbekend e-mailadres.',array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Terug'));
         }   
         public function toonMeldingNiewWachtwoordVerstuurd(){
-            $this->toonMelding('Fout', 'Een nieuw wachtwoord in naar u verzonden.',array('url' => 'login/inloggen', 'tekst' => 'Terug'));
+            $this->toonMelding('Fout', 'Een nieuw wachtwoord in naar u verzonden.',array('url' => 'login/inloggen', 'tekst' => 'Back'));
         }  
         
         public function wachtwoordVergeten(){
