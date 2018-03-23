@@ -5,9 +5,9 @@ if ($gebruiker == null) { // niet aangemeld
 } else { // wel aangemeld
     switch ($gebruiker->soort) {
         case 'student': // gewone geregistreerde gebruiker
-            echo divAnchor('product/bestel', 'Voorbeeld', 'class="menuKnop"');
+            echo divAnchor('product/bestel', 'Planning raadplegen', 'class="menuKnop"');
             break;
-        case 'docent': // administrator
+        case 'Admin': // administrator
             echo divAnchor('product/beheer', 'Producten beheren');
             echo divAnchor('admin/beheer', 'Gebruikers beheren');
             echo divAnchor('admin/configureer', 'Configureren');

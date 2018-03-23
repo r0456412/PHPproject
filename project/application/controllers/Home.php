@@ -17,7 +17,5 @@ class Home extends CI_Controller {
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'home_index');
             
             $this->template->load('main_master', $partials, $data);
-	} 
-        
-        
+	}  
 }
