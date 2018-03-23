@@ -18,4 +18,15 @@ class Home extends CI_Controller {
             
             $this->template->load('main_master', $partials, $data);
 	}  
+        
+        public function admin()
+	{
+            $data['titel'] = 'Home';
+            $data['gebruiker']  = $this->authex->getGebruikerInfo();
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
+            
+            $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'home_admin');
+            
+            $this->template->load('main_master', $partials, $data);
+	}  
 }

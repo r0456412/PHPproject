@@ -35,8 +35,14 @@ class Login extends CI_Controller {
             $email = $this->input->post('email');
             $wachtwoord = $this->input->post('password');
             
+            
             if ($this->authex->meldAan($email, $wachtwoord)) {
-                redirect('home/index');
+                $gebruiker = $this->authex->getGebruikerInfo();
+                if($gebruiker->soort == 'Admin'){
+                    redirect('home/admin');
+                }else{
+                    redirect('home/index');
+                }       
             } else {
                 redirect('login/toonFout');
             }
