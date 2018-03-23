@@ -29,7 +29,7 @@ class Gebruiker_model extends CI_Model {
             return null;
         }
     }
-
+    
     function updateLaatstAangemeld($id) {
         // pas tijd laatstAangemeld aan
         $gebruiker = new stdClass();

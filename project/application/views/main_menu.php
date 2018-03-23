@@ -8,7 +8,7 @@ if ($gebruiker == null) { // niet aangemeld
             echo divAnchor('product/bestel', 'Planning raadplegen', 'class="menuKnop"');
             break;
         case 'Admin': // administrator
-            echo divAnchor('product/beheer', 'Producten beheren');
+            echo divAnchor('product/beheer', 'Settings');
             echo divAnchor('admin/beheer', 'Gebruikers beheren');
             echo divAnchor('admin/configureer', 'Configureren');
             break;
