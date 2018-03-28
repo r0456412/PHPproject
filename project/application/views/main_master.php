@@ -14,14 +14,14 @@
 
         <?php echo pasStylesheetAan("/css/main_style.css"); ?>
         <?php echo pasStylesheetAan("/css/login_style.css"); ?>
-
+        <?php echo pasStylesheetAan("/css/admin_style.css"); ?>
 
         <title><?php echo $titel; ?></title>  
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"id="navbar">
-                <?php echo anchor('home', toonAfbeelding("images/tm_logo.png", "height=50px"), 'class="navbar-brand"') ?>
+                <?php echo anchor( $link, toonAfbeelding("images/tm_logo.png", "height=50px"), 'class="navbar-brand"') ?>
                 
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,10 +30,8 @@
                       <?php echo $menu?>           
                 </div>
             </nav>  
-            
       </header>
-
-         Page Content 
+        
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 hero-feature">

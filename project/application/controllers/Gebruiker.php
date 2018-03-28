@@ -13,6 +13,7 @@ class Gebruiker extends CI_Controller {
             $data['titel'] = 'Registration';
             $data['auteur'] = "Lorenzo M.| <u>Arne V.D.P.</u> | Kim M. | Eloy B. | Sander J.";
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['link'] = 'home';
             
             $partials = array('hoofding' => 'main_header',
             'menu' => 'main_menu',
@@ -95,12 +96,12 @@ class Gebruiker extends CI_Controller {
         public function toonMeldingRegistratieNOK(){
             $this->toonMelding('Error',
                     'Please enter all text boxes (first name, last name, email and password correctly)',
-                    array('url' => 'gebruiker/maakGebruiker', 'tekst' => 'Terug'));
+                    array('url' => 'gebruiker/maakGebruiker', 'tekst' => 'Back'));
         }
         public function toonMeldingEmailBestaat(){
             $this->toonMelding('Error',
                     'E-mail already exists. Try again!',
-                    array('url' => 'gebruiker/maakGebruiker', 'tekst' => 'Terug'));
+                    array('url' => 'gebruiker/maakGebruiker', 'tekst' => 'Back'));
         }
         public function toonMeldingGebruikerAangemaakt(){
             $this->toonMelding('Registration',
@@ -108,10 +109,10 @@ class Gebruiker extends CI_Controller {
         }
         public function toonMeldingGeenEmail(){
             $this->toonMelding("Error', 'This isn't a correct password.",
-                    array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Terug'));
+                    array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Back'));
         }
         public function toonMeldingEmailBestaatNiet(){
-            $this->toonMelding('Error', 'Unknown E-mail.',array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Terug'));
+            $this->toonMelding('Error', 'Unknown E-mail.',array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Back'));
         }   
         public function toonMeldingNiewWachtwoordVerstuurd(){
             $this->toonMelding('Error', 'A new password was send to you.',array('url' => 'login/inloggen', 'tekst' => 'Back'));
