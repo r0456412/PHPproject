@@ -13,6 +13,7 @@ class Login extends CI_Controller {
             $data['titel'] = 'Login';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
+            $data['link'] = 'home';
             
             $partials = array('hoofding' => 'main_header','menu' => 'main_menu', 'inhoud' => 'inloggen');
             
