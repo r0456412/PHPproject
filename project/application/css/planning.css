@@ -1,0 +1,26 @@
+table, tr, td{
+    border: 3px black solid;
+    width: 960px;
+}
+
+table{
+    margin: auto;
+    text-align: center;
+}
+
+td{
+    height: 100px;
+}
+
+.break td{
+    height: 20px;
+    background-color: #f04c25;
+}
+
+th{
+    background-color: #009cab;
+}
+
+.eerste{
+    width: 50px;
+}
