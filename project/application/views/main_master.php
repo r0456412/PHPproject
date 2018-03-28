@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -48,7 +48,6 @@
             </div>        
         </div>
 
-         Footer 
         <footer class="footer">
             <div class="container">
                 <div class="row">
@@ -58,8 +57,8 @@
             </div>
         </footer>
     </body>
-</html>-->
-<!DOCTYPE html>
+</html>
+<!--<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -69,11 +68,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>SB Admin - Start Bootstrap Template</title>
-  <!-- Bootstrap core CSS-->
+   Bootstrap core CSS
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
+   Custom fonts for this template
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
+   Custom styles for this template
   <link href="css/sb-admin.css" rel="stylesheet">
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -84,7 +83,7 @@
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-  <!-- Navigation-->
+   Navigation
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Start Bootstrap</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -288,7 +287,7 @@
   </nav>
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
+       Breadcrumbs
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="index.html">Dashboard</a>
@@ -302,8 +301,8 @@
         </div>
       </div>
     </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
+     /.container-fluid
+     /.content-wrapper
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
@@ -311,11 +310,11 @@
         </div>
       </div>
     </footer>
-    <!-- Scroll to Top Button-->
+     Scroll to Top Button
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    <!-- Logout Modal-->
+     Logout Modal
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -333,14 +332,14 @@
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript-->
+     Bootstrap core JavaScript
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
+     Core plugin JavaScript
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
+     Custom scripts for all pages
     <script src="js/sb-admin.min.js"></script>
   </div>
 </body>
 
-</html>
+</html>-->
