@@ -10,7 +10,7 @@ class Gebruiker extends CI_Controller {
         
         public function maakGebruiker()
 	{
-            $data['titel'] = 'Registreren';
+            $data['titel'] = 'Registration';
             $data['auteur'] = "Lorenzo M.| <u>Arne V.D.P.</u> | Kim M. | Eloy B. | Sander J.";
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             
@@ -59,20 +59,14 @@ class Gebruiker extends CI_Controller {
             $gebruiker->land = $this->input->post('country');
             $gebruiker->wachtwoord = $this->input->post('password');
             
-            if( strlen($gebruiker->wachtwoord) < 4 || !filter_var($gebruiker->email, FILTER_VALIDATE_EMAIL)){
+            if( strlen($gebruiker->voornaam) <= 3  || strlen($gebruiker->achternaam) <= 2  || strlen($gebruiker->wachtwoord) < 4 || !filter_var($gebruiker->email, FILTER_VALIDATE_EMAIL)){
                 redirect('gebruiker/toonMeldingRegistratieNOK');
             }
             $id = $this->authex->registreer($gebruiker->titel, $gebruiker->voornaam, $gebruiker->achternaam, $gebruiker->geslacht, $gebruiker->insituut, $gebruiker->biografie, $gebruiker->position, $gebruiker->telefoonnummer, $gebruiker->email, $gebruiker->studiegebied, $gebruiker->contactpersoon, $gebruiker->soort, $gebruiker->straat, $gebruiker->postcode, $gebruiker->land, $gebruiker->wachtwoord);
             if($id == 0){
                 redirect('gebruiker/toonMeldingEmailBestaat');
             }else{
-                $boodschap = 'You have been registerd. Click the following link to activate your registration: ' . site_url() . '/gebruiker/activeer/' .$id;
-                $titel = 'International days';
-                 if($this->stuurMail($gebruiker->email, $boodschap, $titel)){
-                     redirect('gebruiker/toonMeldingGebruikerAangemaakt');
-                 }else{
-                     redirect('gebruiker/toonMeldingRegistratieNOK');
-                 }         
+                redirect('gebruiker/toonMeldingGebruikerAangemaakt'); 
             }
         }
  
@@ -99,39 +93,28 @@ class Gebruiker extends CI_Controller {
         }
         
         public function toonMeldingRegistratieNOK(){
-            $this->toonMelding('Fout',
+            $this->toonMelding('Error',
                     'Please enter all text boxes (first name, last name, email and password correctly)',
                     array('url' => 'gebruiker/maakGebruiker', 'tekst' => 'Terug'));
         }
         public function toonMeldingEmailBestaat(){
-            $this->toonMelding('Fout',
-                    'Email bestaat reeds. Probeer opnieuw!',
+            $this->toonMelding('Error',
+                    'E-mail already exists. Try again!',
                     array('url' => 'gebruiker/maakGebruiker', 'tekst' => 'Terug'));
         }
         public function toonMeldingGebruikerAangemaakt(){
-            $this->toonMelding('Registreren',
-                    'Gebruiker werd aangemaakt! Er werd een e-amil verstuurd met een activatielink. '
-                    . 'Nadat u deze link hebt aangelklikt, kan u inloggen.');
-        }
-        public function toonMeldingGebruikerGeactiveerd(){
-            $this->toonMelding('Activeren', 'Account werd geactiveerd. U kan nu aanmelden');
-        }
-        public function toonMeldingActiverenNOK(){
-            $this->toonMelding('Fout activeren', 'Fout tijdens activeren, probeer opnieuw');
-        }
-        public function toonMeldingVesrschillendWachtwoord(){
-            $this->toonMelding('Fout', 'U heeft twee verschillende wachtwoorden opgegeven.',
-                    array('url' => 'gebruiker/maakGebruiker', 'tekst' => 'Terug'));
+            $this->toonMelding('Registration',
+                    'Your account was successfully created');
         }
         public function toonMeldingGeenEmail(){
-            $this->toonMelding('Fout', 'Dit is geen correct e-mail adres.',
+            $this->toonMelding("Error', 'This isn't a correct password.",
                     array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Terug'));
         }
         public function toonMeldingEmailBestaatNiet(){
-            $this->toonMelding('Fout', 'Onbekend e-mailadres.',array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Terug'));
+            $this->toonMelding('Error', 'Unknown E-mail.',array('url' => 'gebruiker/wachtwoordVergeten', 'tekst' => 'Terug'));
         }   
         public function toonMeldingNiewWachtwoordVerstuurd(){
-            $this->toonMelding('Fout', 'Een nieuw wachtwoord in naar u verzonden.',array('url' => 'login/inloggen', 'tekst' => 'Back'));
+            $this->toonMelding('Error', 'A new password was send to you.',array('url' => 'login/inloggen', 'tekst' => 'Back'));
         }  
         
         public function wachtwoordVergeten(){
