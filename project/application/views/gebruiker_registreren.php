@@ -9,8 +9,8 @@
 <?php
     $attributes = array('name' => 'mijnFormulier');
     echo form_open('gebruiker/registreer', $attributes);
-    $geslachten= array("Man", "Woman");
-    $landen = array("Belgium", "The Netherlands", "Sweden", "Russia", "Greece", "China", "England", "United States", "Italy", "Spain");
+    $geslachten= array("Man"=>"Man", "Woman"=>"Woman");
+    $landen = array("Belgium"=>"Belgium", "The Netherlands"=>"The Netherlands", "Sweden"=>"Sweden", "Russia"=>"Russia", "Greece"=>"Greece", "China"=>"China", "England"=>"England", "United States"=>"United States", "Italy"=>"Italy", "Spain"=>"Spain");
 ?>
 <table>
     <tr>
@@ -19,11 +19,11 @@
     </tr>
     <tr>
         <td><?php echo form_label('Last name:', 'achternaam'); ?></td>
-        <td><?php echo form_input(array('name' => 'last name', 'id' => 'achternaam', 'size' => '35')); ?></td>
+        <td><?php echo form_input(array('name' => 'last_name', 'id' => 'achternaam', 'size' => '35')); ?></td>
     </tr>
     <tr>
         <td><?php echo form_label('First name:', 'voornaam'); ?></td>
-        <td><?php echo form_input(array('name' => 'first name', 'id' => 'voornaam', 'size' => '35')); ?></td>
+        <td><?php echo form_input(array('name' => 'first_name', 'id' => 'voornaam', 'size' => '35')); ?></td>
     </tr>
     <tr>
         <td><?php echo form_label('Gender:', 'geslacht'); ?></td>
@@ -47,7 +47,7 @@
     </tr>
     <tr>
         <td><?php echo form_label('Field of study:', 'studiegebied'); ?></td>
-        <td><?php echo form_input(array('name' => 'field of study', 'id' => 'studiegebied', 'size' => '35')); ?></td>
+        <td><?php echo form_input(array('name' => 'field_of_study', 'id' => 'studiegebied', 'size' => '35')); ?></td>
     </tr>
     <tr>
         <td><?php echo form_label('Position:', 'positie'); ?></td>
@@ -63,7 +63,7 @@
     </tr>
     <tr>
         <td><?php echo form_label('Phone number:', 'telefoonnummer'); ?></td>
-        <td ><?php echo form_input(array('name' => 'phone number', 'id' => 'telefoonnummer', 'size' => '35')); ?></td>
+        <td ><?php echo form_input(array('name' => 'phone_number', 'id' => 'telefoonnummer', 'size' => '35')); ?></td>
     </tr>
     <tr>
         <td><?php echo form_label('Address:', 'adres'); ?></td>
@@ -71,7 +71,7 @@
     </tr>
     <tr>
         <td><?php echo form_label('Zip code:', 'postcode'); ?></td>
-        <td><?php echo form_input(array('name' => 'zip code', 'id' => 'postcode', 'size' => '35'));?></td>
+        <td><?php echo form_input(array('name' => 'zip_code', 'id' => 'postcode', 'size' => '35'));?></td>
     </tr>
     <tr>
         <td><?php echo form_label('Country:', 'land'); ?></td>

@@ -69,6 +69,7 @@ class Gebruiker_model extends CI_Model {
         $gebruiker->postcode = $postcode;
         $gebruiker->land = $land;
         $gebruiker->wachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
+        $gebruiker->jaargangid = '1';
         $this->db->insert('gebruiker', $gebruiker);
         return $this->db->insert_id();
     }

@@ -42,22 +42,22 @@ class Gebruiker extends CI_Controller {
         public function registreer()
         {    
             $gebruiker = new stdClass();
-            $gebruiker->titel = $this->input->post('titel');
-            $gebruiker->voornaam = $this->input->post('voornaam');
-            $gebruiker->achternaam = $this->input->post('achternaam');
-            $gebruiker->geslacht = $this->input->post('geslacht');
-            $gebruiker->insituut = $this->input->post('instituut');
-            $gebruiker->biografie = $this->input->post('biografie');
-            $gebruiker->position = $this->input->post('positie');
-            $gebruiker->telefoonnummer = $this->input->post('telefoonnummer');
-            $gebruiker->email = $this->input->post('mail');
-            $gebruiker->studiegebied = $this->input->post('studiegebied');
-            $gebruiker->contactpersoon = $this->input->post('contactpersoon');
+            $gebruiker->titel = $this->input->post('title');
+            $gebruiker->voornaam = $this->input->post('first_name');
+            $gebruiker->achternaam = $this->input->post('last_name');
+            $gebruiker->geslacht = $this->input->post('gender');
+            $gebruiker->insituut = $this->input->post('institute');
+            $gebruiker->biografie = $this->input->post('biography');
+            $gebruiker->position = $this->input->post('position');
+            $gebruiker->telefoonnummer = $this->input->post('phone_number');
+            $gebruiker->email = $this->input->post('email');
+            $gebruiker->studiegebied = $this->input->post('field_of_study');
+            $gebruiker->contactpersoon = $this->input->post('contact');
             $gebruiker->soort = 'Gastspreker';
-            $gebruiker->straat = $this->input->post('adres');
-            $gebruiker->postcode = $this->input->post('postcode');
-            $gebruiker->land = $this->input->post('land');
-            $gebruiker->wachtwoord = $this->input->post('wachtwoord');
+            $gebruiker->straat = $this->input->post('address');
+            $gebruiker->postcode = $this->input->post('zip_code');
+            $gebruiker->land = $this->input->post('country');
+            $gebruiker->wachtwoord = $this->input->post('password');
             
             if( strlen($gebruiker->wachtwoord) < 4 || !filter_var($gebruiker->email, FILTER_VALIDATE_EMAIL)){
                 redirect('gebruiker/toonMeldingRegistratieNOK');
