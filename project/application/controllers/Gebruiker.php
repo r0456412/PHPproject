@@ -138,11 +138,11 @@ class Gebruiker extends CI_Controller {
             
             if(!$this->gebruiker_model->controleerEmailVrij( $gebruiker->email)){
                 $nieuwWachtwoord = bin2hex(openssl_random_pseudo_bytes(4));
-                $boodschap = 'U nieuwe wachtwoord: ' . $nieuwWachtwoord;
+                $boodschap = 'Your new password: ' . $nieuwWachtwoord;
                 
                 $this->gebruiker_model->veranderWachtwoord($nieuwWachtwoord,$gebruiker->email);
                 
-                $titel = 'TV-Shop';
+                $titel = 'International Days';
                  if($this->stuurMail($gebruiker->email, $boodschap, $titel)){
                      redirect('gebruiker/toonMeldingNiewWachtwoordVerstuurd');
                  }else{
