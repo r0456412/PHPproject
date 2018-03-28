@@ -66,8 +66,8 @@ class Gebruiker extends CI_Controller {
             if($id == 0){
                 redirect('gebruiker/toonMeldingEmailBestaat');
             }else{
-                $boodschap = 'U bent geregistreed. klik op onderstaande link om uw registratie te activeren: ' . site_url() . '/gebruiker/activeer/' .$id;
-                $titel = 'TV-Shop';
+                $boodschap = 'You have been registerd. Click the following link to activate your registration: ' . site_url() . '/gebruiker/activeer/' .$id;
+                $titel = 'International days';
                  if($this->stuurMail($gebruiker->email, $boodschap, $titel)){
                      redirect('gebruiker/toonMeldingGebruikerAangemaakt');
                  }else{
