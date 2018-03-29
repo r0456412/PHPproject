@@ -82,6 +82,7 @@
                 </div>
             </div>        
         </div>
+        <?php echo anchor( $link, '' , 'class="fas fa-chevron-circle-left"') ?>
 
         <footer class="footer">
             <div class="container">

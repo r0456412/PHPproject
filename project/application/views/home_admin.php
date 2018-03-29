@@ -6,7 +6,7 @@ if ($gebruiker != null) {
 
 <div class="row">
     <div class="col-md-3 mx-auto">
-        <a href="#">
+        <a href="../Planning/planning">
             <div class="card admin">
                 <div class="card-header"><h6>Create agenda</h6></div>
                 <div class="card-body">

@@ -15,10 +15,6 @@ echo "<table border='1'>";
 
 <?php
 
-
-
-
-
     for($tr=1;$tr<=7;$tr++){
         if ($tr % 2){
             echo "<tr>";
