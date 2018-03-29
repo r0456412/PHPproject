@@ -11,12 +11,29 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+        <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+        
         <?php echo pasStylesheetAan("/css/main_style.css"); ?>
         <?php echo pasStylesheetAan("/css/login_style.css"); ?>
         <?php echo pasStylesheetAan("/css/admin_style.css"); ?>
 
         <title><?php echo $titel; ?></title>  
+        
+        <style>
+            .admin{
+                width: 250px;
+                color: black ;
+                margin: 15px;
+            }
+            a{
+                text-decoration: none;
+                text-align: center;
+                
+            }
+            a:hover{
+                text-decoration: none;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -30,6 +47,26 @@
                       <?php echo $menu?>           
                 </div>
             </nav>  
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"id="navbar">
+                <?php echo anchor( $link, toonAfbeelding("images/tm_logo.png", "height=50px"), 'class="navbar-brand"') ?>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <ul class="navbar-nav mr-auto">
+
+                            <li class="nav-item active text-white">
+                                <?php echo $menu?>    
+                            </li>
+                        </ul>
+                    </ul>
+                    <div class="navbar-nav">
+                        
+                    </div>
+                </div>
+            </nav>
       </header>
         
         <div class="container">

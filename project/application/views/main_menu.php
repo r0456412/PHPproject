@@ -9,7 +9,7 @@ if ($gebruiker == null) { // niet aangemeld
             break;
         case 'Admin': // administrator
             ?>
-            <ul class="navbar-nav mr-auto">
+<!--            <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>
@@ -30,7 +30,7 @@ if ($gebruiker == null) { // niet aangemeld
               <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
               </li>
-            </ul>
+            </ul>-->
 
 <?php
 //            echo divAnchor('product/beheer', 'Settings');

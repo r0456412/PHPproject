@@ -1,48 +1,89 @@
 <?php
 if ($gebruiker != null) {
-    echo '<b>' . $gebruiker->voornaam . '</b>';
+    echo '<b>' . $gebruiker->voornaam . ', make all nesecary changes with the links below.</b>';
 }
 ?>
 
-<div class="row mb-3">
-    <div class="col-xl-3 col-sm-6">
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Planning Beheren</h5>
-              <p class="card-text">Click to make or change the planning.</p>
-              <a href="#" class="card-link">Card link</a>
+<div class="row">
+    <div class="col-md-3 mx-auto">
+        <a href="#">
+            <div class="card admin">
+                <div class="card-header"><h6>Create agenda</h6></div>
+                <div class="card-body">
+                    <i class="fas fa-calendar-alt fa-5x"></i>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
-    <div class="col-xl-3 col-sm-6">
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Mail</h5>
-              <p class="card-text">Click to make or change the planning.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Card link</a>
+    <div class="col-md-3 mx-auto">
+        <a href="#">
+            <div class="card admin">
+                <div class="card-header"><h6>Mail</h6></div>
+                <div class="card-body">
+                    <i class="fas fa-envelope fa-5x"></i>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
-    <div class="col-xl-3 col-sm-6">
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Aanwezigheidsattesten afdukken</h5>
-              <p class="card-text">Click to make or change the planning.</p>
-              <a href="#" class="card-link">Card link</a>
+    <div class="col-md-3 mx-auto">
+        <a href="#">
+            <div class="card admin">
+                <div class="card-header"><h6>Manage users</h6></div>
+                <div class="card-body">
+                    <i class="fas fa-users fa-5x"></i>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
-    <div class="col-xl-3 col-sm-6">
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"> Beheren</h5>
-              <p class="card-text">Click to make or change the planning.</p>
-              <a href="#" class="card-link">Card link</a>
+    <div class="col-md-3 mx-auto">
+        <a href="#">
+            <div class="card admin">
+                <div class="card-header"><h6>Homepage content</h6></div>
+                <div class="card-body">
+                    <i class="fab fa-safari fa-5x"></i>
+                </div>
             </div>
-        </div>
+        </a>
+    </div>
+    <div class="col-md-3 mx-auto">
+        <a href="#">
+            <div class="card admin">
+                <div class="card-header"><h6>Manage partners</h6></div>
+                <div class="card-body">
+                    <i class="fas fa-handshake fa-5x"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3 mx-auto">
+        <a href="#">
+            <div class="card admin">
+                <div class="card-header"><h6>Mail templates</h6></div>
+                <div class="card-body">
+                    <i class="fas fa-at fa-5x"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3 mx-auto">
+        <a href="#">
+            <div class="card admin">
+                <div class="card-header"><h6>Set dates</h6></div>
+                <div class="card-body">
+                    <i class="fas fa-clock fa-5x"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3 mx-auto">
+        <a href="#">
+            <div class="card admin">
+                <div class="card-header"><h6>Manage wishes</h6></div>
+                <div class="card-body">
+                    <i class="fas fa-hands fa-5x"></i>
+                </div>
+            </div>
+        </a>
     </div>
 </div>
 

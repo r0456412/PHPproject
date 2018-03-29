@@ -121,7 +121,8 @@ class Gebruiker extends CI_Controller {
         public function wachtwoordVergeten(){
             $data['titel'] = 'Wachtwoord vergeten';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
-            
+             $data['link'] = 'home';
+             
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             
             $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'wachtwoord_vergeten',);
