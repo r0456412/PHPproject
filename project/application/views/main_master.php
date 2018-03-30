@@ -44,18 +44,12 @@
             </nav>
       </header>
         
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 hero-feature">
-                    <div class="thumbnail" style="padding: 20px">
-                        <div class="caption">
-                            <p>
-                                <?php echo $inhoud; ?>
-                            </p>
-                        </div>
-                    </div>
+        <div class="container" id="inhoud">
+            <div class="thumbnail" style="padding: 20px">
+                <div>
+                    <?php echo $inhoud; ?>
                 </div>
-            </div>        
+            </div>
         </div>
         <footer class="footer">
             <div class="container">
