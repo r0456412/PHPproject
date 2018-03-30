@@ -5,13 +5,16 @@ class Home extends CI_Controller {
     	public function __construct()
 	{
             parent::__construct();
-
+            
         }
         
 	public function index()
 	{
+            $this->load->model('paginainhoud_model');
+            
             $data['titel'] = 'Home';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
+            $data['paginainhoud'] = $this->paginainhoud_model->get(1);
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['link'] = 'home';
             

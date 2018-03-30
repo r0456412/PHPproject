@@ -1,3 +1,14 @@
 .beheren{
     color: black;
 }
+.admin{
+    width: 250px;
+    color: black ;
+    margin: 15px;
+}
+a{
+    text-align: center;
+}
+a:hover{
+    text-decoration: none;
+}

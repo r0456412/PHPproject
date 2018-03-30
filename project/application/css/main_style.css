@@ -54,6 +54,9 @@ body > .container {
 .teamNr{
     margin: 0 5px;
 } 
+span{
+    margin-right: 200px;
+}
 
 @media (max-width: 576px) {
     .footer{

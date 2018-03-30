@@ -20,19 +20,7 @@
         <title><?php echo $titel; ?></title>  
         
         <style>
-            .admin{
-                width: 250px;
-                color: black ;
-                margin: 15px;
-            }
-            a{
-                text-decoration: none;
-                text-align: center;
-                
-            }
-            a:hover{
-                text-decoration: none;
-            }
+            
         </style>
     </head>
     <body>
@@ -82,13 +70,10 @@
                 </div>
             </div>        
         </div>
-        <?php echo anchor( $link, '' , 'class="fas fa-chevron-circle-left"') ?>
-
         <footer class="footer">
             <div class="container">
                 <div class="row">
                     <span class="mr-auto"><?php echo $auteur; ?></span>
-                    <span>Team 26 T. Van Echepoel</span>
                 </div>
             </div>
         </footer>
