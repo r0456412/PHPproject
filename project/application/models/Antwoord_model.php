@@ -15,10 +15,10 @@ class Antwoord_model extends CI_Model {
     
     function voegToe($antwoord, $wishid) {
         // voeg nieuwe gebruiker toe
-        $wishes = new stdClass();
-        $wishes->wish = $wish;
-        $wishes->soortwish = $soortwish;
-        $this->db->insert('Antwoord', $wishes);
+        $antwoorden = new stdClass();
+        $antwoorden->antwoord = $antwoord;
+        $antwoorden->wishid = $wishid;
+        $this->db->insert('Antwoord', $antwoorden);
         return $this->db->insert_id();
     }
     
