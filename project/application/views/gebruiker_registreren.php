@@ -23,7 +23,7 @@
     </tr>
     <tr>
         <td><?php echo form_label('First name:', 'voornaam'); ?></td>
-        <td><?php echo form_input(array('name' => 'first_name','type'=>'email', 'id' => 'voornaam', 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true')); ?></td>
+        <td><?php echo form_input(array('name' => 'first_name', 'id' => 'voornaam', 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true')); ?></td>
     </tr>
     <tr>
         <td><?php echo form_label('Gender:', 'geslacht'); ?></td>
