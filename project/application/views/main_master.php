@@ -19,22 +19,9 @@
 
         <title><?php echo $titel; ?></title>  
         
-        <style>
-            
-        </style>
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"id="navbar">
-                <?php echo anchor( $link, toonAfbeelding("images/tm_logo.png", "height=50px"), 'class="navbar-brand"') ?>
-                
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>             
-                <div class="collapse navbar-collapse justify-content-between">
-                      <?php echo $menu?>           
-                </div>
-            </nav>  
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"id="navbar">
                 <?php echo anchor( $link, toonAfbeelding("images/tm_logo.png", "height=50px"), 'class="navbar-brand"') ?>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
