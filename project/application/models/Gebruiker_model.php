@@ -73,14 +73,6 @@ class Gebruiker_model extends CI_Model {
         $this->db->insert('gebruiker', $gebruiker);
         return $this->db->insert_id();
     }
-
-    function activeer($id) {
-        // plaats geactiveerd op 1
-        $gebruiker = new stdClass();
-        $gebruiker->geactiveerd = 1;
-        $this->db->where('id', $id);
-        $this->db->update('tv_gebruiker', $gebruiker);
-    }
     
     function veranderWachtwoord($niewWachtwoord,$email){
         $gebruiker = new stdClass();
