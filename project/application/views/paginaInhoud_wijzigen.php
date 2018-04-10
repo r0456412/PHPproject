@@ -31,3 +31,4 @@
     
 </div>  
 <?php echo form_submit('knop', 'Change');
+echo form_close();  
