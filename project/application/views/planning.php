@@ -25,7 +25,7 @@ echo "<table border='1'>";
             echo "<tr>";
             for($td=1;$td<=5;$td++){
                 if ($td == 1){
-                    echo "<td align='center' class='eerste'>"."UUR"."</td>";
+                    echo "<td align='center' class='eerste'>"; if ($tr == 1){echo"9:00 - 10:30";}elseif($tr == 3){echo"10:45 - 12:15";}elseif($tr == 5){echo"13:00 - 14:30";}else{echo"14:45 - 16:15";}"</td>";
                 } else{
                     echo "<td align='center'>";
                     echo form_dropdown('land', $options, '0');
