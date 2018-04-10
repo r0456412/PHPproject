@@ -15,14 +15,21 @@ echo "<table border='1'>";
 
 <?php
 
+     $options[0] = '--Select--';
+        foreach($voorstellen as $voorstel){
+            $options[$voorstel->id] = $voorstel->titel;
+        }
+
     for($tr=1;$tr<=7;$tr++){
         if ($tr % 2){
             echo "<tr>";
             for($td=1;$td<=5;$td++){
                 if ($td == 1){
-                    echo "<td align='center' class='eerste'>".$tr*$td."</td>";
+                    echo "<td align='center' class='eerste'>"."UUR"."</td>";
                 } else{
-                    echo "<td align='center'>".$tr*$td."</td>";
+                    echo "<td align='center'>";
+                    echo form_dropdown('land', $options, '0');
+                    echo "</td>";
                 }
 
             }

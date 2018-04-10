@@ -9,10 +9,15 @@ class Planning_model extends CI_Model {
     function get($id) {
         // geef gebruiker-object met opgegeven $id
         $this->db->where('id', $id);
-        $query = $this->db->get('voortel');
+        $query = $this->db->get('Voorstel');
         return $query->row();
     }
-
+    
+    function getVoorstel(){
+        $this->db->where('titel');
+        $query = $this->db->get('Voorstel');
+        return $query->row();
+    }
 
 
 }
