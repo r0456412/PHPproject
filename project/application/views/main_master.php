@@ -54,7 +54,8 @@
         <footer class="footer">
             <div class="container">
                 <div class="row">
-                    <span class="mr-auto"><?php echo $auteur; ?></span>
+                    <div class="mr-auto"><?php echo $auteur; ?></div>
+                    <div>Team 26 | T. Van Echepoel</div>
                 </div>
             </div>
         </footer>

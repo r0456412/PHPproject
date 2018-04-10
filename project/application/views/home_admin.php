@@ -36,7 +36,7 @@ if ($gebruiker != null) {
         </a>
     </div>
     <div class="col-md-3 mx-auto">
-        <a href="#">
+        <a href="../admin/paginaInhoud_wijzigen">
             <div class="card admin">
                 <div class="card-header"><h6>Homepage content</h6></div>
                 <div class="card-body">
