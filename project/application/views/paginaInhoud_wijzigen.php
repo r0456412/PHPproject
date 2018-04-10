@@ -1,12 +1,4 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
-<?php
     $attributes = array('name' => 'mijnFormulier');
     echo form_open('admin/wijzigen', $attributes);
 ?>
@@ -38,5 +30,4 @@
     </div>
     
 </div>  
-<?php anchor ('admin/verwijder/'.$paginainhoud->id,'Verwijderen') ?>
 <?php echo form_submit('knop', 'Change');

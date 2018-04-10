@@ -45,7 +45,25 @@ class Admin extends CI_Controller {
             
             $this->paginainhoud_model->wijzig($paginaInhoud);
             
-            redirect('admin/index');
+            redirect('admin/toonMeldingWijzgingSaved');
 	}
         
+        public function toonMelding($titel, $boodschap, $link = null)
+	{
+            $data['titel'] = $titel;
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
+            $data['boodschap'] = $boodschap;
+            $data['link'] = $link;
+            
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            
+            $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'gebruiker_melding',);
+            $this->template->load('main_master', $partials, $data);   
+        }
+        
+        public function toonMeldingWijzgingSaved(){
+            $this->toonMelding('Saved changes',
+                    'The changes are saved!',
+                    array('url' => 'admin/index', 'tekst' => 'Home'));
+        }
 }

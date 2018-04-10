@@ -71,15 +71,6 @@ class Gebruiker extends CI_Controller {
             }
         }
  
-        public function activeer($id)
-        {
-            if($this->authex->activeer($id)){
-                redirect('gebruiker/toonMeldingActiverenNOK');
-            }else{
-                redirect('gebruiker/toonMeldingGebruikerGeactiveerd');
-            }
-        }
-        
         public function toonMelding($titel, $boodschap, $link = null)
 	{
             $data['titel'] = $titel;
