@@ -1,6 +1,6 @@
 <?php
     $attributes = array('name' => 'mijnFormulier');
-    echo form_open('admin/wijzigen', $attributes);
+    echo form_open('admin/wijziging_opslagen', $attributes);
 ?>
 <div class="row">
     <div class="col">

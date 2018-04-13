@@ -12,7 +12,7 @@ class Admin extends CI_Controller {
             $data['titel'] = 'Home';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
-            $data['link'] = 'home/admin';
+            $data['link'] = 'admin/index';
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'home_admin');
             
@@ -32,7 +32,7 @@ class Admin extends CI_Controller {
             
             $this->template->load('main_master', $partials, $data);
 	}  
-        public function wijzigen()
+        public function paginaInhoud_opslaan()
 	{
             $this->load->model('paginainhoud_model');
             
@@ -61,6 +61,17 @@ class Admin extends CI_Controller {
             
             $this->template->load('main_master', $partials, $data);
 	} 
+        public function datums_opslaan()
+	{
+            $this->load->model('datum_model');
+            
+            $datum = new stdClass();
+            $datum->datum = $this->input->post('dag1');
+
+            $this->datum_model->wijzig($datum);
+            
+            redirect('admin/toonMeldingWijzgingSaved');
+	}
         public function toonMelding($titel, $boodschap, $link = null)
 	{
             $data['titel'] = $titel;
