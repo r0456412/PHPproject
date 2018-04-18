@@ -9,7 +9,7 @@ class Wish_model extends CI_Model {
     function get($id) {
         // geef gebruiker-object met opgegeven $id   
         $this->db->where('id', $id);
-        $query = $this->db->get('Wish');
+        $query = $this->db->get('Wens');
         return $query->row();
     }
     
@@ -18,29 +18,29 @@ class Wish_model extends CI_Model {
         $wishes = new stdClass();
         $wishes->wish = $wish;
         $wishes->soortwish = $soortwish;
-        $this->db->insert('Wish', $wishes);
+        $this->db->insert('Wens', $wishes);
         return $this->db->insert_id();
     }
     
     function getAllByWish(){
         $this->db->order_by('wish', 'asc');
-        $query = $this->db->get('Wish');
+        $query = $this->db->get('Wens');
         return $query;
     }
     
     function delete($id){
         $this->db->where('id', $id);
-        $this->db->delete('Wish');
+        $this->db->delete('Wens');
     }
     
     function update($wish){
         $this->db->where('id', $wish->id);
-        $this->db->update('Wish', $wish);
+        $this->db->update('Wens', $wish);
     }
 
     function getAllByWishWithSoortAntwoord(){
         $this->db->order_by('wish', 'asc');
-        $query = $this->db->get('Wish');
+        $query = $this->db->get('Wens');
         $wishes = $query->result();
         
         $this->load->model('soortantwoord_model');

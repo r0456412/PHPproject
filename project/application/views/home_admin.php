@@ -76,7 +76,7 @@ if ($gebruiker != null) {
         </a>
     </div>
     <div class="col-md-3 mx-auto">
-        <a href="#">
+        <a href="../wishes/beherenWishes">
             <div class="card admin">
                 <div class="card-header"><h6>Manage wishes</h6></div>
                 <div class="card-body">
