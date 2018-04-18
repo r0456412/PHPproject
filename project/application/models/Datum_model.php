@@ -12,6 +12,7 @@ class Datum_model extends CI_Model {
     }
 
     function wijzig($datum) {
+        $this->db->where('id', $datum->id);    
         $this->db->update('Datum', $datum);
         return $this->db->insert_id();
     }

@@ -75,10 +75,20 @@ class Admin extends CI_Controller {
 	{
             $this->load->model('datum_model');
             
-            $datum = new stdClass();
-            $datum->datum = $this->input->post('dag1');
+            $datum1 = new stdClass();
+            $datum2 = new stdClass();
+            $datum3 = new stdClass();
+            
+            $datum1->datum = $this->input->post('dag1');
+            $datum1->id = 1;
+            $datum2->datum = $this->input->post('dag2');
+            $datum2->id = 2;
+            $datum3->datum = $this->input->post('dag3');
+            $datum3->id = 3;
 
-            $this->datum_model->wijzig($datum);
+            $this->datum_model->wijzig($datum1);
+            $this->datum_model->wijzig($datum2);
+            $this->datum_model->wijzig($datum3);
             
             redirect('admin/toonMeldingWijzgingSaved');
 	}

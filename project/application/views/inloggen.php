@@ -28,7 +28,7 @@
                                 </div>
                                 <div>
                                     <input type="checkbox" class="custom-control-input">
-                                    <span class="custom-control-indicator"></span>
+                                    
                                     <?php echo anchor('gebruiker/wachtwoordVergeten', 'Password forgotten?'); ?>
                                 </div>
                                 <?php echo form_submit(array('name' => 'loginKnop', 'value' => 'Login', 'class' => 'btn btn-primary btn-lg float-right loginKnop')); ?>
