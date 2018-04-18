@@ -12,7 +12,7 @@
                 <div class="col-md-6 mx-auto">
                     <div class="card rounded-0">
                         <div class="card-header">
-                            <h5>Change the start and end date here</h5>
+                            <h5>Change the dates of the International Days</h5>
                         </div>
                         
                         <div class="card-body">
@@ -25,14 +25,11 @@
                                     echo form_label("Day $i:", 'dag'.$i);
                                 ?>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-10">
                                 <?php
                                     echo "<input type='date' name='dag$i' id='dag$i' value='$datum->datum' min='1000-01-01' max='3000-12-31' class='form-control datums'>";
                                     $i++;
                                 ?>
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="button" class="btn btn-danger">Delete</button>
                                 </div>
                             </div>
                             <?php

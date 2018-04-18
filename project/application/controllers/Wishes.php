@@ -5,6 +5,10 @@ class Wishes extends CI_Controller {
     	public function __construct()
 	{
             parent::__construct();
+            if (!$this->authex->isAangemeld()) {
+                redirect('login/inloggen');
+            }
+
             $this->load->helper('form');
         }     
         
