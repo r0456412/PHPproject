@@ -1,11 +1,17 @@
-.admin{
+.admin {
     width: 250px;
-    color: black ;
+    color: black;
     margin: 15px;
 }
-a{
+
+a {
     text-align: center;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
+}
+
+.datums {
+    margin-bottom: 10px;
 }

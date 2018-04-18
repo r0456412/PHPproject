@@ -37,6 +37,21 @@ class Wish_model extends CI_Model {
         $this->db->where('id', $wish->id);
         $this->db->update('Wish', $wish);
     }
+
+    function getAllByWishWithSoortAntwoord(){
+        $this->db->order_by('wish', 'asc');
+        $query = $this->db->get('Wish');
+        $wishes = $query->result();
+        
+        $this->load->model('soortantwoord_model');
+        
+        foreach ($wishes as $wish){
+            $wish->soortantwoord = $this->soortantwoord_model->get($wish->soortantwoordid);
+        }
+        
+        return $wishes;
+    }
+
 }
 
 ?>
