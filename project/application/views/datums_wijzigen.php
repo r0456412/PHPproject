@@ -19,26 +19,24 @@
                             <div class="card-body">
                                 <?php 
                                 foreach ($datums as $datum) {
+                                    
                                 ?>
                                     <div class="form-row">
                                         <div class="col-md-2">
-                                            <?php
-                                        echo form_label("Day $i:", 'dag'.$i);
-                                    ?>
-
+                                        <?php
+                                            echo form_label("Day $i:", 'dag'.$i);
+                                        ?>
                                         </div>
                                         <div class="col-md-10">
-                                            <?php
-
-                                        echo "<input type='date' name='dag$i' id='dag$i' value='$datum->datum' min='1000-01-01' max='3000-12-31' class='form-control datums'>";
-                                        $i++;
-                                    ?>
+                                        <?php
+                                            echo "<input type='date' name='dag$i' id='dag$i' value='$datum->datum' min='1000-01-01' max='3000-12-31' class='form-control datums'>";
+                                            $i++;
+                                            ?>
                                         </div>
                                     </div>  
-                            <?php
-
-                            }
-                            ?>
+                                        <?php
+                                            }
+                                        ?>
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <?php echo form_submit('knop', 'Save', 'class="btn btn-success float-right"');?>
@@ -52,5 +50,4 @@
                 </div>
             </div>
         </div>
-
     </div>

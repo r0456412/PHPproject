@@ -41,6 +41,8 @@ class Login extends CI_Controller {
                 $gebruiker = $this->authex->getGebruikerInfo();
                 if($gebruiker->soort == 'Admin'){
                     redirect('admin/index');
+                }elseif($gebruiker->soort == 'Gastspreker'){
+                    redirect('gastspreker/index');
                 }else{
                     redirect('home/index');
                 }       
