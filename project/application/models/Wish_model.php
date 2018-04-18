@@ -25,7 +25,7 @@ class Wish_model extends CI_Model {
     function getAllByWish(){
         $this->db->order_by('wish', 'asc');
         $query = $this->db->get('Wens');
-        return $query;
+        return $query->result();
     }
     
     function delete($id){
