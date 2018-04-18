@@ -2,32 +2,39 @@
 
 echo pasStylesheetAan("/css/planning.css");
 
-$options[0] = 'Kies een datum';
+
+$datumOptions[0] = 'Kies een datum';
         foreach($datums as $datum){
-            $options[$datum->id] = $datum->datum;
+            $datumOptions[$datum->id] = $datum->datum;
         }
-echo form_dropdown('land*-',$options,'0');
-echo "<table border='1'>";
-?>
-
-<tr>
-    <th class="eerste">UUR</th>
-    <th>APP-BIT1</th>
-    <th>APP-BIT2</th>
-    <th>EMDEV</th>
-    <th>INFRA</th>
-</tr>
-
-<?php
-
-     $options[0] = 'Kies een voorstel';
+        
+$voorstelOptions[0] = 'Kies een voorstel';
         foreach($voorstellen as $voorstel){
-            $options[$voorstel->id] = $voorstel->titel;
+            $voorstelOptions[$voorstel->id] = $voorstel->titel;
         }
-        $lokaalOptions[0] = 'Kies een lokaal';
+        
+$lokaalOptions[0] = 'Kies een lokaal';
         foreach($lokalen as $lokaal){
             $lokaalOptions[$lokaal->id] = $lokaal->nummer;
         }
+        
+
+        
+echo form_dropdown('land*-',$datumOptions,'0');
+
+echo "<table border='1'>";
+?>
+
+    <tr>
+        <th class="eerste">UUR</th>
+        <th>APP-BIT1</th>
+        <th>APP-BIT2</th>
+        <th>EMDEV</th>
+        <th>INFRA</th>
+    </tr>
+
+    <?php
+
 
     for($tr=1;$tr<=7;$tr++){
         if ($tr % 2){
@@ -37,7 +44,9 @@ echo "<table border='1'>";
                     echo "<td align='center' class='eerste'>"; if ($tr == 1){echo"9:00 - 10:30";}elseif($tr == 3){echo"10:45 - 12:15";}elseif($tr == 5){echo"13:00 - 14:30";}else{echo"14:45 - 16:15";}"</td>";
                 } else{
                     echo "<td align='center'>";
+
                     echo form_dropdown('land*-', $options, '0');
+
                     echo form_dropdown('land*-', $lokaalOptions, '0');
                     echo "</td>";
                 }
@@ -68,7 +77,7 @@ echo "<table border='1'>";
 
 
 
-<!--
+        <!--
 <table>
 
     <tr>

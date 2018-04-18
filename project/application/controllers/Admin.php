@@ -5,9 +5,11 @@ class Admin extends CI_Controller {
     	public function __construct()
 	{
             parent::__construct();
+
             if (!$this->authex->isAangemeld()) {
                 redirect('login/inloggen');
             }
+
             $this->load->helper('form');
         }
         public function index()
@@ -15,7 +17,9 @@ class Admin extends CI_Controller {
             $data['titel'] = 'Home';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
+
             $data['link'] = 'admin/index';
+
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'home_admin');
             
@@ -35,7 +39,9 @@ class Admin extends CI_Controller {
             
             $this->template->load('main_master', $partials, $data);
 	}  
+
         public function paginaInhoud_opslaan()
+
 	{
             $this->load->model('paginainhoud_model');
             
@@ -64,6 +70,7 @@ class Admin extends CI_Controller {
             
             $this->template->load('main_master', $partials, $data);
 	} 
+
         public function datums_opslaan()
 	{
             $this->load->model('datum_model');
@@ -85,7 +92,11 @@ class Admin extends CI_Controller {
             
             redirect('admin/toonMeldingWijzgingSaved');
 	}
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 0b68ec6e8794a94f81a776ef74a3397febdce2bf
         public function toonMelding($titel, $boodschap, $link = null)
 	{
             $data['titel'] = $titel;

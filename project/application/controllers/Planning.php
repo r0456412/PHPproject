@@ -21,14 +21,16 @@ class Planning extends CI_Controller {
             $this->load->model('planning_model');
             $this->load->model('lokaal_model');
             $this->load->model('datum_model');
-            
+
             $data['titel'] = 'Planning';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['voorstellen'] = $this->planning_model->getVoorstel();
             $data['lokalen'] = $this->lokaal_model->getLokaal();
+
             $data['datums'] = $this->datum_model->get();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | <u>Sander J.</u>";
             $data['link'] = 'admin/index';
+
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning');
             
@@ -47,4 +49,3 @@ class Planning extends CI_Controller {
 }
 
 ?>
-
