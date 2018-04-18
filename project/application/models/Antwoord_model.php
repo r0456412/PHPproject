@@ -10,7 +10,7 @@ class Antwoord_model extends CI_Model {
         // geef gebruiker-object met opgegeven $id   
         $this->db->where('id', $id);
         $query = $this->db->get('Antwoord');
-        return $query->row();
+        return $query;
     }
     
     function voegToe($antwoord, $wishid) {
@@ -20,12 +20,6 @@ class Antwoord_model extends CI_Model {
         $antwoorden->wishid = $wishid;
         $this->db->insert('Antwoord', $antwoorden);
         return $this->db->insert_id();
-    }
-    
-    function getAllByWish(){
-        $this->db->order_by('antwoord', 'asc');
-        $query = $this->db->get('Antwoord');
-        return $query;
     }
     
     function delete($id){
