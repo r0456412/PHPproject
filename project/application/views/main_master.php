@@ -19,34 +19,9 @@
 
         <title><?php echo $titel; ?></title>  
         
-        <style>
-            .admin{
-                width: 250px;
-                color: black ;
-                margin: 15px;
-            }
-            a{
-                text-decoration: none;
-                text-align: center;
-                
-            }
-            a:hover{
-                text-decoration: none;
-            }
-        </style>
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"id="navbar">
-                <?php echo anchor( $link, toonAfbeelding("images/tm_logo.png", "height=50px"), 'class="navbar-brand"') ?>
-                
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>             
-                <div class="collapse navbar-collapse justify-content-between">
-                      <?php echo $menu?>           
-                </div>
-            </nav>  
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"id="navbar">
                 <?php echo anchor( $link, toonAfbeelding("images/tm_logo.png", "height=50px"), 'class="navbar-brand"') ?>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,26 +44,18 @@
             </nav>
       </header>
         
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 hero-feature">
-                    <div class="thumbnail" style="padding: 20px">
-                        <div class="caption">
-                            <p>
-                                <?php echo $inhoud; ?>
-                            </p>
-                        </div>
-                    </div>
+        <div class="container" id="inhoud">
+            <div class="thumbnail" style="padding: 20px">
+                <div>
+                    <?php echo $inhoud; ?>
                 </div>
-            </div>        
+            </div>
         </div>
-        <?php echo anchor( $link, '' , 'class="fas fa-chevron-circle-left"') ?>
-
         <footer class="footer">
             <div class="container">
                 <div class="row">
-                    <span class="mr-auto"><?php echo $auteur; ?></span>
-                    <span>Team 26 T. Van Echepoel</span>
+                    <div class="mr-auto"><?php echo $auteur; ?></div>
+                    <div>Team 26 | T. Van Echepoel</div>
                 </div>
             </div>
         </footer>

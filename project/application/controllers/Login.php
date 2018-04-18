@@ -40,7 +40,7 @@ class Login extends CI_Controller {
             if ($this->authex->meldAan($email, $wachtwoord)) {
                 $gebruiker = $this->authex->getGebruikerInfo();
                 if($gebruiker->soort == 'Admin'){
-                    redirect('home/admin');
+                    redirect('admin/index');
                 }else{
                     redirect('home/index');
                 }       
