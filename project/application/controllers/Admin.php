@@ -92,11 +92,7 @@ class Admin extends CI_Controller {
             
             redirect('admin/toonMeldingWijzgingSaved');
 	}
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> 0b68ec6e8794a94f81a776ef74a3397febdce2bf
         public function toonMelding($titel, $boodschap, $link = null)
 	{
             $data['titel'] = $titel;
