@@ -9,7 +9,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 ">
-
                 <div class="row">
                     <div class="col-md-6 mx-auto">
                         <div class="card rounded-0">
@@ -42,7 +41,6 @@
                                             <?php echo form_submit('knop', 'Save', 'class="btn btn-success float-right"');?>
                                         </div>
                                     </div>
-
                             </div>
                             <?php echo form_close(); ?>
                         </div>
