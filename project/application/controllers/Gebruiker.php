@@ -108,6 +108,11 @@ class Gebruiker extends CI_Controller {
         public function toonMeldingNiewWachtwoordVerstuurd(){
             $this->toonMelding('Error', 'A new password was send to you.',array('url' => 'login/inloggen', 'tekst' => 'Back'));
         }  
+        public function toonMeldingVoorstelIngediend(){
+            $this->toonMelding('Succes!',
+                    'Your proposal has been sent to the responsible docent. ',
+                    array('url' => 'gastspreker/index', 'tekst' => 'Home'));
+        }
         
         public function wachtwoordVergeten(){
             $data['titel'] = 'Wachtwoord vergeten';
