@@ -18,8 +18,9 @@ class Planning_model extends CI_Model {
         $query = $this->db->get('Voorstel');
         return $query->result();
     }
-
-
+    
+    
+        
 }
 
 ?>

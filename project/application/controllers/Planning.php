@@ -41,6 +41,37 @@ class Planning extends CI_Controller {
 
             $this->template->load('main_master', $partials, $data);
 	}
+        
+        
+        public function sessie_opslaan()
+
+	{
+            $this->load->model('sessie_model');
+            
+            
+           
+            
+            
+            
+            $date= $this->input->post('datum');
+            $jaargang= $this->input->post('jaargang');
+            $voorstellen= $this->input->post('voorstel');
+            $lokalen= $this->input->post('lokaal');
+            $tabelids= $this->input->post('tabelid');
+            for($tr=0;$tr<=15;$tr++){
+                $sessie = new stdClass();
+                $sessie->datum = $date;
+                $sessie->lokaalid = $lokalen[$tr];
+                $sessie->voorstelid = $voorstellen[$tr];
+                $sessie->jaargangid = $jaargang;
+                $sessie->tabelid = $tabelids[$tr];
+                $this->sessie_model->wijzig($sessie);
+            }
+            
+            
+            
+            redirect('planning/planning');
+            
+	}
 }
 
-?>

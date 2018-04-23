@@ -4,23 +4,31 @@ echo pasStylesheetAan("/css/planning.css");
 
 
 $datumOptions[0] = 'Kies een datum';
+$i=1;
         foreach($datums as $datum){
-            $datumOptions[$datum->id] = $datum->datum;
+            $datumOptions[$i] = $datum->datum;
+            $i++;
         }
         
 $voorstelOptions[0] = 'Kies een voorstel';
+$i=1;
         foreach($voorstellen as $voorstel){
-            $voorstelOptions[$voorstel->id] = $voorstel->titel;
+            $voorstelOptions[$i] = $voorstel->titel;
+            $i++;
         }
         
 $lokaalOptions[0] = 'Kies een lokaal';
+$i=1;
         foreach($lokalen as $lokaal){
-            $lokaalOptions[$lokaal->id] = $lokaal->nummer;
+            $lokaalOptions[$i] = $lokaal->nummer;
+            $i++;
         }
+$counter = 0;
         
 
-        
-echo form_dropdown('land*-',$datumOptions,'0');
+    echo form_open('planning/sessie_opslaan', 'formulier'); 
+   echo form_dropdown('datum',$datumOptions,'0');
+   echo form_hidden('jaargang','1');
 
 echo "<table border='1'>";
 ?>
@@ -43,11 +51,15 @@ echo "<table border='1'>";
                 if ($td == 1){
                     echo "<td align='center' class='eerste'>"; if ($tr == 1){echo"9:00 - 10:30";}elseif($tr == 3){echo"10:45 - 12:15";}elseif($tr == 5){echo"13:00 - 14:30";}else{echo"14:45 - 16:15";}"</td>";
                 } else{
-                    echo "<td align='center'>";
-
-                    echo form_dropdown('land*-', $options, '0');
-
-                    echo form_dropdown('land*-', $lokaalOptions, '0');
+                    $counter++;
+                    echo "<td align='center' id=" . $counter . ">";
+                    
+                    echo form_dropdown('voorstel[]', $voorstelOptions, '0');
+                    echo form_dropdown('lokaal[]', $lokaalOptions, '0');
+                    
+                    echo form_hidden('tabelid[]',$counter);
+                    
+                    
                     echo "</td>";
                 }
 
@@ -70,6 +82,7 @@ echo "<table border='1'>";
     }
 
     echo "</table>";
+    echo form_submit('knop', 'Send');
 
 
 ?>
@@ -77,63 +90,3 @@ echo "<table border='1'>";
 
 
 
-        <!--
-<table>
-
-    <tr>
-        <th class="eerste">UUR</th>
-       <th>APP-BIT1</th>
-       <th>APP-BIT2</th>
-       <th>EMDEV</th>
-       <th>INFRA</th>
-    </tr>
-    <tr>
-        <td class="eerste">9u - 10u30</td>
-       <td>lezing 1</td>
-       <td>lezing 1.2</td>
-       <td>lezing 1.3</td>
-       <td>lezing 1.4 </td>
-    </tr>
-    <tr class="break">
-        <td class="eerste"></td>
-       <td>Break</td>
-       <td>Break</td>
-       <td>Break</td>
-       <td>Break</td>
-    </tr>
-    <tr>
-        <td class="eerste">10u45 - 12u15</td>
-        <td>lezing 2</td>
-        <td>lezing 2.1</td>
-        <td>lezing 2.2</td>
-        <td>lezing 2.3 </td>
-    </tr>
-    <tr class="break">
-        <td class="eerste"></td>
-        <td>Lunch</td>
-        <td>Lunch</td>
-        <td>Lunch</td>
-        <td>Lunch</td>
-    </tr>
-    <tr>
-        <td class="eerste">13u - 14u30</td>
-        <td>lezing 3</td>
-        <td>lezing 3.1</td>
-        <td>lezing 3.2</td>
-        <td>lezing 3.3 </td>
-    </tr>
-    <tr class="break">
-        <td class="eerste"></td>
-        <td>Break</td>
-        <td>Break</td>
-        <td>Break</td>
-        <td>Break</td>
-    </tr>
-    <tr>
-        <td class="eerste">14u45 - 16u15</td>
-        <td>lezing 4</td>
-        <td>lezing 4.1</td>
-        <td>lezing 4.2</td>
-        <td>lezing 4.3 </td>
-    </tr>
-</table> -->
