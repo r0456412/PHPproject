@@ -11,7 +11,7 @@ class Antwoord_model extends CI_Model {
         $this->db->where('id', $id);
         $query = $this->db->get('Antwoord');
 
-        return $query;
+        return $query->row();
 
     }
     
@@ -23,14 +23,6 @@ class Antwoord_model extends CI_Model {
         $this->db->insert('Antwoord', $antwoorden);
         return $this->db->insert_id();
     }
-    
-
-    function getAllByWish(){
-        $this->db->order_by('antwoord', 'asc');
-        $query = $this->db->get('Antwoord');
-        return $query;
-    }
-    
 
     function delete($id){
         $this->db->where('id', $id);
