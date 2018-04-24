@@ -2,7 +2,7 @@
 
     function haalPlanningOp ( datumId ) {
         $.ajax({type : "GET",
-                url : site_url + "/student/haalAjaxOp_planning",
+                url : site_url + "/student/haalAjaxOp_datum",
                 data : { datumId : datumId },
                 success : function(result){
                     $("#resultaat").html(result);
@@ -29,7 +29,7 @@ echo pasStylesheetAan("/css/planning.css");
 echo '<div class="row"><p>Kies een datum:</p><div class="col-lg-2">';
 
 echo form_listboxpro('datumId',$datums,'id','datum',0,array('class' => "form-control", "size" => "3", "id" => "datumId"));
-echo '</div></div><div>';
+echo '</div></div><div id=resultaat>';
 
 echo "<table border='1'>";
 ?>

@@ -16,5 +16,12 @@ class Sessie_model extends CI_Model {
         $query = $this->db->get('Voorstel');
         return $query->result();
     }
+    function getByDatum($datumId) {
+        $this->db->order_by('tabelid','asc');
+        $this->db->where('datum', $datumId);
+        $query = $this->db->get('Sessie');
+        
+        return $query->row();
+    }
 }
     ?>

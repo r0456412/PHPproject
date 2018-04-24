@@ -33,5 +33,13 @@ class Student extends CI_Controller {
             $this->template->load('main_master', $partials, $data);
             
 	}
+        
+        public function haalAjaxOp_datum() {
+            $datumId = $this->input->get('datumId');
+            $this->load->model('sessie_model');
+            $data['planning'] = $this->sessie_model->getByDatum($datumId);
+            $this->load->view("ajax_planning_student",$data);
+            
+        }
 }
 
