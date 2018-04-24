@@ -1,4 +1,35 @@
+<script>
+
+    function haalPlanningOp ( datumId ) {
+        $.ajax({type : "GET",
+                url : site_url + "/student/haalAjaxOp_planning",
+                data : { datumId : datumId },
+                success : function(result){
+                    $("#resultaat").html(result);
+                },
+                error: function (xhr, status, error) {
+                    alert("-- ERROR IN AJAX --\n\n" + xhr.responseText);
+                }
+        });
+    }
+   
+    $(document).ready(function(){
+
+        $( "#datumId" ).change(function() {
+            haalPlanningOp( $( this ).val() );
+        });
+        
+    });
+
+</script>
+
 <?php
+echo pasStylesheetAan("/css/planning.css");
+
+echo '<div class="row"><p>Kies een datum:</p><div class="col-lg-2">';
+
+echo form_listboxpro('datumId',$datums,'id','datum',0,array('class' => "form-control", "size" => "3", "id" => "datumId"));
+echo '</div></div><div>';
 
 echo "<table border='1'>";
 ?>
@@ -13,7 +44,7 @@ echo "<table border='1'>";
 
     <?php
 
-
+$counter = 0;
     for($tr=1;$tr<=7;$tr++){
         if ($tr % 2){
             echo "<tr>";
@@ -49,7 +80,7 @@ echo "<table border='1'>";
     }
 
     echo "</table>";
-    echo form_submit('knop', 'Send');
+    echo '</div>';
 
 
 ?>

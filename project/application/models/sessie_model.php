@@ -11,5 +11,10 @@ class Sessie_model extends CI_Model {
         $this->db->insert('Sessie', $sessie);
         return $this->db->insert_id();
     }
+    function getVoorstel(){
+        $this->db->order_by('titel','asc');
+        $query = $this->db->get('Voorstel');
+        return $query->result();
+    }
 }
     ?>

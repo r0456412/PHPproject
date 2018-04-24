@@ -13,11 +13,7 @@ class Planning_model extends CI_Model {
         return $query->row();
     }
     
-    function getVoorstel(){
-        $this->db->order_by('titel','asc');
-        $query = $this->db->get('Voorstel');
-        return $query->result();
-    }
+    
     
     
         

@@ -25,3 +25,15 @@ function form_radiogroup($valuefield, $textfield, $name = '', $objects = []) {
 
     return $result;
 }
+function form_labelpro($label_text, $id) {
+    $attributes = array('class' => 'control-label');
+    return form_label($label_text, $id, $attributes) . "\n";
+}
+
+function form_listboxpro($name = '', $objects = [], $valuefield, $textfield, $selected = [], $extra = []) {
+    $options = [];
+	foreach ($objects as $object) {
+        $options[$object->{$valuefield}] = $object->{$textfield};
+    }
+    return form_dropdown($name, $options, $selected, $extra);
+}

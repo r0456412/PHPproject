@@ -18,6 +18,10 @@
         <?php echo pasStylesheetAan("/css/admin_style.css"); ?>
 
         <title><?php echo $titel; ?></title>  
+        <script type="text/javascript">
+            var site_url = '<?php echo site_url(); ?>';
+            var base_url = '<?php echo base_url(); ?>';
+        </script>
         
     </head>
     <body>
