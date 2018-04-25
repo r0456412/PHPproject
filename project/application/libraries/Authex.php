@@ -40,6 +40,28 @@ class Authex {
             return false;
         }
     }
+    function isAdmin() {
+        // gebruiker is aangemeld als sessievariabele gebruiker_id bestaat
+        $gebruiker = new stdClass();
+        $gebruiker = $this->getGebruikerInfo();
+
+        if ($gebruiker->soort == "Admin") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function isGastspreker() {
+        // gebruiker is aangemeld als sessievariabele gebruiker_id bestaat
+        $gebruiker = new stdClass();
+        $gebruiker = $this->getGebruikerInfo();
+
+        if ($gebruiker->soort == "Gastspreker") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     function meldAan($email, $wachtwoord) {
         // gebruiker aanmelden met opgegeven email en wachtwoord

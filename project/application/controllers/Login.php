@@ -36,7 +36,6 @@ class Login extends CI_Controller {
             $email = $this->input->post('email');
             $wachtwoord = $this->input->post('password');
             
-            
             if ($this->authex->meldAan($email, $wachtwoord)) {
                 $gebruiker = $this->authex->getGebruikerInfo();
                 if($gebruiker->soort == 'Admin'){

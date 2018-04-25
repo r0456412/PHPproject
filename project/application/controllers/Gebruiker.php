@@ -113,11 +113,22 @@ class Gebruiker extends CI_Controller {
                     'Your proposal has been sent to the responsible docent. ',
                     array('url' => 'gastspreker/index', 'tekst' => 'Home'));
         }
+        public function toonMeldingGeenToegangGastspreker(){
+            $this->toonMelding('Error!',
+                    'You don not have permission to see this page.',
+                    array('url' => 'gastspreker/index', 'tekst' => 'Home'));
+        }
+        public function toonMeldingGeenToegangAdmin(){
+            $this->toonMelding('Error!',
+                    'You don not have permission to see this page.',
+                    array('url' => 'admin/index', 'tekst' => 'Home'));
+        }
+        
         
         public function wachtwoordVergeten(){
             $data['titel'] = 'Wachtwoord vergeten';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
-             $data['link'] = 'home';
+            $data['link'] = 'home';
              
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             
