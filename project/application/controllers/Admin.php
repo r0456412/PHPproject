@@ -9,6 +9,11 @@ class Admin extends CI_Controller {
             if (!$this->authex->isAangemeld()) {
                 redirect('login/inloggen');
             }
+            
+            $gebruiker = $this->authex->getGebruikerInfo();
+            if($gebruiker->soort == "Gastspreker"){
+                redirect('gebruiker/toonMeldingGeenToegangGastspreker');
+            }
 
             $this->load->helper('form');
         }
@@ -20,7 +25,6 @@ class Admin extends CI_Controller {
 
             $data['link'] = 'admin/index';
 
-            
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'home_admin');
             
             $this->template->load('main_master', $partials, $data);
@@ -31,7 +35,7 @@ class Admin extends CI_Controller {
             
             $data['titel'] = 'Change page content';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
-            $data['paginainhoud'] = $this->paginainhoud_model->get(1);
+            $data['paginainhoud'] = $this->paginainhoud_model->get();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['link'] = 'admin/index';
             

@@ -3,7 +3,7 @@
 
     
 
-    echo form_open('admin/wijziging_opslagen', $attributes);
+    echo form_open('admin/paginaInhoud_opslaan', $attributes);
 
 ?>
     <div class="row">
