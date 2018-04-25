@@ -51,3 +51,9 @@ function pasStylesheetAan($css) {
     return "<link rel=\"stylesheet\" type=\"text/css\" href=\""
             . geefVolledigeNaam($css) . "\" />";
 }
+function haalJavascriptOp($js) {
+    $CI = & get_instance();
+    $CI->load->helper('url');
+
+    return "<script src=\"" . base_url("assets/js/" . $js) . "\"></script>";
+}

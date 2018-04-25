@@ -10,4 +10,10 @@ class Lokaal_model extends CI_Model {
         $query = $this->db->get('Lokaal');
         return $query->result();
     }
+    function get($id) {
+        // geef gebruiker-object met opgegeven $id
+        $this->db->where('id', $id);
+        $query = $this->db->get('Lokaal');
+        return $query->row();
+    }
 }
