@@ -151,5 +151,19 @@ class Gebruiker extends CI_Controller {
                 redirect('gebruiker/toonMeldingEmailBestaatNiet');
             }
         }
+        
+        public function faq(){
+            $data['titel'] = 'FAQ';
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['link'] = 'home';
+            
+            $partials = array('hoofding' => 'main_header',
+            'menu' => 'main_menu',
+            'inhoud' => 'faq',
+            'voetnoot' => 'main_footer');
+
+            $this->template->load('main_master', $partials, $data);
+        }
 }
 
