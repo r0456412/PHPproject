@@ -56,7 +56,7 @@ if ($gebruiker != null) {
         </a>
     </div>
     <div class="col-md-3 mx-auto">
-        <a href="#">
+        <a href="../mailsjabloon/mailsjabloon">
             <div class="card admin">
                 <div class="card-header"><h6>Mail templates</h6></div>
                 <div class="card-body">
