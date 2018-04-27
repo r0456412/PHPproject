@@ -20,7 +20,7 @@ class Docent extends CI_Controller {
 	{
             $this->load->model('datum_model');
             
-            $data['titel'] = 'Planning student';
+            $data['titel'] = 'Planning docent';
             
             $data['datums'] = $this->datum_model->get();
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
@@ -41,6 +41,7 @@ class Docent extends CI_Controller {
             $this->load->model('lokaal_model');
             $this->load->model('gebruiker_model');
             
+            $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $planningen = $this->sessie_model->getByDatum($datumId);
             $i=0;
             foreach($planningen as $planning){
