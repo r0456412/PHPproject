@@ -21,10 +21,8 @@ class Wishes extends CI_Controller {
             $this->load->model('wish_model');
             $data['wishes'] = $this->wish_model->getAllByWish();
             
-            $partials = array('hoofding' => 'main_header',
-            'menu' => 'main_menu',
-            'inhoud' => 'wishes_beheren',
-            'voetnoot' => 'main_footer');
+            
+            $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'wishes_beheren',);
 
             $this->template->load('main_master', $partials, $data);
         }
@@ -59,6 +57,16 @@ class Wishes extends CI_Controller {
 
                 $this->template->load('main_master', $partials, $data);
             }
+        }
+        
+        public function add()
+        {
+            $this->load->model('wish_model');
+            $wish = $this->input->post('nieuw');
+            $soortantwoord = 3;
+            $this->wish_model->voegToe($wish, $soortantwoord);
+            
+            redirect('admin/index');
         }
 }
 

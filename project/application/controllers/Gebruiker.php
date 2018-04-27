@@ -15,10 +15,7 @@ class Gebruiker extends CI_Controller {
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['link'] = 'home';
             
-            $partials = array('hoofding' => 'main_header',
-            'menu' => 'main_menu',
-            'inhoud' => 'gebruiker_registreren',
-            'voetnoot' => 'main_footer');
+            $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'gebruiker_registreren',);
 
             $this->template->load('main_master', $partials, $data);
         }
