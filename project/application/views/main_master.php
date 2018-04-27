@@ -65,7 +65,7 @@
                     <div class="col-md" style="text-align: center;">Team 26 | T. Van Echepoel</div>
                     <div>
                         <a href="../Gebruiker/faq"><button type="button" class="btn btn-default btn-sm" style="width: 100px; height: 40px; margin: auto;">FAQ</button></a>
-                        <button type="button" class="btn btn-default btn-sm" style="width: 100px; height: 40px; margin: auto;"> HELP </button>
+                        <a href="../Gebruiker/help"><button type="button" class="btn btn-default btn-sm" style="width: 100px; height: 40px; margin: auto;"> HELP </button></a>
                     </div>
                     
                 </div>
