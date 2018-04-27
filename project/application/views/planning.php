@@ -4,24 +4,18 @@ echo pasStylesheetAan("/css/planning.css");
 
 
 $datumOptions[0] = 'Kies een datum';
-$i=1;
         foreach($datums as $datum){
-            $datumOptions[$i] = $datum->datum;
-            $i++;
+            $datumOptions[$datum->id] = $datum->datum; 
         }
         
 $voorstelOptions[0] = 'Kies een voorstel';
-$i=1;
         foreach($voorstellen as $voorstel){
-            $voorstelOptions[$i] = $voorstel->titel;
-            $i++;
+            $voorstelOptions[$voorstel->id] = $voorstel->titel;
         }
         
 $lokaalOptions[0] = 'Kies een lokaal';
-$i=1;
         foreach($lokalen as $lokaal){
-            $lokaalOptions[$i] = $lokaal->nummer;
-            $i++;
+            $lokaalOptions[$lokaal->id] = $lokaal->nummer;  
         }
 $counter = 0;
         

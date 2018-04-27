@@ -39,20 +39,26 @@ class Student extends CI_Controller {
             $this->load->model('sessie_model');
             $this->load->model('planning_model');
             $this->load->model('lokaal_model');
+            $this->load->model('gebruiker_model');
             
             $planningen = $this->sessie_model->getByDatum($datumId);
             $i=0;
             foreach($planningen as $planning){
                 $voorstellen[$i] = $this->planning_model->get($planning->voorstelid);
                 $lokalen[$i] = $this->lokaal_model->get($planning->lokaalid);
+                $gastsprekers[$i] = $this->gebruiker_model->get($voorstellen[$i]->gastsprekerID);
                 $i++;
             };
             
             $data['voorstellen']=$voorstellen;
             $data['lokalen']=$lokalen;
+            $data['gastsprekers']=$gastsprekers;
+            $data['planning']=$planningen;
             
             $this->load->view("ajax_planning_student",$data);
             
         }
+        
+        
 }
 
