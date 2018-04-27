@@ -9,6 +9,11 @@ class Gastspreker extends CI_Controller {
             if (!$this->authex->isAangemeld()) {
                 redirect('login/inloggen');
             }
+            
+            $gebruiker = $this->authex->getGebruikerInfo();
+            if($gebruiker->soort == "Admin"){
+                redirect('gebruiker/toonMeldingGeenToegangAdmin');
+            }
 
             $this->load->helper('form');
         }
@@ -30,7 +35,7 @@ class Gastspreker extends CI_Controller {
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
 
-            $data['link'] = 'gastpreker/index';
+            $data['link'] = 'gastspreker/index';
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'gastspreker_voorstelIndienen');
             
@@ -56,5 +61,27 @@ class Gastspreker extends CI_Controller {
             $this->voorstelIndienen_model->indienen($voorstel);
             
             redirect('gebruiker/toonMeldingVoorstelIngediend');
+        }
+        public function wishesDoorgeven()
+	{
+            $this->load->model('wish_model');
+            
+            $data['titel'] = 'Home';
+            $data['gebruiker']  = $this->authex->getGebruikerInfo();
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
+            $data['wishes'] = $this->wish_model->getAllByWish();
+
+            $data['link'] = 'gastspreker/index';
+            
+            $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'gastspreker_wishesDoorgeven');
+            
+            $this->template->load('main_master', $partials, $data);
+	}  
+         public function wishes_opslagen()
+        {    
+            $this->load->model('wish_model');
+            
+
+            redirect('gebruiker/toonMeldingWishesOpgeslagen');
         }
 }

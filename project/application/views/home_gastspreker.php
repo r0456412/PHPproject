@@ -17,7 +17,7 @@ if ($gebruiker != null) {
         </a>
     </div>
     <div class="col-md-3 mx-auto">
-        <a href="../admin/datums_wijzigen">
+        <a href="../gastspreker/wishesDoorgeven">
             <div class="card admin">
                 <div class="card-header"><h6>Submit wishes</h6></div>
                 <div class="card-body">

@@ -35,9 +35,22 @@ class Student extends CI_Controller {
 	}
         
         public function haalAjaxOp_datum() {
-            $datumId = $this->input->get('datumId');
+            $datumId = $this->input->get('datumid');
             $this->load->model('sessie_model');
-            $data['planning'] = $this->sessie_model->getByDatum($datumId);
+            $this->load->model('planning_model');
+            $this->load->model('lokaal_model');
+            
+            $planningen = $this->sessie_model->getByDatum($datumId);
+            $i=0;
+            foreach($planningen as $planning){
+                $voorstellen[$i] = $this->planning_model->get($planning->voorstelid);
+                $lokalen[$i] = $this->lokaal_model->get($planning->lokaalid);
+                $i++;
+            };
+            
+            $data['voorstellen']=$voorstellen;
+            $data['lokalen']=$lokalen;
+            
             $this->load->view("ajax_planning_student",$data);
             
         }

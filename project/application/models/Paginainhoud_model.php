@@ -6,8 +6,7 @@ class Paginainhoud_model extends CI_Model {
         parent::__construct();
     }
 
-    function get($id) {
-        $this->db->where('id', $id);
+    function get() {
         $query = $this->db->get('Paginainhoud');
         return $query->row();
     }

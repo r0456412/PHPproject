@@ -14,7 +14,7 @@ class Home extends CI_Controller {
             
             $data['titel'] = 'Home';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
-            $data['paginainhoud'] = $this->paginainhoud_model->get(1);
+            $data['paginainhoud'] = $this->paginainhoud_model->get();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['link'] = 'home';
             

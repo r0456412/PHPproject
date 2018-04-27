@@ -17,7 +17,7 @@ class Wish_model extends CI_Model {
         // voeg nieuwe gebruiker toe
         $wishes = new stdClass();
         $wishes->wish = $wish;
-        $wishes->soortwish = $soortwish;
+        $wishes->soortantwoordid = $soortwish;
         $this->db->insert('Wens', $wishes);
         return $this->db->insert_id();
     }
