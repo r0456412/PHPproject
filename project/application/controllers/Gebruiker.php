@@ -171,10 +171,7 @@ class Gebruiker extends CI_Controller {
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['link'] = 'home';
             
-            $partials = array('hoofding' => 'main_header',
-            'menu' => 'main_menu',
-            'inhoud' => 'faq',
-            'voetnoot' => 'main_footer');
+            $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'faq');
 
             $this->template->load('main_master', $partials, $data);
         }
@@ -185,10 +182,7 @@ class Gebruiker extends CI_Controller {
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['link'] = 'home';
             
-            $partials = array('hoofding' => 'main_header',
-            'menu' => 'main_menu',
-            'inhoud' => 'help',
-            'voetnoot' => 'main_footer');
+            $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'help');
 
             $this->template->load('main_master', $partials, $data);
         }

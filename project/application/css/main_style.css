@@ -22,6 +22,18 @@ a.inlogKnop:hover{
     transition: 0.5s;
 }
 
+.faqHelp{
+    text-decoration: none;
+    color: white;
+    padding: 5px 20px 5px 20px;
+    border: 1px solid #009cab;
+    border-radius: 5px;
+    right: 50px;
+    bottom: 25%;
+    transition: 0.5s;
+    background-color: #575757;
+}
+
 a.menuKnop{
     text-decoration: none;
     color: white;

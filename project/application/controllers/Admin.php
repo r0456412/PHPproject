@@ -22,7 +22,7 @@ class Admin extends CI_Controller {
             $data['titel'] = 'Home';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
-
+            $data['isAangemeld'] = $isAangemeld = $this->authex->isAangemeld();
             $data['link'] = 'admin/index';
 
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'home_admin');
@@ -38,6 +38,7 @@ class Admin extends CI_Controller {
             $data['paginainhoud'] = $this->paginainhoud_model->get();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['link'] = 'admin/index';
+            $data['isAangemeld'] = $isAangemeld = $this->authex->isAangemeld();
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'paginaInhoud_wijzigen');
             
@@ -69,7 +70,8 @@ class Admin extends CI_Controller {
             $data['datums'] = $this->datum_model->get();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['link'] = 'admin/index';
-            
+            $data['isAangemeld'] = $isAangemeld = $this->authex->isAangemeld();
+             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'datums_wijzigen');
             
             $this->template->load('main_master', $partials, $data);
@@ -103,7 +105,7 @@ class Admin extends CI_Controller {
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['boodschap'] = $boodschap;
             $data['link'] = $link;
-            
+            $data['isAangemeld'] = $isAangemeld = $this->authex->isAangemeld();
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             
             $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'gebruiker_melding',);

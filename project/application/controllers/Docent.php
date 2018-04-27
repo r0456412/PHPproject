@@ -10,10 +10,6 @@ class Docent extends CI_Controller {
             parent::__construct();
             
             $this->load->helper('form');
-            
-            
-            
-            
         }
         
         public function index()

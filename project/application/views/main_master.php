@@ -65,10 +65,9 @@
                     <div class="col-md"><?php echo $auteur; ?></div>
                     <div class="col-md" style="text-align: center;">Team 26 | T. Van Echepoel</div>
                     <div>
-                        <a href="../Gebruiker/faq"><button type="button" class="btn btn-default btn-sm" style="width: 100px; height: 40px; margin: auto;">FAQ</button></a>
-                        <a href="../Gebruiker/help"><button type="button" class="btn btn-default btn-sm" style="width: 100px; height: 40px; margin: auto;"> HELP </button></a>
-                    </div>
-                    
+                        <?php echo anchor('gebruiker/faq', 'FAQ', 'class="faqHelp"'); ?>
+                        <?php echo anchor('gebruiker/help', 'Help', 'class="faqHelp"'); ?>
+                    </div> 
                 </div>
             </div>
         </footer>
