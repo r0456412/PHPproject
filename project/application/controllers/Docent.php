@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Student extends CI_Controller {
+class Docent extends CI_Controller {
     
     
     public function __construct()
@@ -20,7 +20,7 @@ class Student extends CI_Controller {
 	{
             $this->load->model('datum_model');
             
-            $data['titel'] = 'Planning student';
+            $data['titel'] = 'Planning docent';
             
             $data['datums'] = $this->datum_model->get();
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
@@ -28,7 +28,7 @@ class Student extends CI_Controller {
             $data['link'] = 'home';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | Eloy B. | <u>Sander J.</u>";
 
-            $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning_student');
+            $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning_docent');
 
             $this->template->load('main_master', $partials, $data);
             
@@ -41,6 +41,7 @@ class Student extends CI_Controller {
             $this->load->model('lokaal_model');
             $this->load->model('gebruiker_model');
             
+            $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $planningen = $this->sessie_model->getByDatum($datumId);
             $i=0;
             foreach($planningen as $planning){
@@ -55,10 +56,13 @@ class Student extends CI_Controller {
             $data['gastsprekers']=$gastsprekers;
             $data['planning']=$planningen;
             
-            $this->load->view("ajax_planning_student",$data);
+            $this->load->view("ajax_docent_planning",$data);
+            
+        }
+        
+        public function opgeven_surveilleren() {
             
         }
         
         
 }
-

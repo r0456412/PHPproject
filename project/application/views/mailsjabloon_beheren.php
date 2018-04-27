@@ -25,7 +25,10 @@ function test(str){
 }
 </script>
 
-<?php echo form_open('mailsjabloon/mailsjabloonOplsaan', $attributes);?>
+<?php 
+$attributes = array('name' => 'mijnFormulier');
+echo form_open('mailsjabloon/mailsjabloonOplsaan', $attributes);
+?>
 <h1>Change template</h1>
 <div>
     <p>Select a template</p>
@@ -47,7 +50,7 @@ function test(str){
 
 <div>
     <p>content teplate</p>
-<?php echo form_textarea(array('name' => 'mailsjabloon', 'id' => 'mailsjabloon','value' => 'test test test', 'rows'=>'5', 'size' => '35', 'class' => 'form-control form-control-lg rounded-2')); ?>
+<?php echo form_textarea(array('name' => 'mailsjabloon', 'id' => 'mailsjabloon','value' => '', 'rows'=>'5', 'size' => '35', 'class' => 'form-control form-control-lg rounded-2')); ?>
 </div>
 
 <?php 
