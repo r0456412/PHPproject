@@ -35,7 +35,7 @@ class Gastspreker extends CI_Controller {
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
 
-            $data['link'] = 'gastpreker/index';
+            $data['link'] = 'gastspreker/index';
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'gastspreker_voorstelIndienen');
             
@@ -71,10 +71,17 @@ class Gastspreker extends CI_Controller {
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['wishes'] = $this->wish_model->getAllByWish();
 
-            $data['link'] = 'gastpreker/index';
+            $data['link'] = 'gastspreker/index';
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'gastspreker_wishesDoorgeven');
             
             $this->template->load('main_master', $partials, $data);
 	}  
+         public function wishes_opslagen()
+        {    
+            $this->load->model('wish_model');
+            
+
+            redirect('gebruiker/toonMeldingWishesOpgeslagen');
+        }
 }

@@ -120,6 +120,11 @@ class Gebruiker extends CI_Controller {
                     'You don not have permission to see this page.',
                     array('url' => 'admin/index', 'tekst' => 'Home'));
         }
+        public function toonMeldingWishesOpgeslagen(){
+            $this->toonMelding('Succes!',
+                    'your wishes have been saved!',
+                    array('url' => 'gastspreker/index', 'tekst' => 'Home'));
+        }
         
         
         public function wachtwoordVergeten(){
