@@ -25,6 +25,15 @@ class Mailsjabloon extends CI_Controller {
             $partials = array('hoofding' => 'main_header','menu' => 'main_menu', 'inhoud' => 'mailsjabloon_beheren');
             $this->template->load('main_master', $partials, $data);
 	}
+        public function mailsjabloonAjax()
+	{
+            $this->load->model('mailsjabloon_model');
+            $onderwerp = $this->input->get('onderwerp');
+            
+            $data['sjabloon'] = $this->mailsjabloon_model->getSjabloon($onderwerp);
+            
+            $this->load->view("ajax_mailsjabloon_beheren",$data);
+	}
         
         public function mailsjabloonOpslaan(){
             $this->load->model('mailsjabloon_model');
