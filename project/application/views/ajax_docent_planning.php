@@ -27,10 +27,15 @@ $counter2= 1;
                         echo "<p>Taal: ".$voorstellen[$counter]->taal."</p>";
                         echo "<p> Gastspreker: ".$gastsprekers[$counter]->voornaam." ".$gastsprekers[$counter]->achternaam."</p>";
                         echo "<p> Lokaal:".$lokalen[$counter]->nummer."</p>";
+                        echo form_hidden($planning[$counter]->id);
+                        echo form_hidden($gebruiker->id);
+                        echo form_submit('knop','Opgeven surveillant');
                         $counter++;
                     }else{
                         echo "<p>Geen lezing.</p>";
                     }
+                    
+                    
                     $counter2++;
                     echo "</td>";
                 }
@@ -51,3 +56,4 @@ $counter2= 1;
     }
 
     echo "</table>";
+    
