@@ -17,9 +17,9 @@ $attributes = array('name' => 'mijnFormulier');
         echo form_input(array('name' => 'wish', 'id' => $wens->id, 'value' => $wens->wish, 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
         echo form_hidden('id', $wens->id);
         echo '</td><td>';
-        echo '<button type="submit" name="save" value="'+ $wens->id +'">Save</button>';
+        echo form_submit('save', 'Save');
         echo '</td><td>';
-        echo '<button type="submit" name="delete" value="'+ $wens->id +'">Delete</button>';
+        echo form_submit('delete', 'Delete');
         echo '</td></tr>';
         
     }

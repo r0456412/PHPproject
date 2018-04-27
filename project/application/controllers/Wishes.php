@@ -66,7 +66,26 @@ class Wishes extends CI_Controller {
             $soortantwoord = 3;
             $this->wish_model->voegToe($wish, $soortantwoord);
             
-            redirect('admin/index');
+            redirect('wishes/toonMeldingNieuweWens');
+        }
+        
+        public function toonMelding($titel, $boodschap, $link = null)
+	{
+            $data['titel'] = $titel;
+            $data['auteur'] = "Lorenzo M.| <u>Arne V.D.P.</u> | Kim M. | Eloy B. | Sander J.";
+            $data['boodschap'] = $boodschap;
+            $data['link'] = $link;
+            
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            
+            $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'gebruiker_melding',);
+            $this->template->load('main_master', $partials, $data);   
+        }
+        
+        public function toonMeldingNieuweWens(){
+            $this->toonMelding('Success',
+                    'The new wish was successfully added.',
+                    array('url' => 'wishes/beherenWishes', 'tekst' => 'Back'));
         }
 }
 
