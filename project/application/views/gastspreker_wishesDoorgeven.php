@@ -17,7 +17,7 @@
                                 foreach ($wishes as $wish) {
                                 ?>
                                     <div class="form-row">
-                                        <div class="col-md-">
+                                        <div class="col-md-4">
                                             <p>
                                                 <?php echo $wish->wish ?>
                                             <p>
@@ -25,7 +25,7 @@
                                         <div class="col-md-8">
                                             <p>
                                                 <?php 
-                                                    echo "<input type='text' name='wish$i' id='dag$i'>";
+                                                    echo form_input(array('name' => "wish'$i", 'id' => "wish'$i", 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true'));
                                                     $i++;
                                                 ?>
                                             </p>

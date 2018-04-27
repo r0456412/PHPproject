@@ -120,6 +120,11 @@ class Gebruiker extends CI_Controller {
                     'You don not have permission to see this page.',
                     array('url' => 'admin/index', 'tekst' => 'Home'));
         }
+        public function toonMeldingWishesOpgeslagen(){
+            $this->toonMelding('Succes!',
+                    'your wishes have been saved!',
+                    array('url' => 'gastspreker/index', 'tekst' => 'Home'));
+        }
         
         
         public function wachtwoordVergeten(){
@@ -158,6 +163,34 @@ class Gebruiker extends CI_Controller {
             else{
                 redirect('gebruiker/toonMeldingEmailBestaatNiet');
             }
+        }
+        
+        public function faq(){
+            $data['titel'] = 'FAQ';
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['link'] = 'home';
+            
+            $partials = array('hoofding' => 'main_header',
+            'menu' => 'main_menu',
+            'inhoud' => 'faq',
+            'voetnoot' => 'main_footer');
+
+            $this->template->load('main_master', $partials, $data);
+        }
+        
+         public function help(){
+            $data['titel'] = 'FAQ';
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            $data['link'] = 'home';
+            
+            $partials = array('hoofding' => 'main_header',
+            'menu' => 'main_menu',
+            'inhoud' => 'help',
+            'voetnoot' => 'main_footer');
+
+            $this->template->load('main_master', $partials, $data);
         }
 }
 
