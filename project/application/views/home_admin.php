@@ -4,9 +4,6 @@ if ($gebruiker != null) {
 }
 ?>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -65,13 +62,9 @@ $(document).ready(function(){
             </div>
         </a>
     </div>
-<<<<<<< HEAD
+
     <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Manage the mailtemplates: change, delete or add">
-        <a href="#">
-=======
-    <div class="col-md-3 mx-auto">
         <a href="../mailsjabloon/mailsjabloon">
->>>>>>> fa14460c0d01fe811a02420c553455f6d01df3ef
             <div class="card admin">
                 <div class="card-header"><h6>Mail templates</h6></div>
                 <div class="card-body">
