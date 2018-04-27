@@ -8,7 +8,7 @@ class Gebruiker extends CI_Controller {
             $this->load->helper('form');
         }     
         
-        public function maakGebruiker()
+        public function index()
 	{
             $data['titel'] = 'Registration';
             $data['auteur'] = "Lorenzo M.| <u>Arne V.D.P.</u> | Kim M. | Eloy B. | Sander J.";
