@@ -1,6 +1,6 @@
 <?php
 
-class VoorstelIndienen_model extends CI_Model {
+class WishesAntwoorden_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -13,8 +13,10 @@ class VoorstelIndienen_model extends CI_Model {
         return $query->row();
     }
     
-    function indienen($voorstel) {  
-        $this->db->insert('Voorstel', $voorstel);
+    function antwoordenIndienen($antwoorden) {  
+        $this->db->insert('Gekozenantwoord', $antwoorden);
         return $this->db->insert_id();
     }
 }
+
+?>

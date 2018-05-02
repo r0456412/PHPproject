@@ -51,7 +51,4 @@ class Wish_model extends CI_Model {
         
         return $wishes;
     }
-
 }
-
-?>
