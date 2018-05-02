@@ -27,36 +27,26 @@ class Wishes extends CI_Controller {
             $this->template->load('main_master', $partials, $data);
         }
         
-        public function update()
-        {
-            if ($this->input->post('save')) {
-                $this->load->model('wish_model');
-                $wish = new stdClass();
-                $wish->id = $this->input->post('id');
-                $wish->wish = $this->input->post('wish');
-                
-                
-            }
-
-            if ($this->input->post('delete')) {
-                $this->load->model('wish_model');
-                $id = $this->input->post('id');
-                
-                
-                $data['titel'] = $id;
-                $data['auteur'] = "Lorenzo M.| <u>Arne V.D.P.</u> | Kim M. | Eloy B. | Sander J.";
-                $data['gebruiker'] = $this->authex->getGebruikerInfo();
-                $data['link'] = 'admin/index';
-                $this->load->model('wish_model');
-                $data['wishes'] = $this->wish_model->getAllByWish();
+        public function save($id){
+            $this->load->model('wish_model');
             
-                $partials = array('hoofding' => 'main_header',
-                'menu' => 'main_menu',
-                'inhoud' => 'wishes_beheren',
-                'voetnoot' => 'main_footer');
-
-                $this->template->load('main_master', $partials, $data);
-            }
+            $wish = new stdClass();
+            $wish->id = $id;
+            $wish->wish = $this->input->post($id);
+            echo "Jan";
+            echo $this->input->post($id);
+            
+            $this->wish_model->update($wish);
+            
+            //redirect('wishes/beherenWishes');
+        }
+        
+         public function delete($id){
+            $this->load->model('wish_model');
+            
+            $this->wish_model->delete($id);
+            
+            redirect('wishes/beherenWishes');
         }
         
         public function add()
