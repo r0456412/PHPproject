@@ -27,16 +27,16 @@ class Wishes extends CI_Controller {
             $this->template->load('main_master', $partials, $data);
         }
         
-        public function save($id){
+        public function bewaar($id, $wens){
             $this->load->model('wish_model');
             
             $wish = new stdClass();
             $wish->id = $id;
-            $wish->wish = $this->input->post($id);
+            $wish->wish = $wens;
             echo "Jan";
-            echo $this->input->post($id);
+            print_r($wish);
             
-            $this->wish_model->update($wish);
+            //$this->wish_model->update($wish);
             
             //redirect('wishes/beherenWishes');
         }
