@@ -13,34 +13,37 @@
                             <h5>Submit your wishes</h5>
                         </div>
                         <div class="card-body">
-                                <?php 
+                            <?php 
                                 foreach ($wishes as $wish) {
-                                ?>
-                                    <div class="form-row">
-                                        <div class="col-md-4">
-                                            <p>
-                                                <?php echo $wish->wish ?>
-                                            <p>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p>
-                                                <?php 
-                                                    echo form_input(array('name' => "wish'$i", 'id' => "wish'$i", 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true'));
-                                                    $i++;
-                                                ?>
-                                            </p>
-                                        </div>
-                                    </div>  
-                                        <?php
-                                            }
+                            ?>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <p>
+                                        <?php 
+                                            echo $wish->wish;
+                                            echo form_hidden( "wish$i", $wish->id);
                                         ?>
-                                    <div class="form-row">
-                                        <div class="col-md-12">
-                                            <?php echo form_submit('knop', 'Save', 'class="btn btn-success float-right"');?>
-                                        </div>
+                                    <p>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>
+                                        <?php 
+                                            echo form_input(array('name' => "antwoord$i", 'id' => "'antwoord$i", 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true'));
+                                            $i++;
+                                        ?>
+                                    </p>
+                                </div>
+                                </div>  
+                                    <?php
+                                        }
+                                    ?>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <?php echo form_submit('knop', 'Save', 'class="btn btn-success float-right"');?>
                                     </div>
-                        </div>
-                            <?php echo form_close(); ?>
+                                </div>
+                            </div>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
             </div>

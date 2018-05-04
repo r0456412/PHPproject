@@ -125,6 +125,23 @@ class Gebruiker extends CI_Controller {
                     'your wishes have been saved!',
                     array('url' => 'gastspreker/index', 'tekst' => 'Home'));
         }
+        public function toonMeldingNieuweWens(){
+            $this->toonMelding('Success',
+                    'The new wish was successfully added.',
+                    array('url' => 'wishes/beherenWishes', 'tekst' => 'Back'));
+        }
+        
+        public function toonMeldingWijzigWens(){
+            $this->toonMelding('Success',
+                    'The new wish was successfully saved.',
+                    array('url' => 'wishes/beherenWishes', 'tekst' => 'Back'));
+        }
+        
+        public function toonMeldingVerwijderWens(){
+            $this->toonMelding('Success',
+                    'The new wish was successfully deleted.',
+                    array('url' => 'wishes/beherenWishes', 'tekst' => 'Back'));
+        }
         
         
         public function wachtwoordVergeten(){

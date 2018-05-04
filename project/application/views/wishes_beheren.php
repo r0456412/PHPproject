@@ -9,21 +9,17 @@ $attributes = array('name' => 'mijnFormulier');
 <h1>Wishes beheren</h1>
 <table>
     <?php
-    echo form_open('wishes/update', $attributes);
-    
     foreach ($wishes as $wens) {
         
         echo '<tr><td>';
-        echo form_input(array('name' => 'wish', 'id' => $wens->id, 'value' => $wens->wish, 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
-        echo form_hidden('id', $wens->id);
+        echo form_input(array('name' => 'w'.$wens->id, 'id' => 'w'.$wens->id, 'value' => $wens->wish, 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
         echo '</td><td>';
-        echo form_submit('save', 'Save');
+        echo form_submit('save', 'Save', "class='knop btn btn-success' id='". $wens->id."'");
         echo '</td><td>';
-        echo form_submit('delete', 'Delete');
+        echo anchor ('wishes/delete/'.$wens->id,'Delete', "class='btn btn-danger' style='margin-bottom:20px'");
         echo '</td></tr>';
         
     }
-    echo form_close();
     echo form_open('wishes/add', $attributes);
     echo '<tr><td>';
     echo form_input(array('name' => 'nieuw', 'id' => 'wish', 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
@@ -33,3 +29,15 @@ $attributes = array('name' => 'mijnFormulier');
     echo form_close();
     ?>
 </table>
+
+<script>
+$(document).ready(function(){
+    $(".knop").click(function(){
+        var id = $(this).attr('id');
+        var wens = $("#w" + id).val();
+        var encoded = escape(wens);
+        window.location.href = '/PHPproject/project/index.php/wishes/bewaar/' + id + '/' + encoded;
+    });
+});
+</script>
+
