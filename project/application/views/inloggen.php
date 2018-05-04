@@ -16,7 +16,7 @@
                         ?>
                         <div class="card-body">
                                 <div class="form-group">
-                                    <?php echo form_label('E-mail:', 'email'); ?>
+                                    <?php echo form_label('Email:', 'email'); ?>
                                     <?php echo form_input(array('name' => 'email','type'=>'email', 'id' => 'email', 'size' => '30', 'class' => 'form-control form-control-lg rounded-2', 'required' => 'true')); ?>
                                 </div>
                                 <div class="form-group">

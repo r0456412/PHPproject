@@ -18,6 +18,7 @@ if ($gebruiker != null) {
     </div>
     <div class="col-md-3 mx-auto">
         <a href="../gastspreker/wishesDoorgeven">
+            <input type="hidden" name="id" id="id" value="<?php echo $gebruiker->id ?>" />
             <div class="card admin">
                 <div class="card-header"><h6>Submit wishes</h6></div>
                 <div class="card-body">

@@ -65,12 +65,12 @@ class Gastspreker extends CI_Controller {
         public function wishesDoorgeven()
 	{
             $this->load->model('wish_model');
+            $this->load->model('wishesAntwoorden_model');
             
             $data['titel'] = 'Home';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
-            $data['wishes'] = $this->wishes_model->get();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
-            $data['wishes'] = $this->wish_model->getAllByWish();
+            $data['wishes'] = $this->wish_model->getAllByWithAntwoorden($data['gebruiker']->id);
 
             $data['link'] = 'gastspreker/index';
             

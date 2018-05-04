@@ -3,6 +3,7 @@
     echo form_open('gastspreker/wishes_opslagen', $attributes);
     $i=1;
 ?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
@@ -28,7 +29,7 @@
                                 <div class="col-md-8">
                                     <p>
                                         <?php 
-                                            echo form_input(array('name' => "antwoord$i", 'id' => "'antwoord$i", 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true'));
+                                            echo form_input(array('value' => $wish->antwoord ,'name' => "antwoord$i", 'id' => "'antwoord$i", 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true'));
                                             $i++;
                                         ?>
                                     </p>
