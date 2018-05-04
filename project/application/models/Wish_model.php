@@ -38,6 +38,19 @@ class Wish_model extends CI_Model {
         $this->db->update('Wens', $wish);
     }
 
+    function getAllByWithAntwoorden($id){ 
+        $this->db->order_by('wish', 'asc');
+        $query = $this->db->get('Wens');
+        $wishes = $query->result();
+        
+        foreach($wishes as $wish){
+            $this->db->where('gebruikerid', $id);
+            $query = $this->db->get('Gekozenantwoord');
+            $wish->antwoord = $query->row();
+        }
+        return $wishes;
+    }
+    
     function getAllByWishWithSoortAntwoord(){
         $this->db->order_by('wish', 'asc');
         $query = $this->db->get('Wens');
@@ -51,7 +64,4 @@ class Wish_model extends CI_Model {
         
         return $wishes;
     }
-
 }
-
-?>

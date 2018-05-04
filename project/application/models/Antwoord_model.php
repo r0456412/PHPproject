@@ -8,13 +8,12 @@ class Antwoord_model extends CI_Model {
 
     function get($id) {
         // geef gebruiker-object met opgegeven $id   
-        $this->db->where('id', $id);
+        $this->db->where('gebruikerid', $id);
         $query = $this->db->get('Antwoord');
 
         return $query->row();
 
     }
-    
     function voegToe($antwoord, $wishid) {
         // voeg nieuwe gebruiker toe
         $antwoorden = new stdClass();

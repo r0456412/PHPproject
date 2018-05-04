@@ -30,7 +30,7 @@
                             </div> 
                             <div class="form-row">
                                 <div class="col-md-2">
-                                    <?php echo form_label('language:', 'taal'); ?>
+                                    <?php echo form_label('Language:', 'taal'); ?>
                                 </div>
                                 <div class="col-md-10">
                                     <?php echo form_input(array('name' => 'taal', 'id' => 'taal', 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true')); ?>
@@ -38,7 +38,8 @@
                             </div> 
                             <div class="form-row">
                                 <div class="col-md-2">
-                                    <?php echo form_label('Resume:', 'samenvatting'); ?>
+                                    <?php echo form_label('Summary'
+                                            . ':', 'samenvatting'); ?>
                                 </div>
                                 <div class="col-md-10">
                                     <?php echo form_textarea(array('name' => 'samenvatting', 'id' => 'samenvatting', 'rows'=>'5' , 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true')); ?>
