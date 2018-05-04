@@ -27,18 +27,19 @@ class Wishes extends CI_Controller {
             $this->template->load('main_master', $partials, $data);
         }
         
-        public function bewaar($id, $wens){
+        public function bewaar(){
             $this->load->model('wish_model');
             
             $wish = new stdClass();
-            $wish->id = $id;
-            $wish->wish = $wens;
-            echo "Jan";
-            print_r($wish);
+            $wish->id = $this->uri->segment(3);
+            $decode = urldecode($this->uri->segment(4));
+            $wish->wish = $decode;
+            //echo "Jan";
+            //print_r($wish);
             
-            //$this->wish_model->update($wish);
+            $this->wish_model->update($wish);
             
-            //redirect('wishes/beherenWishes');
+            redirect('gebruiker/toonMeldingWijzigWens');
         }
         
          public function delete($id){
@@ -46,7 +47,7 @@ class Wishes extends CI_Controller {
             
             $this->wish_model->delete($id);
             
-            redirect('wishes/beherenWishes');
+            redirect('gebruiker/toonMeldingVerwijderWens');
         }
         
         public function add()
@@ -56,26 +57,9 @@ class Wishes extends CI_Controller {
             $soortantwoord = 3;
             $this->wish_model->voegToe($wish, $soortantwoord);
             
-            redirect('wishes/toonMeldingNieuweWens');
+            redirect('gebruiker/toonMeldingNieuweWens');
         }
         
-        public function toonMelding($titel, $boodschap, $link = null)
-	{
-            $data['titel'] = $titel;
-            $data['auteur'] = "Lorenzo M.| <u>Arne V.D.P.</u> | Kim M. | Eloy B. | Sander J.";
-            $data['boodschap'] = $boodschap;
-            $data['link'] = $link;
-            
-            $data['gebruiker'] = $this->authex->getGebruikerInfo();
-            
-            $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'gebruiker_melding',);
-            $this->template->load('main_master', $partials, $data);   
-        }
         
-        public function toonMeldingNieuweWens(){
-            $this->toonMelding('Success',
-                    'The new wish was successfully added.',
-                    array('url' => 'wishes/beherenWishes', 'tekst' => 'Back'));
-        }
 }
 
