@@ -17,7 +17,7 @@
     $(document).ready(function(){
         
         console.log($.ajax);
-
+        
         $( "#datumid" ).change(function() {
             haalPlanningOp( $( this ).val() );
         });
