@@ -117,4 +117,28 @@ class Admin extends CI_Controller {
                     'The changes are saved!',
                     array('url' => 'admin/index', 'tekst' => 'Home'));
         }
+
+        public function usersBeheren()
+        {
+            $data['titel'] = 'Manage Users';
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
+            $data['link'] = 'admin/index';
+            $data['isAangemeld'] = $isAangemeld = $this->authex->isAangemeld();
+            $data['gebruiker'] = $this->authex->getGebruikerInfo();
+            
+            $this->load->model('Gebruiker_model');
+            $data['users'] = $this->Gebruiker_model->getAllByNaam();
+
+            $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'users_beheren',);
+            $this->template->load('main_master', $partials, $data);  
+        }
+
+        public function haalAjaxOp_Voorstel(){
+            $gastsprekerId = $this->input->get('gastsprekerId');
+            $this->load->model('Gebruiker_model');
+            $data['voorstel'] = $this->Gebruiker_model->getVoorstelByUser($gastsprekerId);
+            $this->load->view("ajax_user", $data);
+        }
+
+        
 }

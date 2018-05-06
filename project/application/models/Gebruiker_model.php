@@ -81,6 +81,19 @@ class Gebruiker_model extends CI_Model {
         $this->db->update('Gebruiker', $gebruiker);
     }
 
+    function getAllByNaam()
+    {
+        $this->db->order_by('voornaam', 'asc');
+        $query = $this->db->get('Gebruiker');
+        return $query->result();
+    }
+
+    function getVoorstelByUser($id){
+        $this->db->where('gastsprekerID', $id);
+        $query = $this->db->get('Voorstel');
+        return $query->row();
+    }
+
 }
 
 ?>
