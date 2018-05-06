@@ -70,8 +70,11 @@ class Gastspreker extends CI_Controller {
             $data['titel'] = 'Home';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
-            $data['wishes'] = $this->wish_model->getAllByWithAntwoorden($data['gebruiker']->id);
-
+            $data['wishes'] = $this->wish_model->getAllWithAntwoorden($data['gebruiker']->id);
+//            
+//            print_r($data['wishes']);
+//            exit();
+            
             $data['link'] = 'gastspreker/index';
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'gastspreker_wishesDoorgeven');
@@ -87,7 +90,7 @@ class Gastspreker extends CI_Controller {
             $wishes = $this->wish_model->getAllByWish(); 
             $gebruiker = $this->authex->getGebruikerInfo();
             
-            for($i=1; $i < count($wishes); $i++){
+            for($i=1; $i <= count($wishes); $i++){
                 $antwoord->gebruikerid = $gebruiker->id; 
                 $antwoord->jaargangID = 1; 
                 $antwoord->wishid = $this->input->post('wish'.$i);

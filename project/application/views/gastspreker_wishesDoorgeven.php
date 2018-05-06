@@ -29,7 +29,7 @@
                                 <div class="col-md-8">
                                     <p>
                                         <?php 
-                                            echo form_input(array('value' => $wish->antwoord ,'name' => "antwoord$i", 'id' => "'antwoord$i", 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true'));
+                                            echo form_input(array('name' => "antwoord$i", 'value' => $wish->antwoord->antwoord, 'id' => "'antwoord$i", 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true'));
                                             $i++;
                                         ?>
                                     </p>

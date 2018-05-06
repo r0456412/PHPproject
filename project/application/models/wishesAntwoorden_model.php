@@ -22,8 +22,9 @@ class WishesAntwoorden_model extends CI_Model {
         }
         return $antwoorden;
     }
-    function antwoordenIndienen($antwoorden) {  
-        $this->db->insert('Gekozenantwoord', $antwoorden);
-        return $this->db->insert_id();
+    function antwoordenIndienen($antwoord) {  
+        $this->db->where('gebruikerid', $antwoord->gebruikerid);
+        $this->db->where('wishid', $antwoord->wishid);
+        $this->db->update('Gekozenantwoord', $antwoord);
     }
 }
