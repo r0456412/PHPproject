@@ -90,3 +90,31 @@ input, textarea {
 button.navbar-toggler {
     width: 55px;
 }
+
+.terugKnop {
+    background-color: grey;
+    border: 1px solid #009cab;
+    border-radius: 5px;
+    transition: 1s;
+}
+.terugKnop:hover{
+    background-color: #009cab;
+    color: white;
+    border: 1px solid #009cab;
+    border-radius: 5px;
+    transition: 1s;
+}
+
+.inloggenKnop{
+    background-color: grey;
+    border: 1px solid #009cab;
+    border-radius: 5px;
+    transition: 1s;
+}
+.inloggenKnop:hover{
+    background-color: #009cab;
+    color: white;
+    border: 1px solid #009cab;
+    border-radius: 5px;
+    transition: 1s;
+}

@@ -52,6 +52,8 @@ class Wish_model extends CI_Model {
                 $antwoord->gebruikerid = $id;
                 $antwoord->jaargangid = 1;
                 
+                $wish->antwoord = $antwoord;
+                
                 $this->db->insert('Gekozenantwoord', $antwoord);
             }     
         }else{

@@ -142,6 +142,11 @@ class Gebruiker extends CI_Controller {
                     'The new wish was successfully deleted.',
                     array('url' => 'wishes/beherenWishes', 'tekst' => 'Back'));
         }
+        public function toonMeldingLoginMislukt(){
+            $this->toonMelding('Error',
+                    'You entered a wrong email or password, pleas try again.',
+                    array('url' => 'login/inloggen', 'tekst' => 'Try again'));
+        }
         
         
         public function wachtwoordVergeten(){
