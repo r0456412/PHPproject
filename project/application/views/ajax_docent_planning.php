@@ -22,25 +22,44 @@ $counter2= 1;
                     echo "<td align='center' class='eerste'>"; if ($tr == 1){echo"9:00 - 10:30";}elseif($tr == 3){echo"10:45 - 12:15";}elseif($tr == 5){echo"13:00 - 14:30";}else{echo"14:45 - 16:15";}"</td>";
                 } else{
                     echo "<td align='center' id=" . $counter . ">";
-                    if ($planning[$counter]->tabelId==$counter2) {
+                    if(!empty($planning)){
+                        if ($planning[$counter]->tabelId==$counter2) {
                         echo "<p>Lezing: ".$voorstellen[$counter]->titel."</p>";
                         echo "<p>Taal: ".$voorstellen[$counter]->taal."</p>";
                         echo "<p> Gastspreker: ".$gastsprekers[$counter]->voornaam." ".$gastsprekers[$counter]->achternaam."</p>";
                         echo "<p> Lokaal:".$lokalen[$counter]->nummer."</p>";
-                        echo form_hidden($planning[$counter]->id);
-                        echo form_hidden($gebruiker->id);
-                        echo form_submit('knop','Opgeven surveillant');
+                        if (!empty($beschikbaarheid)) {
+                             if (in_array($planning[$counter]->id, $beschikbaarheid->sessieid)) {
+                            echo form_open('surveillant/surveillant_verwijderen', 'formulier'); 
+                            echo form_hidden('sessie',$planning[$counter]->id);
+                            echo form_hidden('gebruiker',$gebruiker->id);
+                            echo form_submit('knop','Uitschrijven surveillant');
+                            echo form_close();
+                        }
+                        }else{
+                           echo form_open('surveillant/surveillant_opslaan', 'formulier'); 
+                            echo form_hidden('sessie',$planning[$counter]->id);
+                            echo form_hidden('gebruiker',$gebruiker->id);
+                            echo form_submit('knop','Inschrijven surveillant');
+                            echo form_close();
+                        
+                        
+                        
                         $counter++;
+                    }
                     }else{
                         echo "<p>Geen lezing.</p>";
                     }
+                    
                     
                     
                     $counter2++;
                     echo "</td>";
                 }
             }
+            }
             echo "</tr>";
+            
         }
         else{
             echo "<tr class='break'>";
@@ -54,6 +73,12 @@ $counter2= 1;
             echo "</tr>";
         }
     }
-
+    
+    
     echo "</table>";
     
+    
+    
+    
+    
+  
