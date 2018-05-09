@@ -1,9 +1,9 @@
 <script>
 
-    function haalPlanningOp ( jos ) {
+    function haalPlanningOp ( jos,gebruikerid ) {
         $.ajax({type : "GET",
                 url : site_url + "/docent/haalAjaxOp_datum",
-                data : { datumid : jos },
+                data : { datumid : jos, gebruikerid : gebruikerid},
                 success : function(result){
                     $("#resultaat").html(result);
                    
@@ -27,12 +27,13 @@
 </script>
 
 <?php
+
+
 echo pasStylesheetAan("/css/planning.css");
 
 echo '<div class="row"><p>Kies een datum:</p><div class="col-lg-2">';
-
 echo form_listboxpro('datumid',$datums,'id','datum',0,array('class' => "form-control", "size" => "3", "id" => "datumid"));
-echo form_open('docent/opgeven_surveileren', 'formulier');
+echo form_hidden('gebruikerid',$gebruiker->id);
 echo '</div></div><div id=resultaat>';
 
 
