@@ -37,16 +37,30 @@ class Wish_model extends CI_Model {
         $this->db->where('id', $wish->id);
         $this->db->update('Wens', $wish);
     }
-
-    function getAllByWithAntwoorden($id){ 
+    
+    function getAllWithAntwoorden($id){ 
         $this->db->order_by('wish', 'asc');
         $query = $this->db->get('Wens');
         $wishes = $query->result();
         
-        foreach($wishes as $wish){
-            $this->db->where('gebruikerid', $id);
-            $query = $this->db->get('Gekozenantwoord');
-            $wish->antwoord = $query->row();
+        $query = $this->db->get_where('Gekozenantwoord', array('gebruikerid' => $id)); 
+        if ($query->num_rows() == 0 ){
+            $antwoord = new stdClass();
+            foreach($wishes as $wish){
+                $antwoord->antwoord = "";
+                $antwoord->wishid = $wish->id;
+                $antwoord->gebruikerid = $id;
+                $antwoord->jaargangid = 1;
+                
+                $this->db->insert('Gekozenantwoord', $antwoord);
+            }     
+        }else{
+            foreach($wishes as $wish){
+                $this->db->where('gebruikerid', $id);
+                $this->db->where('wishid', $wish->id);
+                $query = $this->db->get('Gekozenantwoord');
+                $wish->antwoord = $query->row();
+            }
         }
         return $wishes;
     }
@@ -61,7 +75,6 @@ class Wish_model extends CI_Model {
         foreach ($wishes as $wish){
             $wish->soortantwoord = $this->soortantwoord_model->get($wish->soortantwoordid);
         }
-        
         return $wishes;
     }
 }

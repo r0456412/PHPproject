@@ -20,7 +20,7 @@ if ($gebruiker != null) {
         <a href="../gastspreker/wishesDoorgeven">
             <input type="hidden" name="id" id="id" value="<?php echo $gebruiker->id ?>" />
             <div class="card admin">
-                <div class="card-header"><h6>Submit wishes</h6></div>
+                <div class="card-header"><h6>Submit/Change wishes</h6></div>
                 <div class="card-body">
                     <i class="fas fa-hands fa-5x"></i>
                 </div>
@@ -28,11 +28,11 @@ if ($gebruiker != null) {
         </a>
     </div>
     <div class="col-md-3 mx-auto">
-        <a href="../admin/datums_wijzigen">
+        <a href="../gastspreker/agendaBekijken">
             <div class="card admin">
-                <div class="card-header"><h6>Change wishes</h6></div>
+                <div class="card-header"><h6>Check agenda</h6></div>
                 <div class="card-body">
-                    <i class="fas fa-cogs fa-5x"></i>
+                    <i class="fas fa-calendar-alt fa-5x"></i>
                 </div>
             </div>
         </a>

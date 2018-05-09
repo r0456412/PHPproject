@@ -33,7 +33,7 @@ $(document).ready(function(){
         </a>
     </div>
     <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Here you can see all users, the submitted wishes, ...">
-        <a href="#">
+        <a href="../Admin/usersBeheren">
             <div class="card admin">
                 <div class="card-header"><h6>Manage users</h6></div>
                 <div class="card-body">
