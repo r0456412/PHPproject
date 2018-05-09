@@ -31,7 +31,7 @@
                                     
                                     <?php echo anchor('gebruiker/wachtwoordVergeten', 'Password forgotten?'); ?>
                                 </div>
-                                <?php echo form_submit(array('name' => 'loginKnop', 'value' => 'Login', 'class' => 'btn btn-primary btn-lg float-right loginKnop')); ?>
+                                <?php echo form_submit(array('name' => 'loginKnop', 'value' => 'Login', 'class' => 'btn btn-primary float-right inloggenKnop')); ?>
                             </form>
                         </div>
                         <?php echo form_close(); ?>     

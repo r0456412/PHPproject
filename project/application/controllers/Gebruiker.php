@@ -145,7 +145,7 @@ class Gebruiker extends CI_Controller {
         public function toonMeldingLoginMislukt(){
             $this->toonMelding('Error',
                     'You entered a wrong email or password, pleas try again.',
-                    array('url' => 'login/inloggen', 'tekst' => 'Back'));
+                    array('url' => 'login/inloggen', 'tekst' => 'Try again'));
         }
         
         

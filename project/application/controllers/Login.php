@@ -42,11 +42,13 @@ class Login extends CI_Controller {
                     redirect('admin/index');
                 }elseif($gebruiker->soort == 'Gastspreker'){
                     redirect('gastspreker/index');
+                }elseif($gebruiker->soort == 'Docent'){
+                    redirect('docent/index');
                 }else{
                     redirect('home/index');
                 }       
             } else {
-                redirect('login/toonFout');
+                redirect('gebruiker/toonMeldingLoginMislukt');
             }
         } 
         
