@@ -138,7 +138,11 @@ class Gebruiker_model extends CI_Model {
         $query = $this->db->get('Voorstel');
         return $query->result();
     }
-
+    /**
+     * Retourneert het voorstel met id=$id uit de tabel Voorstel
+     * @param $id De id van het voorstel dat opgevraagd wordt
+     * @return Het opgevraagde voorstel
+     */
     function getVoorstel($id){
         $this->db->where('id', $id);
         $query = $this->db->get('Voorstel');
