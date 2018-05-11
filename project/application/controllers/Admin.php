@@ -1,24 +1,35 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/*! De Admin controller
+ * Alle functies van de administrator worden hier gedefinieerd.
+ */
 class Admin extends CI_Controller {
     
     	public function __construct()
 	{
             parent::__construct();
-
+            $this->load->helper('form');
+            /**
+             * Controleert of de gebruiker is aangemeld.
+             * Als hij niet is aangemeld wordt hij doorverwezen naar de inlog pagina.
+             */
             if (!$this->authex->isAangemeld()) {
                 redirect('login/inloggen');
             }
-            
+            /**
+             * Controleert of de gebruiker iets anders is dan een admin.
+             * Als dit het geval krijgt de gebruiker een foutboodschap te zien.
+             * Dit gebeurd wanneer er een url van een admin word ingegeven tijdens dat een gastspreker is ingelogd.
+             */
             $gebruiker = $this->authex->getGebruikerInfo();
             if($gebruiker->soort == "Gastspreker"){
                 redirect('gebruiker/toonMeldingGeenToegangGastspreker');
             }
-
-            $this->load->helper('form');
         }
         public function index()
 	{
+            /**
+             * Weergeven van de index pagina van de admin.
+             */
             $data['titel'] = 'Home';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
@@ -31,6 +42,9 @@ class Admin extends CI_Controller {
 	}  
 	public function paginaInhoud_wijzigen()
 	{
+            /**
+             * Weergeven van de pagina waar de admin de inhoud van de home pagina kan wijzigen.
+             */
             $this->load->model('paginainhoud_model');
             
             $data['titel'] = 'Change page content';
@@ -48,6 +62,9 @@ class Admin extends CI_Controller {
         public function paginaInhoud_opslaan()
 
 	{
+            /**
+             * Opslagen van inhoud 
+             */
             $this->load->model('paginainhoud_model');
             
             $paginaInhoud = new stdClass();

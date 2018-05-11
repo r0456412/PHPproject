@@ -63,7 +63,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md"><?php echo $auteur; ?></div>
-                    <div class="col-md" style="text-align: center;">Team 26 | T. Van Echepoel</div>
+                    <div class="col-md" style="text-align: center;">Team 26 | T. Van Echelpoel</div>
                     <div>
                         <?php echo anchor('gebruiker/faq', 'FAQ', 'class="faqHelp"'); ?>
                         <?php echo anchor('gebruiker/help', 'Help', 'class="faqHelp"'); ?>
