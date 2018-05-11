@@ -136,8 +136,15 @@ class Gebruiker_model extends CI_Model {
     function getVoorstelByUser($id){
         $this->db->where('gastsprekerID', $id);
         $query = $this->db->get('Voorstel');
+        return $query->result();
+    }
+
+    function getVoorstel($id){
+        $this->db->where('id', $id);
+        $query = $this->db->get('Voorstel');
         return $query->row();
     }
 
+    
 }
 ?>

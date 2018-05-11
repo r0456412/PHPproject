@@ -150,11 +150,25 @@ class Admin extends CI_Controller {
             $this->template->load('main_master', $partials, $data);  
         }
 
-        public function haalAjaxOp_Voorstel(){
-            $gastsprekerId = $this->input->get('gastsprekerId');
+        public function haalAjaxOp_Voorstellen(){
+            $gastsprekerId = $this->input->get('id');
             $this->load->model('Gebruiker_model');
-            $data['voorstel'] = $this->Gebruiker_model->getVoorstelByUser($gastsprekerId);
+            $data['voorstellen'] = $this->Gebruiker_model->getVoorstelByUser($gastsprekerId);
             $this->load->view("ajax_user", $data);
+        }
+
+        public function haalAjaxOp_Voorstel(){
+            $id = $this->input->get('id');
+            $this->load->model('Gebruiker_model');
+            $data['voorstel'] = $this->Gebruiker_model->getVoorstel($id);
+            $this->load->view("ajax_voorsteldetail", $data);
+        }
+
+         public function haalAjaxOp_Wishes(){
+            $gastsprekerId = $this->input->get('id');
+            $this->load->model('Wish_model');
+            $data['wishes'] = $this->Wish_model->getAllWithAntwoorden($gastsprekerId);
+            $this->load->view("ajax_wishes", $data);
         }
 
         
