@@ -148,6 +148,17 @@ class Gebruiker_model extends CI_Model {
         $query = $this->db->get('Voorstel');
         return $query->row();
     }
+    function getGebruikerOpNaam($zoekstring){
+        $this->db->like('voornaam', $zoekstring);
+        $this->db->or_like('achternaam', $zoekstring);
+        $query = $this->db->get('Gebruiker');
+        
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return "geen resultaten";
+        }
+    }
 
     
 }

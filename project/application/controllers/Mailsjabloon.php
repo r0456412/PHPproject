@@ -15,7 +15,7 @@ class Mailsjabloon extends CI_Controller {
         public function mailsjabloon()
 	{
             $this->load->model('mailsjabloon_model');
-            $data['titel'] = 'Mailsjablonen beheren';
+            $data['titel'] = 'Manage templates';
             $data['auteur'] = "<u>Lorenzo M.</u>| Arne V.D.P. | Kim M. | Eloy B. | Sander J.";
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['link'] = 'admin/index';
@@ -29,8 +29,12 @@ class Mailsjabloon extends CI_Controller {
 	{
             $this->load->model('mailsjabloon_model');
             $onderwerp = $this->input->get('onderwerp');
-            
-            $data['sjabloon'] = $this->mailsjabloon_model->getSjabloon($onderwerp);
+            if($onderwerp == "New"){
+                $data['new'] = "yes";
+            }else{
+                $data['sjabloon'] = $this->mailsjabloon_model->getSjabloon($onderwerp);
+                $data['new'] = "no";
+            }
             
             $this->load->view("ajax_mailsjabloon_beheren",$data);
 	}
@@ -44,9 +48,27 @@ class Mailsjabloon extends CI_Controller {
             $mailsjabloon->inhoud = $this->input->post('mailsjabloon');
             $mailsjabloon->oudOnderwerp = $this->input->post('mailsjablonen');
 
-            $this->mailsjabloon_model->updateSjabloon($mailsjabloon);
-            $this->datum_model->wijzig($datum2);
-            $this->datum_model->wijzig($datum3);
+            if($mailsjabloon->oudOnderwerp == "New"){
+                $this->mailsjabloon_model->voegSjabloonToe($mailsjabloon);
+            }else{
+                $this->mailsjabloon_model->updateSjabloon($mailsjabloon);
+            }
+            redirect('admin/toonMeldingWijzgingSaved');
+        }
+        
+        public function mailsjabloonNieuw(){
+            $this->load->model('mailsjabloon_model');
+            $onderwerp = $this->input->post('newName');
+            $inhoud = $this->input->post('mailsjabloon');
+            $this->mailsjabloon_model->voegSjabloonToe($onderwerp, $inhoud);
+            
+            redirect('admin/toonMeldingWijzgingSaved');
+        }
+        
+        public function mailsjabloonVerwijder(){
+            $this->load->model('mailsjabloon_model');
+            $onderwerp = $this->input->post('mailsjablonen');
+            $this->mailsjabloon_model->verwijderSjabloon($onderwerp);
             
             redirect('admin/toonMeldingWijzgingSaved');
         }
