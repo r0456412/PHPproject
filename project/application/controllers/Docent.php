@@ -10,6 +10,7 @@ class Docent extends CI_Controller {
             parent::__construct();
             
             $this->load->helper('form');
+            $this->load->helper('notation');
         }
         
         public function index()
@@ -19,9 +20,15 @@ class Docent extends CI_Controller {
             $data['titel'] = 'Planning docent';
             
             $data['datums'] = $this->datum_model->get();
+//            $i=0;
+//            foreach ($datums as $datum) {
+//                $datumOmzetten= $datums[$i];
+//                
+//                $i++;
+//            }
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             
-            $data['link'] = 'home';
+            $data['link'] = 'docent';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | Eloy B. | <u>Sander J.</u>";
 
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning_docent');
@@ -42,13 +49,18 @@ class Docent extends CI_Controller {
             
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $planningen = $this->sessie_model->getByDatum($datumId);
-            $beschikbaarheid = $this->beschikbaarheid_model->getByGebruiker($gebruikerId);
+            $beschikbaarheiden = $this->beschikbaarheid_model->getByGebruiker($gebruikerId);
             $aanwezig = $this->aanwezigesurveillant_model->getByGebruiker($gebruikerId);
             $i=0;
             foreach($planningen as $planning){
                 $voorstellen[$i] = $this->planning_model->get($planning->voorstelid);
                 $lokalen[$i] = $this->lokaal_model->get($planning->lokaalid);
                 $gastsprekers[$i] = $this->gebruiker_model->get($voorstellen[$i]->gastsprekerID);
+                $i++;
+            }
+            $i=0;
+            foreach($beschikbaarheiden as $beschikbaarheid){
+                $beschikbaarheiden1[$i] = $beschikbaarheiden[$i]->sessieid;
                 $i++;
             }
             
@@ -59,7 +71,7 @@ class Docent extends CI_Controller {
             }
             
             $data['planning']=$planningen;
-            $data['beschikbaarheid']=$beschikbaarheid;
+            $data['beschikbaarheid']=$beschikbaarheiden1;
             $data['aanwezig']=$aanwezig;
             
             $this->load->view("ajax_docent_planning",$data);

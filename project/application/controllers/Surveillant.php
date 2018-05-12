@@ -31,6 +31,18 @@ class Surveillant extends CI_Controller {
             redirect('docent');
             
         }
+        public function surveillant_verwijderen()
+	{
+            $this->load->model ('beschikbaarheid_model');
+            
+            $sessieid= $this->input->post('sessie');
+            $gebruikerid= $this->input->post('gebruiker');
+            
+            $this->beschikbaarheid_model->delete($sessieid,$gebruikerid);
+            
+            redirect('docent');
+            
+        }
         
 }
          

@@ -29,15 +29,23 @@ $counter2= 1;
                         echo "<p> Gastspreker: ".$gastsprekers[$counter]->voornaam." ".$gastsprekers[$counter]->achternaam."</p>";
                         echo "<p> Lokaal:".$lokalen[$counter]->nummer."</p>";
                         if (!empty($beschikbaarheid)) {
-                             if (in_array($planning[$counter]->id, $beschikbaarheid->sessieid)) {
-                            echo form_open('surveillant/surveillant_verwijderen', 'formulier'); 
+                             if (in_array($planning[$counter]->id, $beschikbaarheid)) {
+                                echo form_open('surveillant/surveillant_verwijderen', 'formulier'); 
+                                echo form_hidden('sessie',$planning[$counter]->id);
+                                echo form_hidden('gebruiker',$gebruiker->id);
+                                echo form_submit('knop','Uitschrijven surveillant');
+                                echo form_close();
+                                $counter++;
+                        }else{
+                            echo form_open('surveillant/surveillant_opslaan', 'formulier'); 
                             echo form_hidden('sessie',$planning[$counter]->id);
                             echo form_hidden('gebruiker',$gebruiker->id);
-                            echo form_submit('knop','Uitschrijven surveillant');
+                            echo form_submit('knop','Inschrijven surveillant');
                             echo form_close();
+                            $counter++;
                         }
                         }else{
-                           echo form_open('surveillant/surveillant_opslaan', 'formulier'); 
+                            echo form_open('surveillant/surveillant_opslaan', 'formulier'); 
                             echo form_hidden('sessie',$planning[$counter]->id);
                             echo form_hidden('gebruiker',$gebruiker->id);
                             echo form_submit('knop','Inschrijven surveillant');
@@ -47,21 +55,20 @@ $counter2= 1;
                         
                         $counter++;
                     }
-                    }else{
-                        echo "<p>Geen lezing.</p>";
                     }
+                    else{echo "<p>Geen lezing.</p>";}
                     
+                    }else{echo "<p>Geen lezing.</p>";}
                     
                     
                     $counter2++;
                     echo "</td>";
-                }
+                
             }
             }
             echo "</tr>";
             
-        }
-        else{
+        }else{
             echo "<tr class='break'>";
             for($td=1;$td<=5;$td++){
                 if ($td == 1){

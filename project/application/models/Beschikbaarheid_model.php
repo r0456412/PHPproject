@@ -18,5 +18,11 @@ Class Beschikbaarheid_model extends CI_Model {
         
         return $query->result();
     }
+    function delete($sessieid,$gebruikerid){
+        $this->db->where('sessieid', $sessieid);
+        $this->db->where('gebruikerid', $gebruikerid);
+        $this->db->delete('Beschikbaarheid');
+    }
+    
     
 }
