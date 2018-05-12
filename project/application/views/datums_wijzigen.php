@@ -1,9 +1,6 @@
 <?php
     $attributes = array('name' => 'mijnFormulier');
-
     echo form_open('admin/datums_opslaan', $attributes);
-    
-    $datumlijst = "";
     $i = 1;
 ?>
     <div class="container">
@@ -28,9 +25,10 @@
                                         </div>
                                         <div class="col-md-10">
                                         <?php
-                                            echo "<input type='date' name='dag$i' id='dag$i' value='$datum->datum' min='1000-01-01' max='3000-12-31' class='form-control datums'>";
+                                            echo "<input type='date' name='dag$i' id='dag$i' value='$datum->datum' min=".date('Y-m-d')."  max='3000-12-31' class='form-control datums'>";
                                             $i++;
                                             ?>
+                                            
                                         </div>
                                     </div>  
                                         <?php
