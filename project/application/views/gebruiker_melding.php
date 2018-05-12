@@ -1,3 +1,13 @@
+<?php
+/**
+ * @file gebruiker_melding.php
+ * 
+ * View waarin een specifieke melding aan de gebruiker wordt getoond
+ * - Krijgt $gebruiker-object binnen
+ * - Krijgt $boodschap binnen
+ * - Maakt gebruik van Boodstrap cards
+ */
+?>
 <div class="container">
         <div class="row">
             <div class="col-md-12 ">
@@ -39,4 +49,4 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>

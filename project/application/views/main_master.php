@@ -1,3 +1,11 @@
+<?php
+/**
+ * @file main_master.php
+ * 
+ * Basis view waar elke pagina in komt te staat
+ *
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

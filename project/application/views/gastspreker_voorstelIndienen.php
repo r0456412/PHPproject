@@ -1,4 +1,14 @@
 <?php
+/**
+ * @file gastspreker_voorstelIndienen.php
+ * 
+ * View waar de gastspreker een voorstel, om een presentatie te komen geven, kan indienen
+ * - Maakt gebruik van Boodstrap cards
+ * - Werkt met formulier om voorstel door te sturen 
+ */
+?>
+
+<?php
     $attributes = array('name' => 'mijnFormulier');
     echo form_open('gastspreker/voorstelVersturen', $attributes);
 ?>
