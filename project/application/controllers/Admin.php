@@ -1,50 +1,55 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*! De Admin controller
- * Alle functies van de administrator worden hier gedefinieerd.
+/**
+ * @class Admin
+ * @brief Controller-klasse voor Admin
+ * 
+ * Controller-klasse met alle methodes die gebruikt worden voor de admin
  */
 class Admin extends CI_Controller {
-    
+        /**
+         * Constructor, hier wordt gecontroleerd of de gebruiker bevoegd is om deze functies te gebruiken
+         */
     	public function __construct()
 	{
             parent::__construct();
             $this->load->helper('form');
-            /**
-             * Controleert of de gebruiker is aangemeld.
-             * Als hij niet is aangemeld wordt hij doorverwezen naar de inlog pagina.
-             */
+
             if (!$this->authex->isAangemeld()) {
                 redirect('login/inloggen');
             }
-            /**
-             * Controleert of de gebruiker iets anders is dan een admin.
-             * Als dit het geval krijgt de gebruiker een foutboodschap te zien.
-             * Dit gebeurd wanneer er een url van een admin word ingegeven tijdens dat een gastspreker is ingelogd.
-             */
+
             $gebruiker = $this->authex->getGebruikerInfo();
             if($gebruiker->soort == "Gastspreker"){
                 redirect('gebruiker/toonMeldingGeenToegangGastspreker');
             }
         }
+        /**
+         * Haalt informatie over de aangemelde gebruiker op via de authex
+         * en toont het resultaat in de view home_admin.php
+         * 
+         * @see authex::getGebruikerInfo()
+         * @see home_admin.php
+         */
         public function index()
 	{
-            /**
-             * Weergeven van de index pagina van de admin.
-             */
             $data['titel'] = 'Home';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
-            $data['isAangemeld'] = $isAangemeld = $this->authex->isAangemeld();
             $data['link'] = 'admin/index';
 
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'home_admin');
             
             $this->template->load('main_master', $partials, $data);
 	}  
+        /**
+         * Haalt de pagina inhoud op via het paginainhoud_model 
+         * en toont het resultaat in de view paginaInhoud_wijzigen.php
+         * 
+         * @see Paginainhoud_model::get()
+         * @see paginaInhoud_wijzigen.php
+         */
 	public function paginaInhoud_wijzigen()
 	{
-            /**
-             * Weergeven van de pagina waar de admin de inhoud van de home pagina kan wijzigen.
-             */
             $this->load->model('paginainhoud_model');
             
             $data['titel'] = 'Change page content';
@@ -52,19 +57,21 @@ class Admin extends CI_Controller {
             $data['paginainhoud'] = $this->paginainhoud_model->get();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['link'] = 'admin/index';
-            $data['isAangemeld'] = $isAangemeld = $this->authex->isAangemeld();
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'paginaInhoud_wijzigen');
             
             $this->template->load('main_master', $partials, $data);
 	}  
-
+        /**
+         * Zorgt voor het opslagen van de gewijzigde pagina inhoud. 
+         * Dit gebeurd via het paginainhoud_model. Een gepersonaliseerde
+         * booschap word weergegeven in de view gebruiker_melding.php (via de gebruiker controller / toonMeldingWijzgingSaved)
+         * 
+         * @see Paginainhoud_model::wijzig()
+         * @see gebruiker_melding.php
+         */
         public function paginaInhoud_opslaan()
-
 	{
-            /**
-             * Opslagen van inhoud 
-             */
             $this->load->model('paginainhoud_model');
             
             $paginaInhoud = new stdClass();
@@ -75,9 +82,15 @@ class Admin extends CI_Controller {
             
             $this->paginainhoud_model->wijzig($paginaInhoud);
             
-            redirect('admin/toonMeldingWijzgingSaved');
+            redirect('gebruiker/toonMeldingWijzgingSaved');
 	}
-        
+        /**
+         * Haalt de datums van de internationale dagen op via het datum_model
+         * en toont het resultaat in de view datums_wijzigen.php
+         * 
+         * @see Datum_model::get()
+         * @see datums_wijzigen.php
+         */
         public function datums_wijzigen()
 	{
             $this->load->model('datum_model');
@@ -87,13 +100,19 @@ class Admin extends CI_Controller {
             $data['datums'] = $this->datum_model->get();
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
             $data['link'] = 'admin/index';
-            $data['isAangemeld'] = $isAangemeld = $this->authex->isAangemeld();
-             
+
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'datums_wijzigen');
             
             $this->template->load('main_master', $partials, $data);
 	} 
-
+        /**
+         * Zorgt ervoor dat de gewijzigde datums worden opgeslagen.
+         * Dit gebeurd via het datum_model. Een gepersonaliseerde
+         * booschap word weergegeven in de view gebruiker_melding.php (via de gebruiker controller / toonMeldingWijzgingSaved)
+         * 
+         * @see datum_model::wijzig()
+         * @see gebruiker_melding.php
+         */
         public function datums_opslaan()
 	{
             $this->load->model('datum_model');
@@ -113,27 +132,8 @@ class Admin extends CI_Controller {
             $this->datum_model->wijzig($datum2);
             $this->datum_model->wijzig($datum3);
             
-            redirect('admin/toonMeldingWijzgingSaved');
+            redirect('gebruiker/toonMeldingWijzgingSaved');
 	}
-
-        public function toonMelding($titel, $boodschap, $link = null)
-	{
-            $data['titel'] = $titel;
-            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
-            $data['boodschap'] = $boodschap;
-            $data['link'] = $link;
-            $data['isAangemeld'] = $isAangemeld = $this->authex->isAangemeld();
-            $data['gebruiker'] = $this->authex->getGebruikerInfo();
-            
-            $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'gebruiker_melding',);
-            $this->template->load('main_master', $partials, $data);   
-        }
-        
-        public function toonMeldingWijzgingSaved(){
-            $this->toonMelding('Saved changes',
-                    'The changes are saved!',
-                    array('url' => 'admin/index', 'tekst' => 'Home'));
-        }
 
         public function usersBeheren()
         {

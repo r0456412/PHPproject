@@ -11,13 +11,30 @@
  * Dit project is geschreven en becommentarieerd door Kim Moelants, Eloy Boone, Sander Jespers, Arne van de Poel & Lorenzo Michiels
  * 
  */
+/**
+ * @class Home
+ * @brief Controller-klasse voor Home pagina
+ * 
+ * Controller-klasse met alle methodes die ebruikt worden om de home pagina te bekijken
+ */
 class Home extends CI_Controller {
-    
+        /**
+         * Constructor
+         */
     	public function __construct()
 	{
             parent::__construct();
         }
-        
+        /**
+         * Haalt de gebruikersinformatie over de al dan niet aangemelde gebruiker op via de authex. 
+         * Ook de de pagina inhoud haalt hij op via paginainhoud_model.
+         * Geeft in auteur mee wie de de pagina en de achterliggende functies geschreven heeft
+         * en toont het resulterende object in de view home_index.php.
+         * 
+         * @see authex::getGebruikerInfo()
+         * @see Paginainhoud_model::get()
+         * @see home_index.php
+         */
 	public function index()
 	{
             $this->load->model('paginainhoud_model');
