@@ -21,7 +21,9 @@ class Gastspreker extends CI_Controller {
             if($gebruiker->soort == "Admin"){
                 redirect('gebruiker/toonMeldingGeenToegangAdmin');
             }
-
+            if($gebruiker->soort == "Docent"){
+                redirect('gebruiker/toonMeldingGeenToegangDocent');
+            }
             $this->load->helper('form');
         }
         /**

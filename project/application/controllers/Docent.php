@@ -11,6 +11,14 @@ class Docent extends CI_Controller {
             
             $this->load->helper('form');
             $this->load->helper('notation');
+            
+            $gebruiker = $this->authex->getGebruikerInfo();
+            if($gebruiker->soort == "Admin"){
+                redirect('gebruiker/toonMeldingGeenToegangAdmin');
+            }
+            if($gebruiker->soort == "Gastspreker"){
+                redirect('gebruiker/toonMeldingGeenToegangGastspreker');
+            }
         }
         
         public function index()
