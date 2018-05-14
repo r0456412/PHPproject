@@ -1,3 +1,11 @@
+<?php
+/**
+ * @file home_index.php
+ * 
+ * View die elke gebruiker als eerste te zien krijgt
+ * - Krijgt paginainhoud-object binnen
+ */
+?>
 <div class="row">
     <div class="col">
       <h1>

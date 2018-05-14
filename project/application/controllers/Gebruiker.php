@@ -131,6 +131,11 @@ class Gebruiker extends CI_Controller {
                     'You don not have permission to see this page.',
                     array('url' => 'gastspreker/index', 'tekst' => 'Home'));
         }
+        public function toonMeldingGeenToegangDocent(){
+            $this->toonMelding('Error!',
+                    'You don not have permission to see this page.',
+                    array('url' => 'docent/index', 'tekst' => 'Home'));
+        }
         public function toonMeldingGeenToegangAdmin(){
             $this->toonMelding('Error!',
                     'You don not have permission to see this page.',

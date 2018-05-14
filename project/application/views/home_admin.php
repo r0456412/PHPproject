@@ -1,10 +1,19 @@
 <?php
+/**
+ * @file home_admin.php
+ * 
+ * View die de administrator te zien krijgt nadat hij/zij is ingelogd
+ * - Krijgt $gebruiker-object binnen (gebruikt voor persoonlijke begroeting)
+ * - Op deze pagina wordt er gebruik gemaakt van tooltips
+ * - Gebruikt Boodstrap cards om alle functionaliteiten van de admin duidelijk weer te geven
+ */
+?>
+
+<?php
 if ($gebruiker != null) {
     echo '<b>' . $gebruiker->voornaam . ', make all nesecary changes with the links below.</b>';
 }
 ?>
-
-
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   

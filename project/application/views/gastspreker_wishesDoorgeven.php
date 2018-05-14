@@ -1,9 +1,18 @@
 <?php
+/**
+ * @file gastspreker_wishesDoorgeven.php
+ * 
+ * View waar een gastspreker zijn antwoorden, op vooraf ingestelde wensen, kan doorgeven en aanpassen
+ * - Maakt gebruik van Boodstrap cards
+ * - Krijgt $wishes binnen
+ * - Maakt gebruik van een formulier om de gegeven antwoorden door te sturen
+ */
+?>
+<?php
     $attributes = array('name' => 'mijnFormulier');
     echo form_open('gastspreker/wishes_opslagen', $attributes);
     $i=1;
 ?>
-
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
