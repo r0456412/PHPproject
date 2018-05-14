@@ -23,6 +23,17 @@ Class Beschikbaarheid_model extends CI_Model {
         $this->db->where('gebruikerid', $gebruikerid);
         $this->db->delete('Beschikbaarheid');
     }
+    function getBySessie($sessieid) {
+        $beschikbaarheden = new stdClass();
+        foreach($sessieid as $sessie){
+            $this->db->where('sessieid', $sessie);
+            $beschikbaarheden->klote = $this->db->get('Beschikbaarheid');
+            
+        }
+        
+
+        return $query->result();
+    }
     
     
 }

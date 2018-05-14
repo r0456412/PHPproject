@@ -23,5 +23,14 @@ class Sessie_model extends CI_Model {
         
         return $query->result();
     }
+    function update($sessie) {
+        $this->db->where('id',$sessie->id);
+        $this->db->update('Sessie', $sessie);
+        return $this->db->insert_id();
+    }
+     function delete($sessie){
+        $this->db->where('id', $sessie->id);
+        $this->db->delete('Sessie');
+    }
 }
     ?>

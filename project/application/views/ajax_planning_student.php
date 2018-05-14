@@ -23,16 +23,16 @@ $counter2= 1;
                 } else{
                     echo "<td align='center' id=" . $counter . ">";
                     if(!empty($planning)){
-                        if ($planning[$counter]->tabelId==$counter2) {
+                        if (count($planning)>$counter && $planning[$counter]->tabelId==$counter2) {
                         echo "<p>Lezing: ".$voorstellen[$counter]->titel."</p>";
                         echo "<p>Taal: ".$voorstellen[$counter]->taal."</p>";
                         echo "<p> Gastspreker: ".$gastsprekers[$counter]->voornaam." ".$gastsprekers[$counter]->achternaam."</p>";
                         echo "<p> Lokaal:".$lokalen[$counter]->nummer."</p>";
                         $counter++;
-                    }
+                    }else{echo "<p>Geen lezing.</p>";}
                     
-                    }
-                    echo "<p>Geen lezing.</p>";
+                    }else{echo "<p>Geen lezing.</p>";}
+                    
                     $counter2++;
                     echo "</td>";
                 }

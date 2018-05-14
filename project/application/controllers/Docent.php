@@ -19,13 +19,14 @@ class Docent extends CI_Controller {
             
             $data['titel'] = 'Planning docent';
             
-            $data['datums'] = $this->datum_model->get();
-//            $i=0;
-//            foreach ($datums as $datum) {
-//                $datumOmzetten= $datums[$i];
-//                
-//                $i++;
-//            }
+            $datums= $this->datum_model->get();
+            $i=0;
+           foreach ($datums as $datum) {
+                $datums[$i]->datum =  zetOmNaarDDMMYYYY($datums[$i]->datum);
+                
+                $i++;
+            }
+            $data['datums'] = $datums;
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             
             $data['link'] = 'docent';
@@ -59,10 +60,14 @@ class Docent extends CI_Controller {
                 $i++;
             }
             $i=0;
-            foreach($beschikbaarheiden as $beschikbaarheid){
+            if (!empty($beschikbaarheiden)) {
+                foreach($beschikbaarheiden as $beschikbaarheid){
                 $beschikbaarheiden1[$i] = $beschikbaarheiden[$i]->sessieid;
                 $i++;
             }
+            $data['beschikbaarheid']=$beschikbaarheiden1;
+            }
+            
             
             if (!empty($planning)){
                 $data['voorstellen']=$voorstellen;
@@ -71,7 +76,6 @@ class Docent extends CI_Controller {
             }
             
             $data['planning']=$planningen;
-            $data['beschikbaarheid']=$beschikbaarheiden1;
             $data['aanwezig']=$aanwezig;
             
             $this->load->view("ajax_docent_planning",$data);

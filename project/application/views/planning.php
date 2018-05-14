@@ -1,7 +1,7 @@
 <?php
 
 echo pasStylesheetAan("/css/planning.css");
-
+echo form_open('planning/sessie_opslaan', 'formulier'); 
 
 $datumOptions[0] = 'Kies een datum';
         foreach($datums as $datum){

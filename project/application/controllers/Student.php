@@ -10,6 +10,7 @@ class Student extends CI_Controller {
             parent::__construct();
             
             $this->load->helper('form');
+            $this->load->helper('notation');
         }
         
         public function index()
@@ -18,7 +19,15 @@ class Student extends CI_Controller {
             
             $data['titel'] = 'Planning student';
             
-            $data['datums'] = $this->datum_model->get();
+
+            $datums= $this->datum_model->get();
+            $i=0;
+           foreach ($datums as $datum) {
+                $datums[$i]->datum =  zetOmNaarDDMMYYYY($datums[$i]->datum);
+                
+                $i++;
+            }
+            $data['datums'] = $datums;
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             
             $data['link'] = 'home';
@@ -46,9 +55,11 @@ class Student extends CI_Controller {
                 $i++;
             };
             
-            $data['voorstellen']=$voorstellen;
-            $data['lokalen']=$lokalen;
-            $data['gastsprekers']=$gastsprekers;
+            if (!empty($planning)){
+                $data['voorstellen']=$voorstellen;
+                $data['lokalen']=$lokalen;
+                $data['gastsprekers']=$gastsprekers;
+            }
             $data['planning']=$planningen;
             
             $this->load->view("ajax_planning_student",$data);
