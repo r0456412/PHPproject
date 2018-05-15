@@ -83,7 +83,7 @@ class Docent extends CI_Controller {
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             $planningen = $this->sessie_model->getByDatum($datumId);
             $beschikbaarheiden = $this->beschikbaarheid_model->getByGebruiker($gebruikerId);
-            $aanwezig = $this->aanwezigesurveillant_model->getByGebruiker($gebruikerId);
+//            $aanwezig = $this->aanwezigesurveillant_model->getByGebruiker($gebruikerId);
             $i=0;
             foreach($planningen as $planning){
                 $voorstellen[$i] = $this->planning_model->get($planning->voorstelid);
@@ -108,7 +108,7 @@ class Docent extends CI_Controller {
             }
             
             $data['planning']=$planningen;
-            $data['aanwezig']=$aanwezig;
+//            $data['aanwezig']=$aanwezig;
             
             $this->load->view("ajax_docent_planning",$data);
             

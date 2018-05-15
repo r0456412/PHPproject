@@ -196,6 +196,15 @@ class Planning extends CI_Controller {
                 $voorstellen[$i] = $this->planning_model->get($planning->voorstelid);
                 $lokalen[$i] = $this->lokaal_model->get($planning->lokaalid);
                 $gastsprekers[$i] = $this->gebruiker_model->get($voorstellen[$i]->gastsprekerID);
+//                $beschikbaarheden= $this->beschikbaarheid_model->getBySessie($planning->id);
+//                
+//                    foreach ($beschikbaarheden as $beschikbaarheid){
+//                    $pipo->sessieid = $beschikbaarheid->sessieid;
+//                    $pipo->gebruikerid = $beschikbaarheid->gebruikerid;
+//                    
+//                
+//                }
+                
                 $i++;
                 
             }

@@ -23,7 +23,7 @@ Class AanwezigeSurveillant_model extends CI_Model {
      */
     function getByGebruiker($gebruikerid) {
         $this->db->where('gebruikerid', $gebruikerid);
-        $query = $this->db->get('AanwezigeSurveillant');
+        $query = $this->db->get('Aanwezigesurveillant');
         
         return $query->result();
     }

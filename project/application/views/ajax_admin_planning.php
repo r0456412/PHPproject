@@ -61,6 +61,15 @@ echo "<table border='1'>";
                             echo form_dropdown('voorstel[]', $voorstelOptions, $voorstellen[$counter]->id);
                             echo form_dropdown('lokaal[]', $lokaalOptions, $lokalen[$counter]->id);
                             echo form_hidden('sessieid[]',$planning[$counter]->id);
+//                            echo form_dropdown('beschikbaar[]',${beschikbaarheid0}[0]->sessieid);
+//                        foreach ($beschikbaarheden as $beschikbaarheid){
+//                                  
+//                            echo $beschikbaarheid->gebruikerid;
+//                            echo $beschikbaarheid->sessieid;
+//                        }
+                            
+                            
+                            
                             $counter++;
                             
                         }else{
