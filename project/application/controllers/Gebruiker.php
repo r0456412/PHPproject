@@ -1,7 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/**
+ * @class Gebruiker
+ * @brief Controller-klasse voor de gebruiker
+ * 
+ * Controller-klasse met alle methodes die gebruikt worden voor de gebruiker
+ */
 class Gebruiker extends CI_Controller {
 
+        /**
+         * Constructor
+         */
     	public function __construct()
 	{
             parent::__construct();
@@ -67,7 +75,16 @@ class Gebruiker extends CI_Controller {
                 redirect('gebruiker/toonMeldingGebruikerAangemaakt'); 
             }
         }
- 
+        /**
+         * Toont een gepersonaliseerde melding aan een gebruiker nadat deze
+         * een wijziging heeft aangebracht in het systeem (voorstel ingestuurd, wensen doorgegeven, datums wijzigen(admin), ...).
+         * Dit wordt getoond in de view gebruiker_melding.php
+         * 
+         * @param $titel De titel van de pagina die getoond wordt
+         * @param $boodschap De specifieke boodschap die getoond wordt
+         * @param $link De link achter de knop om terug te gaan naar specifieke home page van een gebruiker
+         * @see gebruiker_melding.php
+         */
         public function toonMelding($titel, $boodschap, $link = null)
 	{
             $data['titel'] = $titel;
@@ -80,7 +97,6 @@ class Gebruiker extends CI_Controller {
             $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'gebruiker_melding',);
             $this->template->load('main_master', $partials, $data);   
         }
-        
         public function toonMeldingRegistratieNOK(){
             $this->toonMelding('Error',
                     'Please enter all text boxes (email and password correctly)',
@@ -115,6 +131,11 @@ class Gebruiker extends CI_Controller {
                     'You don not have permission to see this page.',
                     array('url' => 'gastspreker/index', 'tekst' => 'Home'));
         }
+        public function toonMeldingGeenToegangDocent(){
+            $this->toonMelding('Error!',
+                    'You don not have permission to see this page.',
+                    array('url' => 'docent/index', 'tekst' => 'Home'));
+        }
         public function toonMeldingGeenToegangAdmin(){
             $this->toonMelding('Error!',
                     'You don not have permission to see this page.',
@@ -129,8 +150,7 @@ class Gebruiker extends CI_Controller {
             $this->toonMelding('Success',
                     'The new wish was successfully added.',
                     array('url' => 'wishes/beherenWishes', 'tekst' => 'Back'));
-        }
-        
+        } 
         public function toonMeldingWijzigWens(){
             $this->toonMelding('Success',
                     'The new wish was successfully saved.',
@@ -147,8 +167,17 @@ class Gebruiker extends CI_Controller {
                     'You entered a wrong email or password, pleas try again.',
                     array('url' => 'login/inloggen', 'tekst' => 'Try again'));
         }
-        
-        
+        public function toonMeldingWijzgingSaved(){
+            $this->toonMelding('Saved changes',
+                    'The changes are saved!',
+                    array('url' => 'admin/index', 'tekst' => 'Home'));
+        }
+        /**
+         * Toont de pagina waar de gebruiker zijn wachtwoord kan resetten naar een random
+         * gegenereerde cijfercode. Dit wordt getoond in de view wachtwoord_vergeten.php.
+         * 
+         * @see wachtwoord_vergeten.php
+         */
         public function wachtwoordVergeten(){
             $data['titel'] = 'Wachtwoord vergeten';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
@@ -160,7 +189,15 @@ class Gebruiker extends CI_Controller {
             
             $this->template->load('main_master', $partials, $data);
         }
-        
+        /**
+         * Zorgt dat een niew wachtwoord gegenereerd wordt nadat er gecontroleerd wordt of het email adres bestaat via het gebruiker_model.
+         * Hierna wordt dit aangepast in de database via het gebruiker_model en wordt
+         * het resultaat getoond via de view gebruiker_melding (inhoud van deze melding gebruiker/toonMeldingNiewWachtwoordVerstuurd)
+         * 
+         * @see gebruiker_model::controleerEmailVrij()
+         * @see gebruiker_model::veranderWachtwoord()
+         * @see gebruiker_melding.php
+         */
         public function wachtwoordOpvragen(){
             $gebruiker = new stdClass();
             $gebruiker->email = $this->input->post('email');

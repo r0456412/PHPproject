@@ -23,45 +23,49 @@ $counter2= 1;
                 } else{
                     echo "<td align='center' id=" . $counter . ">";
                     if(!empty($planning)){
-                        if ($planning[$counter]->tabelId==$counter2) {
-                        echo "<p>Lezing: ".$voorstellen[$counter]->titel."</p>";
-                        echo "<p>Taal: ".$voorstellen[$counter]->taal."</p>";
-                        echo "<p> Gastspreker: ".$gastsprekers[$counter]->voornaam." ".$gastsprekers[$counter]->achternaam."</p>";
-                        echo "<p> Lokaal:".$lokalen[$counter]->nummer."</p>";
+                        if (count($planning)>$counter && $planning[$counter]->tabelId==$counter2) {
+                            echo "<p>Lezing: ".$voorstellen[$counter]->titel."</p>";
+                            echo "<p>Taal: ".$voorstellen[$counter]->taal."</p>";
+                            echo "<p> Gastspreker: ".$gastsprekers[$counter]->voornaam." ".$gastsprekers[$counter]->achternaam."</p>";
+                            echo "<p> Lokaal:".$lokalen[$counter]->nummer."</p>";
                         if (!empty($beschikbaarheid)) {
-                             if (in_array($planning[$counter]->id, $beschikbaarheid->sessieid)) {
-                            echo form_open('surveillant/surveillant_verwijderen', 'formulier'); 
-                            echo form_hidden('sessie',$planning[$counter]->id);
-                            echo form_hidden('gebruiker',$gebruiker->id);
-                            echo form_submit('knop','Uitschrijven surveillant');
-                            echo form_close();
-                        }
+                             if (in_array($planning[$counter]->id, $beschikbaarheid)) {
+                                echo form_open('surveillant/surveillant_verwijderen', 'formulier'); 
+                                echo form_hidden('sessie',$planning[$counter]->id);
+                                echo form_hidden('gebruiker',$gebruiker->id);
+                                echo form_submit('knop','Uitschrijven surveillant',"class='knop'");
+                                echo form_close();
+                                $counter++;
+                            }else{
+                                echo form_open('surveillant/surveillant_opslaan', 'formulier'); 
+                                echo form_hidden('sessie',$planning[$counter]->id);
+                                echo form_hidden('gebruiker',$gebruiker->id);
+                                echo form_submit('knop','Inschrijven surveillant',"class='knop'");
+                                echo form_close();
+                                $counter++;
+                            }
                         }else{
-                           echo form_open('surveillant/surveillant_opslaan', 'formulier'); 
+                            echo form_open('surveillant/surveillant_opslaan', 'formulier'); 
                             echo form_hidden('sessie',$planning[$counter]->id);
                             echo form_hidden('gebruiker',$gebruiker->id);
-                            echo form_submit('knop','Inschrijven surveillant');
+                            echo form_submit('knop','Inschrijven surveillant',"class='knop'");
                             echo form_close();
-                        
-                        
-                        
-                        $counter++;
-                    }
-                    }else{
-                        echo "<p>Geen lezing.</p>";
+                            $counter++;
                     }
                     
+                    }else{echo "<p>Geen lezing.</p>";}
+                    
+                    }else{echo "<p>Geen lezing.</p>";}
                     
                     
                     $counter2++;
                     echo "</td>";
-                }
+                
             }
             }
             echo "</tr>";
             
-        }
-        else{
+        }else{
             echo "<tr class='break'>";
             for($td=1;$td<=5;$td++){
                 if ($td == 1){

@@ -15,11 +15,13 @@
     }
    
     $(document).ready(function(){
+        $('.knop').click(function(){
+            haalPlanningOp( $( '#datumid' ).val() , $("#gebruiker").val());   
+        })
         
-        console.log($.ajax);
         
         $( "#datumid" ).change(function() {
-            haalPlanningOp( $( this ).val() );
+            haalPlanningOp( $( this ).val() , $("#gebruiker").val());
         });
         
     });
@@ -32,8 +34,17 @@
 echo pasStylesheetAan("/css/planning.css");
 
 echo '<div class="row"><p>Kies een datum:</p><div class="col-lg-2">';
-echo form_listboxpro('datumid',$datums,'id','datum',0,array('class' => "form-control", "size" => "3", "id" => "datumid"));
-echo form_hidden('gebruikerid',$gebruiker->id);
+echo form_listboxpro('datumid', $datums,'id','datum',0,array('class' => "form-control datums", "size" => "3", "id" => "datumid"));
+
+$data = array(
+    'type'  => 'hidden',
+    'name'=>'gebruiker', 
+    'id'=>'gebruiker',
+    'value'=>$gebruiker->id);
+
+echo form_input($data);
+
+
 echo '</div></div><div id=resultaat>';
 
 

@@ -1,4 +1,15 @@
 <?php
+/**
+ * @file datums_wijzigen.php
+ * 
+ * View waarin de admin de datums waarop de internationale dagen doorgaan kan aanpassen
+ * - Maakt gebruik van Boodstrap cards
+ * - Krijgt $datums-object binnen
+ * - Werkt met formulier om wijzigingen op te slaan
+ */
+?>
+
+<?php
     $attributes = array('name' => 'mijnFormulier');
     echo form_open('admin/datums_opslaan', $attributes);
     $i = 1;

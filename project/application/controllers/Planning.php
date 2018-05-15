@@ -13,27 +13,33 @@ class Planning extends CI_Controller {
             $this->load->helper('form');
             $this->load->helper('url');
             $this->load->helper('form');
+            $this->load->helper('notation');
             
         }
         
 	public function planning()
 	{
-            $this->load->model('sessie_model');
-            $this->load->model('lokaal_model');
+            
             $this->load->model('datum_model');
             
 
             $data['titel'] = 'Planning';
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
-            $data['voorstellen'] = $this->sessie_model->getVoorstel();
-            $data['lokalen'] = $this->lokaal_model->getLokaal();
-            $data['datums'] = $this->datum_model->get();
+            
+            $datums= $this->datum_model->get();
+            $i=0;
+           foreach ($datums as $datum) {
+                $datums[$i]->datum =  zetOmNaarDDMMYYYY($datums[$i]->datum);
+                
+                $i++;
+            }
+            $data['datums'] = $datums;
             
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | <u>Sander J.</u>";
             $data['link'] = 'admin/index';
 
             
-            $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning');
+            $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning_admin');
             
             $this->template->load('main_master', $partials, $data);
 	}
@@ -45,11 +51,12 @@ class Planning extends CI_Controller {
 	{
             $this->load->model('sessie_model');
 
-            $date= $this->input->post('datum');
+            $date= $this->input->post('datumid');
             $jaargang= $this->input->post('jaargang');
             $voorstellen= $this->input->post('voorstel');
             $lokalen= $this->input->post('lokaal');
             $tabelids= $this->input->post('tabelid');
+            $sessieids = $this->input->post('sessieid');
             for($tr=0;$tr<=15;$tr++){
                 if ($date==0) {
                     redirect('planning/toonMeldingVulDatumIn');
@@ -58,16 +65,32 @@ class Planning extends CI_Controller {
                 }elseif($lokalen[$tr]!=0 &&$voorstellen[$tr]==0){
                     redirect('planning/toonMeldingGeenVoorstel');
                 }elseif($lokalen[$tr]!=0 && $voorstellen[$tr]!=0){
-                $sessie = new stdClass();
-                $sessie->datum = $date;
-                $sessie->lokaalid = $lokalen[$tr];
-                $sessie->voorstelid = $voorstellen[$tr];
-                $sessie->jaargangid = $jaargang;
-                $sessie->tabelid = $tabelids[$tr];
-                $this->sessie_model->wijzig($sessie);}
-            }
+                    if ($sessieids[$tr]==0) {
+                        $sessie = new stdClass();
+                        $sessie->datum = $date;
+                        $sessie->lokaalid = $lokalen[$tr];
+                        $sessie->voorstelid = $voorstellen[$tr];
+                        $sessie->jaargangid = $jaargang;
+                        $sessie->tabelid = $tabelids[$tr];
+                        $this->sessie_model->wijzig($sessie);   
+                    }else{
+                        $sessie = new stdClass();
+                        $sessie->datum = $date;
+                        $sessie->lokaalid = $lokalen[$tr];
+                        $sessie->voorstelid = $voorstellen[$tr];
+                        $sessie->jaargangid = $jaargang;
+                        $sessie->tabelid = $tabelids[$tr];
+                        $sessie->id = $sessieids[$tr];
+                        $this->sessie_model->update($sessie);}
+                    }elseif($lokalen[$tr]==0 && $voorstellen[$tr]==0 && $sessieids[$tr]!=0){
+                        $sessie = new stdClass();
+                        $sessie->id = $sessieids[$tr];
+                        $this->sessie_model->delete($sessie);
+                    }
                 
             
+                
+            }
             
             redirect('planning/planningOpgeslagen');
            
@@ -104,6 +127,36 @@ class Planning extends CI_Controller {
             $this->toonMelding('Error',
                     'De planning is niet opgeslagen. Er is een lokaal ingevult maar geen voorstel. Gelieve een voorstel in te vullen als u ook een lokaal invult.',
                     array('url' => 'planning/planning', 'tekst' => 'Back'));
+        }
+        
+        public function haalAjaxOp_datum() {
+            $datumId = $this->input->get('datumid');
+            $this->load->model('sessie_model');
+            $this->load->model('planning_model');
+            $this->load->model('lokaal_model');
+            $this->load->model('gebruiker_model');
+            
+            $planningen = $this->sessie_model->getByDatum($datumId);
+            $i=0;
+            foreach($planningen as $planning){
+                $voorstellen[$i] = $this->planning_model->get($planning->voorstelid);
+                $lokalen[$i] = $this->lokaal_model->get($planning->lokaalid);
+                $gastsprekers[$i] = $this->gebruiker_model->get($voorstellen[$i]->gastsprekerID);
+                $beschikbaarheidsessie = $this->gebruiker_model->get($planning[$i]->id);
+                $i++;
+            };
+            $data['alleVoorstellen'] = $this->sessie_model->getVoorstel();
+            $data['alleLokalen'] = $this->lokaal_model->getLokaal();
+            if (!empty($planning)){
+                $data['voorstellen']=$voorstellen;
+                $data['lokalen']=$lokalen;
+                $data['gastsprekers']=$gastsprekers;
+            }
+            $data['planning']=$planningen;
+            
+            
+            $this->load->view("ajax_admin_planning",$data);
+            
         }
 }
 

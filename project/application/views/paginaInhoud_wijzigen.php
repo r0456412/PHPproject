@@ -1,10 +1,15 @@
 <?php
+/**
+ * @file paginaInhoud_wijzigen.php
+ * 
+ * View waarin de admin de inhoud van de home pagina kan wijzigen
+ * - Krijgt $paginaInhoud-object binnen om huidige inhoud te laten zien
+ * - Maakt gebruik van een formulier om de aanpassingen door te sturen
+ */
+?>
+<?php
     $attributes = array('name' => 'mijnFormulier');
-
-    
-
     echo form_open('admin/paginaInhoud_opslaan', $attributes);
-
 ?>
     <div class="row">
         <div class="col">

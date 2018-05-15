@@ -1,10 +1,20 @@
 <?php
+/**
+ * @file home_gastspreker.php
+ * 
+ * View die een gastspreker te zien krijgt nadat hij/zij is ingelogd
+ * - Krijgt $gebruiker-object binnen (gebruikt voor persoonlijke begroeting)
+ * - Gebruikt Boodstrap cards om alle functionaliteiten van de gastspreker duidelijk weer te geven.
+ * 
+ */
+?>
+
+<?php
 if ($gebruiker != null) {
     echo '<h2> Welcome ' . $gebruiker->voornaam . '!</h2><br><p>On this page you can send your proposal of your session that you would like to give.'
             . '<br>Also you can sumbit the wishes that you have while you are at Thomas More Geel.</p><br>';
 }
 ?>
-
 <div class="row">
     <div class="col-md-3 mx-auto">
         <a href="../gastspreker/voorstel_indienen">

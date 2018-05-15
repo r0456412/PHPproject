@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * @file inloggen.php
+ * 
+ * View waar een gebruiker (docent, gastspreker of admin) zich kan inloggen
+ * - Maakt gebruik van Boodstrap cards
+ * - Maakt gebruik van een formulier om de opgegeven data te door te sturen en te controleren
+ * 
+ */
 ?>
 <div class="container">
     <div class="row">
