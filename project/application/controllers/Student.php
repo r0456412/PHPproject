@@ -3,7 +3,7 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * @class Student
- * @brief Controller-klasse voor student
+ * @brief Controller-klasse voor Student
  * 
  * Controller-klasse met alle methodes die gebruikt worden voor de student
  */

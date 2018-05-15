@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * @class Gastspreker
- * @brief Controller-klasse voor de gastspreker
+ * @brief Controller-klasse voor Gastspreker
  * 
  * Controller-klasse met alle methodes die gebruikt worden voor de gastspreker
  */

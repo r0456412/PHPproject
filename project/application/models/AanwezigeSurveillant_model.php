@@ -1,10 +1,10 @@
 <?php
 /**
  * @class AanwezigeSurveillant_model
- * @brief Model-klasse voor de AanwezigeSurveillant
+ * @brief Model-klasse voor de Aanwezigesurveillant
  * 
  * Model-klasse die alle methodes bevat om te
- * interageren met de database-tabel AanwezigeSurveillant
+ * interageren met de database-tabel Aanwezigesurveillant
  */
 Class AanwezigeSurveillant_model extends CI_Model {
     /**

@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * @class Gebruiker
- * @brief Controller-klasse voor de gebruiker
+ * @brief Controller-klasse voor Gebruiker
  * 
  * Controller-klasse met alle methodes die gebruikt worden voor de gebruiker
  */
