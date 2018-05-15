@@ -27,6 +27,23 @@ class Mail extends CI_Controller {
             $this->template->load('main_master', $partials, $data);
 	}
         
+        private function stuurMail ($geadresseerde, $boodschap, $titel)
+        {
+            $this->load->library('email');
+            
+            $this->email->from('phpteam26@gmail.com');
+            $this->email->to($geadresseerde);
+            $this->email->subject($titel);
+            $this->email->message($boodschap);
+            
+            if (!$this->email->send()) {
+                show_error($this->email->print_debugger());
+                return false;
+            } else{
+                return true;
+            }
+        }
+        
         public function mailsjabloonAjax()
 	{
             $this->load->model('mailsjabloon_model');
@@ -49,7 +66,7 @@ class Mail extends CI_Controller {
             if($zoekstring !== ""){
                 $data['gebruikers'] = $this->gebruiker_model->getGebruikerOpNaam($zoekstring);
                 $data['leeg'] = "no";
-//                print_r($this->gebruiker_model->getGebruikerOpNaam($zoekstring));
+                //print_r($this->gebruiker_model->getGebruikerOpNaam($zoekstring));
             }else{
                 $data['leeg'] = "yes";
             }
@@ -64,9 +81,31 @@ class Mail extends CI_Controller {
             if($type == "1"){
                 $data['gebruikers'] = $this->gebruiker_model->get($users);
             }else{
-                
+                $data['gebruikers'] = $this->gebruiker_model->getGebruikersByFunction($users);
+                //print_r($this->gebruiker_model->getGebruikersByFunction($users));
             }
            $this->load->view("ajax_mail_ontvangers",$data);
+	}
+        
+        public function mailVersturen()
+	{
+            $ontvangers = $this->input->post('ontvangers');
+            $titel = $this->input->post('subject');
+            $boodschap = $this->input->post('mailsjabloon');
+            $i = 0;
+            if($ontvangers !== "No receivers selected"){
+                $ontvangerslijst = explode(" ", $ontvangers);
+                foreach($ontvangerslijst as $ontvanger){
+                    if($i !== count($ontvangerslijst)){
+                        $this->stuurmail($ontvanger, $boodschap, $titel);
+                        $i++;
+                    }
+                }
+                redirect('gebruiker/toonMeldingEmailVerzonden');
+            }else{
+                redirect('gebruiker/toonMeldingEmailBestaatNiet');
+            }
+//           //$this->load->view("ajax_mail_ontvangers",$data);
 	}
 }
 ?>

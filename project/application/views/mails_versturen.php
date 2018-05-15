@@ -50,10 +50,9 @@
         });
     });
 </script>
-
-<h1>Send mail</h1>
-
+<?php echo form_open('mail/mailVersturen'); ?>
 <div class="w-50 mx-0 d-inline-block">
+    <h1>Send mail</h1>
     <div>
     <?php
     $tester = "fail";
@@ -92,4 +91,18 @@
     echo form_input(array('name' => 'userName', 'id' => 'userName', 'size' => '100%', 'class' => 'form-control form-control-lg rounded-2', 'placeholder' => 'Search user by name'));
     ?>
     <div id="userSearchResult"></div>
+    <div>
+        <?php
+        $studenten = 'onclick=voegOntvangersToe("Student","groep")';
+        echo form_button('alleStudenten','All Students', $studenten);
+        $gastsprekers = 'onclick=voegOntvangersToe("Gastspreker","groep")';
+        echo form_button('alleGastsprekers','All lecturers', $gastsprekers);
+        $docenten = 'onclick=voegOntvangersToe("Docent","groep")';
+        echo form_button('alleDocenten','All teachers', $docenten);
+        $admins = 'onclick=voegOntvangersToe("Admin","groep")';
+        echo form_button('alleAdmins','All Admins', $admins);
+        ?>
+    </div>
+    <?php echo form_submit(array('name' => 'verzendKnop', 'value' => 'Send mail', 'class' => 'btn btn-lg btn-primary btn-block')); ?>
 </div>
+<?php echo form_close(); ?>

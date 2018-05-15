@@ -172,6 +172,11 @@ class Gebruiker extends CI_Controller {
                     'The changes are saved!',
                     array('url' => 'admin/index', 'tekst' => 'Home'));
         }
+        public function toonMeldingEmailVerzonden(){
+            $this->toonMelding('Email sent',
+                    'The email has been sent!',
+                    array('url' => 'admin/index', 'tekst' => 'Home'));
+        }
         /**
          * Toont de pagina waar de gebruiker zijn wachtwoord kan resetten naar een random
          * gegenereerde cijfercode. Dit wordt getoond in de view wachtwoord_vergeten.php.
