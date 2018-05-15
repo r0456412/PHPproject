@@ -1,11 +1,9 @@
-<?php
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * @class Docent
- * @brief Controller-klasse voor docent
+ * @brief Controller-klasse voor Docent
  * 
- * Controller-klasse met alle methodes die gebruikt worden voor de docent
+ * Controller-klasse met alle methodes die gebruikt worden voor de Docent
  */
 class Docent extends CI_Controller {
     

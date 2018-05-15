@@ -53,7 +53,7 @@ class Mailsjabloon extends CI_Controller {
             }else{
                 $this->mailsjabloon_model->updateSjabloon($mailsjabloon);
             }
-            redirect('admin/toonMeldingWijzgingSaved');
+            redirect('gebruiker/toonMeldingWijzgingSaved');
         }
         
         public function mailsjabloonNieuw(){
@@ -62,7 +62,7 @@ class Mailsjabloon extends CI_Controller {
             $inhoud = $this->input->post('mailsjabloon');
             $this->mailsjabloon_model->voegSjabloonToe($onderwerp, $inhoud);
             
-            redirect('admin/toonMeldingWijzgingSaved');
+            redirect('gebruiker/toonMeldingWijzgingSaved');
         }
         
         public function mailsjabloonVerwijder(){
@@ -70,7 +70,7 @@ class Mailsjabloon extends CI_Controller {
             $onderwerp = $this->input->post('mailsjablonen');
             $this->mailsjabloon_model->verwijderSjabloon($onderwerp);
             
-            redirect('admin/toonMeldingWijzgingSaved');
+            redirect('gebruiker/toonMeldingWijzgingSaved');
         }
         
 }

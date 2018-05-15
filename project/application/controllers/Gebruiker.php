@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * @class Gebruiker
- * @brief Controller-klasse voor de gebruiker
+ * @brief Controller-klasse voor Gebruiker
  * 
  * Controller-klasse met alle methodes die gebruikt worden voor de gebruiker
  */
@@ -170,6 +170,11 @@ class Gebruiker extends CI_Controller {
         public function toonMeldingWijzgingSaved(){
             $this->toonMelding('Saved changes',
                     'The changes are saved!',
+                    array('url' => 'admin/index', 'tekst' => 'Home'));
+        }
+        public function toonMeldingEmailVerzonden(){
+            $this->toonMelding('Email sent',
+                    'The email has been sent!',
                     array('url' => 'admin/index', 'tekst' => 'Home'));
         }
         /**

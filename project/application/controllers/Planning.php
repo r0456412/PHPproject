@@ -3,7 +3,7 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * @class Planning
- * @brief Controller-klasse voor planning
+ * @brief Controller-klasse voor Planning
  * 
  * Controller-klasse met alle methodes die gebruikt worden voor de planning
  */

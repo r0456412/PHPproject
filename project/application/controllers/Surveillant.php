@@ -3,7 +3,7 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * @class Surveillant
- * @brief Controller-klasse voor surveillant
+ * @brief Controller-klasse voor Surveillant
  * 
  * Controller-klasse met alle methodes die gebruikt worden voor de surveillant
  */

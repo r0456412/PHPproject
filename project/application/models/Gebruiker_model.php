@@ -159,7 +159,16 @@ class Gebruiker_model extends CI_Model {
             return "geen resultaten";
         }
     }
-
+    function getGebruikersByFunction($soort){
+        $this->db->where('soort', $soort);
+        $query = $this->db->get('Gebruiker');
+        
+        if ($query->num_rows() > 1) {
+            return $query->result();
+        } else {
+            return $query->row();
+        }
+    }
     
 }
 ?>
