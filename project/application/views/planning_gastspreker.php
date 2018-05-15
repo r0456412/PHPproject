@@ -1,8 +1,8 @@
 <?php
 /**
- * @file planning_student.php
+ * @file planning_gastspreker.php
  * 
- * View waarin de student de planning kan opvragen voor de verschillende dagen van de internationale dagen
+ * View waarin de gastspreker de planning kan opvragen voor de verschillende dagen van de internationale dagen
  * - Krijgt $datums-object binnen
  * - Gebruikt een ajax functie om de planning op te vragen
  */
@@ -11,7 +11,7 @@
 
     function haalPlanningOp ( jos ) {
         $.ajax({type : "GET",
-                url : site_url + "/student/haalAjaxOp_datum",
+                url : site_url + "/gastspreker/haalAjaxOp_datum",
                 data : { datumid : jos },
                 success : function(result){
                     $("#resultaat").html(result);
@@ -48,4 +48,3 @@ echo '</div></div><div id=resultaat>';
 
 
 ?>
-

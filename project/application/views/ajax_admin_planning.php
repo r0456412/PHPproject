@@ -1,12 +1,19 @@
 <?php
-
+/**
+ * @file ajax_admin_planning.php
+ * 
+ * View waarin de admin de planning voor verschillende datums kan aanpassen
+ * - Krijgt $allevoorstellen-object binnen
+ * - Krijgt $alleLokalen-object binnen
+ * - Krijgt $lokalen-object binnen
+ * - Krijgt $voorstellen-object binnen
+ * - Krijgt $planning-object binnen
+ * - Werkt met formulier om wijzigingen op te slaan
+ */
 echo pasStylesheetAan("/css/planning.css");
 
 
-//$datumOptions[0] = 'Kies een datum';
-//        foreach($datums as $datum){
-//            $datumOptions[$datum->id] = $datum->datum; 
-//        }
+     
         
 $voorstelOptions[0] = 'Kies een voorstel';
         foreach($alleVoorstellen as $voorstel){
@@ -22,7 +29,7 @@ $counter2 = 1;
         
 
     
-//   echo form_dropdown('datum',$datumOptions,'0');
+
    echo form_hidden('jaargang','1');
 
 echo "<table border='1'>";
@@ -54,7 +61,6 @@ echo "<table border='1'>";
                             echo form_dropdown('voorstel[]', $voorstelOptions, $voorstellen[$counter]->id);
                             echo form_dropdown('lokaal[]', $lokaalOptions, $lokalen[$counter]->id);
                             echo form_hidden('sessieid[]',$planning[$counter]->id);
-                            echo form_multiselect('aanwezigheden',$beschikbaarheden);
                             $counter++;
                             
                         }else{

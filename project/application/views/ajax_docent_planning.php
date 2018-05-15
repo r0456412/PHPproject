@@ -1,4 +1,16 @@
 <?php
+/**
+ * @file ajax_docent_planning.php
+ * 
+ * View waarin de docent zijn planning kan zien voor de verschillende datums van de internationale dagen en waar de docent zick kan inschrijven om surveillant te zijn bij een lezing
+ * - Krijgt $lokalen-object binnen
+ * - Krijgt $voorstellen-object binnen
+ * - Krijgt $planning-object binnen
+ * - Krijgt $gastsprekers-object binnen
+ * - Krijgt $beschikbaarheid-object binnen
+ * - Krijgt $gebruiker-object binnen
+ * - Werkt met formulier om wijzigingen op te slaan
+ */
 echo "<table border='1'>";
 ?>
 

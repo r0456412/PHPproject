@@ -28,7 +28,7 @@ class Gebruiker_model extends CI_Model {
     /**
      * Retourneert de gebruiker met email=$email uit de tabel Gebruiker,
      * als het wachtwoord=$wachtwoord overeenkomt met het opgegeven wachtwoord
-     * @param $email de email van de 
+     * @param $email de email van de gebruiker
      * @param type $wachtwoord
      * @return De opgevraagde gebruiker
      */

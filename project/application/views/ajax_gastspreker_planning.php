@@ -1,29 +1,13 @@
 <?php
-
-echo pasStylesheetAan("/css/planning.css");
-echo form_open('planning/sessie_opslaan', 'formulier'); 
-
-$datumOptions[0] = 'Kies een datum';
-        foreach($datums as $datum){
-            $datumOptions[$datum->id] = $datum->datum; 
-        }
-        
-$voorstelOptions[0] = 'Kies een voorstel';
-        foreach($voorstellen as $voorstel){
-            $voorstelOptions[$voorstel->id] = $voorstel->titel;
-        }
-        
-$lokaalOptions[0] = 'Kies een lokaal';
-        foreach($lokalen as $lokaal){
-            $lokaalOptions[$lokaal->id] = $lokaal->nummer;  
-        }
-$counter = 0;
-        
-
-    echo form_open('planning/sessie_opslaan', 'formulier'); 
-   echo form_dropdown('datum',$datumOptions,'0');
-   echo form_hidden('jaargang','1');
-
+/**
+ * @file ajax_gastspreker_planning.php
+ * 
+ * View waarin de gastspreker zijn planning kan zien voor de verschillende datums van de internationale dagen
+ * - Krijgt $lokalen-object binnen
+ * - Krijgt $voorstellen-object binnen
+ * - Krijgt $planning-object binnen
+ * - Krijgt $gastsprekers-object binnen
+ */
 echo "<table border='1'>";
 ?>
 
@@ -37,7 +21,8 @@ echo "<table border='1'>";
 
     <?php
 
-
+$counter = 0;
+$counter2= 1;
     for($tr=1;$tr<=7;$tr++){
         if ($tr % 2){
             echo "<tr>";
@@ -45,18 +30,21 @@ echo "<table border='1'>";
                 if ($td == 1){
                     echo "<td align='center' class='eerste'>"; if ($tr == 1){echo"9:00 - 10:30";}elseif($tr == 3){echo"10:45 - 12:15";}elseif($tr == 5){echo"13:00 - 14:30";}else{echo"14:45 - 16:15";}"</td>";
                 } else{
-                    $counter++;
                     echo "<td align='center' id=" . $counter . ">";
+                    if(!empty($planning)){
+                        if (count($planning)>$counter && $planning[$counter]->tabelId==$counter2) {
+                        echo "<p>Lezing: ".$voorstellen[$counter]->titel."</p>";
+                        echo "<p>Taal: ".$voorstellen[$counter]->taal."</p>";
+                        echo "<p> Gastspreker: ".$gastsprekers[$counter]->voornaam." ".$gastsprekers[$counter]->achternaam."</p>";
+                        echo "<p> Lokaal:".$lokalen[$counter]->nummer."</p>";
+                        $counter++;
+                    }else{echo "<p>Geen lezing.</p>";}
                     
-                    echo form_dropdown('voorstel[]', $voorstelOptions, '0');
-                    echo form_dropdown('lokaal[]', $lokaalOptions, '0');
+                    }else{echo "<p>Geen lezing.</p>";}
                     
-                    echo form_hidden('tabelid[]',$counter);
-                    
-                    
+                    $counter2++;
                     echo "</td>";
                 }
-
             }
             echo "</tr>";
         }
@@ -68,19 +56,9 @@ echo "<table border='1'>";
                 } else{
                     echo "<td align='center'> break </td>";
                 }
-
             }
             echo "</tr>";
         }
-
     }
 
     echo "</table>";
-    echo form_submit('knop', 'Send');
-
-
-?>
-
-
-
-

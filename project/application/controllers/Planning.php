@@ -1,9 +1,16 @@
 <?php
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/**
+ * @class Planning
+ * @brief Controller-klasse voor planning
+ * 
+ * Controller-klasse met alle methodes die gebruikt worden voor de planning
+ */
 class Planning extends CI_Controller {
-    
+         /**
+         * Constructor, hier wordt gecontroleerd of de gebruiker bevoegd is om deze functies te gebruiken
+         */
     	public function __construct()
 	{
             parent::__construct();
@@ -15,8 +22,22 @@ class Planning extends CI_Controller {
             $this->load->helper('form');
             $this->load->helper('notation');
             
+            $gebruiker = $this->authex->getGebruikerInfo();
+            if($gebruiker->soort == "Gastspreker"){
+                redirect('gebruiker/toonMeldingGeenToegangGastspreker');
+            }
+            if($gebruiker->soort == "Docent"){
+                redirect('gebruiker/toonMeldingGeenToegangDocent');
+            }
         }
-        
+        /**
+         * Haalt informatie over de aangemelde gebruiker op via de authex, haalt de datums op via het datum model
+         * en toont het resultaat in de view planning_admin.php
+         * 
+         * @see authex::getGebruikerInfo()
+         * @see Datum_model::get()
+         * @see planning_admin.php
+         */
 	public function planning()
 	{
             
@@ -36,7 +57,7 @@ class Planning extends CI_Controller {
             $data['datums'] = $datums;
             
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | <u>Sander J.</u>";
-            $data['link'] = 'admin/index';
+            $data['link'] = 'planning/planning';
 
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning_admin');
@@ -45,7 +66,15 @@ class Planning extends CI_Controller {
 	}
 	
         
-        
+        /**
+         * Controleert of alle informatie correct is ingevuld als dit het gevals is slaagt hij deze informatei op.
+         * Dit gebeurd via het Sessie_model.Een gepersonaliseerde
+         * booschap word weergegeven in de view gebruiker_melding.php (via de docent controller / toonMelding)
+         * 
+         * @see Datum_model::delete()
+         * @see Datum_model::wijzig()
+         * @see planning_admin.php
+         */
         public function sessie_opslaan()
 
 	{
@@ -96,10 +125,20 @@ class Planning extends CI_Controller {
            
             
 	}
+        /**
+         * Toont een gepersonaliseerde melding aan een gebruiker nadat deze
+         * een wijziging heeft aangebracht in het systeem (planning opgeslagen, geen datum ingevuld, geen lokaal ingevuld, geen voorstel ingevuld).
+         * Dit wordt getoond in de view gebruiker_melding.php
+         * 
+         * @param $titel De titel van de pagina die getoond wordt
+         * @param $boodschap De specifieke boodschap die getoond wordt
+         * @param $link De link achter de knop om terug te gaan naar specifieke home page van een gebruiker
+         * @see gebruiker_melding.php
+         */
         public function toonMelding($titel, $boodschap, $link = null)
 	{
             $data['titel'] = $titel;
-            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | <u>Kim M.</u> | Eloy B. | Sander J.";
+            $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | Eloy B. | <u>Sander J.</u>";
             $data['boodschap'] = $boodschap;
             $data['link'] = $link;
             
@@ -128,23 +167,39 @@ class Planning extends CI_Controller {
                     'De planning is niet opgeslagen. Er is een lokaal ingevult maar geen voorstel. Gelieve een voorstel in te vullen als u ook een lokaal invult.',
                     array('url' => 'planning/planning', 'tekst' => 'Back'));
         }
-        
+        /**
+         * Haalt aan de hand van de opgegeve datum alle informatie op voor het invullen van de planning en toont dit dan in de view ajax_admin_planning.php
+         * 
+
+         * @see planning_model::get()
+         * @see sessie_model::getByDatum()
+         * @see sessie_model::getVoorstel()
+         * @see lokaal_model::getLokaal()
+         * @see lokaal_model::get()
+         * @see gebruiker_model::get()
+         * @see ajax_admin_planning.php
+         */
         public function haalAjaxOp_datum() {
             $datumId = $this->input->get('datumid');
             $this->load->model('sessie_model');
             $this->load->model('planning_model');
             $this->load->model('lokaal_model');
             $this->load->model('gebruiker_model');
+            $this->load->model('beschikbaarheid_model');
+
             
             $planningen = $this->sessie_model->getByDatum($datumId);
+            
             $i=0;
+            $pipo = new stdClass();
             foreach($planningen as $planning){
                 $voorstellen[$i] = $this->planning_model->get($planning->voorstelid);
                 $lokalen[$i] = $this->lokaal_model->get($planning->lokaalid);
                 $gastsprekers[$i] = $this->gebruiker_model->get($voorstellen[$i]->gastsprekerID);
-                $beschikbaarheidsessie = $this->gebruiker_model->get($planning[$i]->id);
                 $i++;
-            };
+                
+            }
+            
             $data['alleVoorstellen'] = $this->sessie_model->getVoorstel();
             $data['alleLokalen'] = $this->lokaal_model->getLokaal();
             if (!empty($planning)){
@@ -153,7 +208,7 @@ class Planning extends CI_Controller {
                 $data['gastsprekers']=$gastsprekers;
             }
             $data['planning']=$planningen;
-            
+            $data['beschikbaarheden'] = $pipo;
             
             $this->load->view("ajax_admin_planning",$data);
             

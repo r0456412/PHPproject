@@ -1,3 +1,14 @@
+<?php
+/**
+ * @file planning_docent.php
+ * 
+ * View waarin de docent de planning kan opvragen voor de verschillende dagen van de internationale dagen
+ * - Krijgt $datums-object binnen
+ * - Krijgt $gebruiker-object binnen
+ * - Gebruikt een ajax functie om de planning op te vragen
+ */
+?>
+
 <script>
 
     function haalPlanningOp ( jos,gebruikerid ) {

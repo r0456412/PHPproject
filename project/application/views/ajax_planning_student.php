@@ -1,4 +1,13 @@
 <?php
+/**
+ * @file ajax_planning_student.php
+ * 
+ * View waarin de student zijn planning kan zien voor de verschillende datums van de internationale dagen
+ * - Krijgt $lokalen-object binnen
+ * - Krijgt $voorstellen-object binnen
+ * - Krijgt $planning-object binnen
+ * - Krijgt $gastsprekers-object binnen
+ */
 echo "<table border='1'>";
 ?>
 

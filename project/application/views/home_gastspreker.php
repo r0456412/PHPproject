@@ -38,7 +38,7 @@ if ($gebruiker != null) {
         </a>
     </div>
     <div class="col-md-3 mx-auto">
-        <a href="../gastspreker/agendaBekijken">
+        <a href="../gastspreker/planning">
             <div class="card admin">
                 <div class="card-header"><h6>Check agenda</h6></div>
                 <div class="card-body">

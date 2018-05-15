@@ -1,10 +1,17 @@
 <?php
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/**
+ * @class Docent
+ * @brief Controller-klasse voor docent
+ * 
+ * Controller-klasse met alle methodes die gebruikt worden voor de docent
+ */
 class Docent extends CI_Controller {
     
-    
+        /**
+         * Constructor, hier wordt gecontroleerd of de gebruiker bevoegd is om deze functies te gebruiken
+         */
     public function __construct()
 	{
             parent::__construct();
@@ -20,7 +27,14 @@ class Docent extends CI_Controller {
                 redirect('gebruiker/toonMeldingGeenToegangGastspreker');
             }
         }
-        
+        /**
+         * Haalt informatie over de aangemelde gebruiker op via de authex, haalt de datums op via het datum model
+         * en toont het resultaat in de view planning_docent.php
+         * 
+         * @see authex::getGebruikerInfo()
+         * @see Datum_model::get()
+         * @see planning_docent.php
+         */
         public function index()
 	{
             $this->load->model('datum_model');
@@ -45,7 +59,17 @@ class Docent extends CI_Controller {
             $this->template->load('main_master', $partials, $data);
             
 	}
-        
+        /**
+         * Haalt aan de hand van de opgegeve datum en gebruiker alle informatie op voor het invullen van de planning en toont dit dan in de view ajax_docent_planning.php
+         * 
+         * @see aanwezigesurveillant_model::getByGebruiker()
+         * @see beschikbaarheid_model::getByGebruiker()
+         * @see planning_model::get()
+         * @see sessie_model::getByDatum()
+         * @see lokaal_model::get()
+         * @see gebruiker_model::get()
+         * @see ajax_docent_planning.php
+         */
         public function haalAjaxOp_datum() {
             $datumId = $this->input->get('datumid');
             $gebruikerId = $this->input->get('gebruikerid');

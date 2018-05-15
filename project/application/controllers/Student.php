@@ -1,7 +1,12 @@
 <?php
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/**
+ * @class Student
+ * @brief Controller-klasse voor student
+ * 
+ * Controller-klasse met alle methodes die gebruikt worden voor de student
+ */
 class Student extends CI_Controller {
     
     
@@ -12,7 +17,14 @@ class Student extends CI_Controller {
             $this->load->helper('form');
             $this->load->helper('notation');
         }
-        
+        /**
+         * Haalt informatie over de aangemelde gebruiker op via de authex, haalt de datums op via het datum model
+         * en toont het resultaat in de view planning_docent.php
+         * 
+         * @see authex::getGebruikerInfo()
+         * @see Datum_model::get()
+         * @see planning_docent.php
+         */
         public function index()
 	{
             $this->load->model('datum_model');
@@ -38,7 +50,16 @@ class Student extends CI_Controller {
             $this->template->load('main_master', $partials, $data);
             
 	}
-        
+        /**
+         * Haalt aan de hand van de opgegeve datum alle informatie op voor het invullen van de planning en toont dit dan in de view ajax_planning_student.php
+         * 
+
+         * @see planning_model::get()
+         * @see sessie_model::getByDatum()
+         * @see lokaal_model::get()
+         * @see gebruiker_model::get()
+         * @see ajax_student_planning_student.php
+         */
         public function haalAjaxOp_datum() {
             $datumId = $this->input->get('datumid');
             $this->load->model('sessie_model');
