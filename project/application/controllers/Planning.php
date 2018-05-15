@@ -187,28 +187,18 @@ class Planning extends CI_Controller {
             $this->load->model('gebruiker_model');
             $this->load->model('beschikbaarheid_model');
 
-            
             $planningen = $this->sessie_model->getByDatum($datumId);
             
             $i=0;
-            $pipo = new stdClass();
             foreach($planningen as $planning){
                 $voorstellen[$i] = $this->planning_model->get($planning->voorstelid);
                 $lokalen[$i] = $this->lokaal_model->get($planning->lokaalid);
                 $gastsprekers[$i] = $this->gebruiker_model->get($voorstellen[$i]->gastsprekerID);
-//                $beschikbaarheden= $this->beschikbaarheid_model->getBySessie($planning->id);
-//                
-//                    foreach ($beschikbaarheden as $beschikbaarheid){
-//                    $pipo->sessieid = $beschikbaarheid->sessieid;
-//                    $pipo->gebruikerid = $beschikbaarheid->gebruikerid;
-//                    
-//                
-//                }
-                
-                $i++;
-                
-            }
+                $beschikbaarheden[$i] = $this->gebruiker_model->get($planningen[$i]->beschikbaarheid->gebruikerid);
             
+                $i++;           
+            }
+
             $data['alleVoorstellen'] = $this->sessie_model->getVoorstel();
             $data['alleLokalen'] = $this->lokaal_model->getLokaal();
             if (!empty($planning)){
@@ -217,7 +207,7 @@ class Planning extends CI_Controller {
                 $data['gastsprekers']=$gastsprekers;
             }
             $data['planning']=$planningen;
-            $data['beschikbaarheden'] = $pipo;
+            $data['beschikbaarheden'] = $beschikbaarheden;
             
             $this->load->view("ajax_admin_planning",$data);
             

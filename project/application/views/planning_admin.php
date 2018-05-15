@@ -42,10 +42,6 @@ echo '<div class="row"><p>Kies een datum:</p><div class="col-lg-2">';
 
 echo form_listboxpro('datumid',$datums,'id','datum',0,array('class' => "form-control", "size" => "3", "id" => "datumid"));
 echo '</div></div><div id=resultaat>';
-
-
-    echo '</div>';
-
-
+echo '</div>';
 ?>
 

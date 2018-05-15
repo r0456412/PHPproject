@@ -24,11 +24,16 @@ $lokaalOptions[0] = 'Kies een lokaal';
         foreach($alleLokalen as $lokaal){
             $lokaalOptions[$lokaal->id] = $lokaal->nummer;  
         }
+        
 $counter = 0;
 $counter2 = 1;
-        
 
-    
+$i=0;
+$surveillanten = [];
+foreach($beschikbaarheden as $beschikbaarheid){
+    $surveillanten[$i] = "$beschikbaarheid->voornaam  $beschikbaarheid->achternaam";
+    $i++;
+}
 
    echo form_hidden('jaargang','1');
 
@@ -61,6 +66,7 @@ echo "<table border='1'>";
                             echo form_dropdown('voorstel[]', $voorstelOptions, $voorstellen[$counter]->id);
                             echo form_dropdown('lokaal[]', $lokaalOptions, $lokalen[$counter]->id);
                             echo form_hidden('sessieid[]',$planning[$counter]->id);
+                            echo "<br>Surveillant: ". $surveillanten[$counter];
 //                            echo form_dropdown('beschikbaar[]',${beschikbaarheid0}[0]->sessieid);
 //                        foreach ($beschikbaarheden as $beschikbaarheid){
 //                                  

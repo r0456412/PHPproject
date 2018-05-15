@@ -41,8 +41,22 @@ class Sessie_model extends CI_Model {
         $this->db->order_by('tabelid','asc');
         $this->db->where('datum', $datumid);
         $query = $this->db->get('Sessie');
+        $sessies = $query->result();
+        $beschikbaarheid = new stdClass;
         
-        return $query->result();
+        foreach($sessies as $sessie){
+            $this->db->where('sessieid', $sessie->id);
+            $query = $this->db->get('Beschikbaarheid');
+             if ($query->num_rows() == 0 ){
+                 $beschikbaarheid->sessieid = $sessie->id;
+                 $beschikbaarheid->gebruikerid = 14;
+                 $sessie->beschikbaarheid = $beschikbaarheid;
+             }else{
+                 $sessie->beschikbaarheid = $query->row();
+             }
+        }
+
+        return $sessies;
     }
      /**
      * Update de sessie in de tabel Sessie met sessie=$sessie
