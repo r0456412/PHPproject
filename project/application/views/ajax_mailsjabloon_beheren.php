@@ -1,4 +1,13 @@
 <?php 
+/**
+ * @file ajax_mailsjabloon_beheren.php
+ * 
+ * View waarin de gegevens van het geselecteerde mailsjabloon wordt weergegeven 
+ * en wordt ingevoegd in de pagina mailsjabloon_beheren.php
+ * 
+ * - Krijgt $sjabloon-object binnen
+ * - Krijgt $new-variabele binnen
+ */
 if($new == "yes"){
     $inhoud = "";
     $onderwerp = "";

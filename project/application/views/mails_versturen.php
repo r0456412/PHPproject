@@ -1,3 +1,11 @@
+<?php
+/**
+ * @file mails_versturen.php
+ * 
+ * View waarin de admin mails kan opstellen en versturen naar andere gebruikers.
+ * - Krijgt $sjablonen-object binnen (gebruikt om dropdown op te vullen)
+ */
+?>
 <script>
     function toonSjabloon ( onderwerp ) {
         $.ajax({type : "GET",

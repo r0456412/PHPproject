@@ -148,8 +148,38 @@ class Gebruiker_model extends CI_Model {
         $query = $this->db->get('Voorstel');
         return $query->row();
     }
-<<<<<<< HEAD
-
+    /**
+     * Retourneert gebruikers waar  voornaam Like $zoekstring of achternaam Like $zoekstring uit de tabel Gebruiker
+     * @param $zoekstring De opgegeven string waar op moet worden gezocht
+     * @return Gevonden gebruikers of string "geen resultaten"
+     */
+    function getGebruikerOpNaam($zoekstring){
+        $this->db->like('voornaam', $zoekstring);
+        $this->db->or_like('achternaam', $zoekstring);
+        $query = $this->db->get('Gebruiker');
+        
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return "geen resultaten";
+        }
+    }
+    /**
+     * Retourneert gebruikers met soort=$soort uit de tabel Gebruiker
+     * @param $soort Het soort gebruiker dat wordt opgevraagd
+     * @return Gevonden gebruikers
+     */
+    function getGebruikersByFunction($soort){
+        $this->db->where('soort', $soort);
+        $query = $this->db->get('Gebruiker');
+        
+        if ($query->num_rows() > 1) {
+            return $query->result();
+        } else {
+            return $query->row();
+        }
+    }
+    
     function delete($id)
     {
 
@@ -162,31 +192,11 @@ class Gebruiker_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete('Gebruiker');
     }
+    
     function update($user){
         $this->db->where('id', $user->id);
         $this->db->update('Gebruiker', $user);
-=======
-    function getGebruikerOpNaam($zoekstring){
-        $this->db->like('voornaam', $zoekstring);
-        $this->db->or_like('achternaam', $zoekstring);
-        $query = $this->db->get('Gebruiker');
-        
-        if ($query->num_rows() > 0) {
-            return $query->result();
-        } else {
-            return "geen resultaten";
-        }
-    }
-    function getGebruikersByFunction($soort){
-        $this->db->where('soort', $soort);
-        $query = $this->db->get('Gebruiker');
-        
-        if ($query->num_rows() > 1) {
-            return $query->result();
-        } else {
-            return $query->row();
-        }
->>>>>>> 355d246f101026e2929be009ea3e326b77ea0685
+
     }
     
 }
