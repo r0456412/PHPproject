@@ -153,7 +153,7 @@ $(document).ready(function(){
     $(".knop").click(function(){
         var id = $(this).attr('id');
         var user = $("#u" + id).val();
-        var encoded = escape(user);
+        var encoded = encodeURIComponent(user);
         window.location.href = '/PHPproject/project/index.php/Admin/bewaar/' + id + '/' + encoded;
     });
 });
