@@ -1,5 +1,14 @@
 
 
+<?php
+/**
+ * @file users_beheren.php
+ * 
+ * View waar de admin voorstellen en wensen kan zien van de users en de users kan verwijderen en het e-mailadres ervan aanpassen
+ * - krijgt een $users-object binnen
+ */
+?>
+
 <script>
 	
 	function haalVoorstelOp ( id ) {
@@ -63,10 +72,13 @@
 
 <div class="row">
     <div class="col-lg-4">
+
+        
+        
             <p><?php echo form_listboxpro('user', $users, 'id', 'voornaam', 0, array('class' => "form-control", "size" => "10", "id" => "user")); ?></p>
 
             <p>
-            <?php echo form_listboxpro('voorstel', array(), 'id', 'titel', 0, array('id' => 'voorstel', 'size' => '10', 'class' => 'form-control')); ?>
+            <?php echo form_listboxpro('voorstel', array(), 'id', 'titel', 0, array('id' => 'voorstel', 'size' => '10', 'class' => 'form-control'));  ?>
         </p>
 		</div>
 
@@ -114,10 +126,15 @@ $button2 =  form_button("knopnieuw", "<span class='glyphicon glyphicon-remove-si
         <tbody>
     <?php
 foreach ($users as $user) {
+
+    if ($user->voornaam == "Admin" || $user->voornaam == "No supervisor") {
+        
+    }
+    else{
         echo '<tr><td>';
-        echo form_input(array('name' => 'u'.$user->id, 'id' => 'u'.$user->id, 'value' => $user->voornaam, 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
+        echo $user->voornaam;
         echo '</td><td>';
-        echo form_input(array('name' => 'u'.$user->id, 'id' => 'u'.$user->id, 'value' => $user->achternaam, 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
+        echo $user->achternaam;
         echo '</td><td>';
         echo form_input(array('name' => 'u'.$user->id, 'id' => 'u'.$user->id, 'value' => $user->email, 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
         echo '</td><td>';
@@ -125,6 +142,7 @@ foreach ($users as $user) {
         echo '</td><td>';
         echo "<td>" . anchor ('admin/deleteUser/'.$user->id,'Delete', "class='btn btn-danger' style='margin-bottom:20px'");
         echo '</td></tr>';
+        }
 }
 ?>
   </tbody>
@@ -136,7 +154,7 @@ $(document).ready(function(){
         var id = $(this).attr('id');
         var user = $("#u" + id).val();
         var encoded = escape(user);
-        window.location.href = '/PHPproject/project/index.php/admin/bewaar/' + id + '/' + encoded;
+        window.location.href = '/PHPproject/project/index.php/Admin/bewaar/' + id + '/' + encoded;
     });
 });
 </script>

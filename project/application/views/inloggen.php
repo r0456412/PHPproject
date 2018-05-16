@@ -4,7 +4,7 @@
  * 
  * View waar een gebruiker (docent, gastspreker of admin) zich kan inloggen
  * - Maakt gebruik van Boodstrap cards
- * - Maakt gebruik van een formulier om de opgegeven data te door te sturen en te controleren
+ * - Maakt gebruik van een formulier om de opgegeven data door te sturen en te controleren
  * 
  */
 ?>

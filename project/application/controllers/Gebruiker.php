@@ -16,6 +16,11 @@ class Gebruiker extends CI_Controller {
             $this->load->helper('form');
         }     
         
+        /**
+         * Toont de pagina waar een nieuwe gastspreker zich kan registreren
+         * 
+         * @see gebruiker_registreren.php
+         */
         public function index()
 	{
             $data['titel'] = 'Registration';
@@ -45,6 +50,12 @@ class Gebruiker extends CI_Controller {
             }
         }
         
+        /**
+         * Zorgt dat een nieuwe gastspreker wordt toegevoegd in de database
+         * 
+         * @see authex::registreer()
+         * @see gebruiker_melding.php
+         */
         public function registreer()
         {    
             $gebruiker = new stdClass();
@@ -239,6 +250,13 @@ class Gebruiker extends CI_Controller {
             }
         }
         
+        /**
+         * Haalt informatie over de gebruiker op via de authex
+         * en toont vervolgens de home pagina van de gastspreker 
+         * via de view faq.
+         * 
+         * @see faq.php
+         */
         public function faq(){
             $data['titel'] = 'FAQ';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
@@ -249,7 +267,14 @@ class Gebruiker extends CI_Controller {
 
             $this->template->load('main_master', $partials, $data);
         }
-        
+
+        /**
+         * Haalt informatie over de gebruiker op via de authex
+         * en toont vervolgens de home pagina van de gastspreker 
+         * via de view help.
+         * 
+         * @see help.php
+         */
          public function help(){
             $data['titel'] = 'FAQ';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
