@@ -38,9 +38,7 @@
                 url : site_url + "/mail/mailOntvangersAjax",
                 data : { users : users ,type : type},
                 success : function(result){
-                    $("#test").html(result);
-//                    $("#test").show();
-//                    alert($tester);
+                    $("#ontvangers").prepend(result);
                 },
                 error: function (xhr, status, error) {
                     alert("-- ERROR IN AJAX --\n\n" + xhr.responseText);
@@ -89,9 +87,9 @@
     </div>
 </div>
 <div class="w-50 mx-0 d-inline-block">
-    <div id="test">
+    <div>
     <p>Selected users</p>
-    <textarea class="w-100" rows="5" readonly>No receivers selected</textarea>
+    <textarea class="w-100" rows="5" readonly id="ontvangers" name="ontvangers" placeholder="No receivers selected"></textarea>
     </div>
     
     <?php

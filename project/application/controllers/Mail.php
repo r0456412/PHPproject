@@ -142,8 +142,8 @@ class Mail extends CI_Controller {
             $ontvangers = $this->input->post('ontvangers');
             $titel = $this->input->post('subject');
             $boodschap = $this->input->post('mailsjabloon');
-            $i = 0;
-            if($ontvangers !== "No receivers selected"){
+            $i = 1;
+            if($ontvangers !== "No receivers selected" or $ontvangers !== ""){
                 $ontvangerslijst = explode(" ", $ontvangers);
                 foreach($ontvangerslijst as $ontvanger){
                     if($i !== count($ontvangerslijst)){
