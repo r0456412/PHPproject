@@ -253,8 +253,19 @@ class Gebruiker extends CI_Controller {
         public function faq(){
             $data['titel'] = 'FAQ';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
+            $gebruiker = new stdClass;
+            $gebruiker = $this->authex->getGebruikerInfo();
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['link'] = 'home';
+            if ($gebruiker != null){
+                if ($gebruiker->soort == 'Admin'){
+                    $data['link'] = 'admin/index';
+                }elseif ($gebruiker->soort == 'Gastspreker') {
+                    $data['link'] = 'gastspreker/index';
+                }elseif ($gebruiker->soort == 'Docent') {
+                    $data['link'] = 'docent/index';
+                }
+            }
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'faq');
 
@@ -264,8 +275,19 @@ class Gebruiker extends CI_Controller {
          public function help(){
             $data['titel'] = 'FAQ';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
+            $gebruiker = new stdClass;
+            $gebruiker = $this->authex->getGebruikerInfo();
             $data['gebruiker'] = $this->authex->getGebruikerInfo();
             $data['link'] = 'home';
+            if ($gebruiker != null){
+                if ($gebruiker->soort == 'Admin'){
+                    $data['link'] = 'admin/index';
+                }elseif ($gebruiker->soort == 'Gastspreker') {
+                    $data['link'] = 'gastspreker/index';
+                }elseif ($gebruiker->soort == 'Docent') {
+                    $data['link'] = 'docent/index';
+                }
+            }
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'help');
 
