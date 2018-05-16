@@ -100,6 +100,22 @@ class Gebruiker_model extends CI_Model {
         return $query->row();
     }
 
+    function delete($id)
+    {
+
+        $this->db->where('gastsprekerID', $id);
+        $this->db->delete('Voorstel');
+
+        $this->db->where('gebruikerid', $id);
+        $this->db->delete('Gekozenantwoord');
+
+        $this->db->where('id', $id);
+        $this->db->delete('Gebruiker');
+    }
+    function update($user){
+        $this->db->where('id', $user->id);
+        $this->db->update('Gebruiker', $user);
+    }
     
 }
 

@@ -15,7 +15,9 @@ class Admin extends CI_Controller {
                 redirect('gebruiker/toonMeldingGeenToegangGastspreker');
             }
 
+            
             $this->load->helper('form');
+            $this->load->helper('notation');
         }
         public function index()
 	{
@@ -154,5 +156,27 @@ class Admin extends CI_Controller {
             $this->load->view("ajax_wishes", $data);
         }
 
+        public function deleteUser($id){
+            $this->load->model('Gebruiker_model');
+            $this->Gebruiker_model->delete($id);
+
+        }
+
+        public function bewaar(){
+            $this->load->model('Gebruiker_model');
+            
+            $user = new stdClass();
+            $user->id = $this->uri->segment(3);
+            $decode = urldecode($this->uri->segment(4));
+            $user->voornaam = $decode;
+            $user->achternaam = $decode;
+            $user->email = $decode;
+            //echo "Jan";
+            //print_r($wish);
+            
+            $this->Gebruiker_model->update($user);
+            
+            redirect('admin/usersBeheren');
+        }
         
 }
