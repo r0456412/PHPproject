@@ -1,7 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * @class Wishes
+ * @brief Controller-klasse voor Wens
+ * 
+ * Controller-klasse met alle methodes die gebruikt worden voor de Wens
+ */
+
 class Wishes extends CI_Controller {
 
+        /**
+         * Constructor
+         */
     	public function __construct()
 	{
             parent::__construct();
@@ -12,6 +22,11 @@ class Wishes extends CI_Controller {
             $this->load->helper('form');
         }     
         
+        /**
+         * Toont de pagina waar de beheerder de wensen kan aanpassen, verwijderen en een nieuwe wens toevoegen
+         * 
+         * @see wishes_beheren.php
+         */
         public function beherenWishes()
 	{
             $data['titel'] = 'Wishes beheren';
@@ -27,6 +42,12 @@ class Wishes extends CI_Controller {
             $this->template->load('main_master', $partials, $data);
         }
         
+        /**
+         * Zorgt dat een aangepaste wens wordt geupdate in de database
+         * 
+         * @see wish_model::update()
+         * @see gebruiker_melding.php
+         */
         public function bewaar(){
             $this->load->model('wish_model');
             
@@ -42,6 +63,12 @@ class Wishes extends CI_Controller {
             redirect('gebruiker/toonMeldingWijzigWens');
         }
         
+        /**
+         * Zorgt dat een wens wordt verwijdert uit de database
+         * 
+         * @see wish_model::delete()
+         * @see gebruiker_melding.php
+         */
          public function delete($id){
             $this->load->model('wish_model');
             
@@ -50,6 +77,12 @@ class Wishes extends CI_Controller {
             redirect('gebruiker/toonMeldingVerwijderWens');
         }
         
+        /**
+         * Zorgt dat een wens wordt toegevoed in de database in de database
+         * 
+         * @see wish_model::voegToe()
+         * @see gebruiker_melding.php
+         */
         public function add()
         {
             $this->load->model('wish_model');

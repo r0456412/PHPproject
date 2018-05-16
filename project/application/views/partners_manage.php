@@ -7,13 +7,14 @@
  */
 $attributes = array('name' => 'mijnFormulier');
 echo form_open_multipart('partner/save', $attributes);
-echo form_label('Import partners:', 'userfile', "required accept='.xls, .xlsx'");
+echo form_label('Import partners:', 'userfile');
 $data = array(
     'name' => 'file',
     'id' => 'file',
     'class' => '',
     'value' => '',
-    'data-icon' => 'false'
+    'data-icon' => 'false',
+    'required' => 'true'
 );
 echo form_upload($data);
 echo form_submit('import', 'Import');
