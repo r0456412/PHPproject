@@ -1,7 +1,7 @@
 <?php
 /**
  * @class Wish_model
- * @brief Model-klasse voor Wishes (wensen)
+ * @brief Model-klasse voor wishes te beheren
  * 
  * Model-klasse die alle methode bevat om te
  * integrageren met de database-tabel Wens

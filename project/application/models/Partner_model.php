@@ -2,7 +2,7 @@
 
 /**
  * @class Partner_model
- * @brief Model-klasse voor Partner
+ * @brief Model-klasse voor partners te beheren
  * 
  * Model-klasse die alle methode bevat om te
  * integrageren met de database-tabel Partner

@@ -2,7 +2,7 @@
 
 /**
  * @class Wishes
- * @brief Controller-klasse voor Wens
+ * @brief Controller-klasse voor Wishes
  * 
  * Controller-klasse met alle methodes die gebruikt worden voor de wens
  */
