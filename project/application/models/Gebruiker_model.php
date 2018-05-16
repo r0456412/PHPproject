@@ -148,6 +148,24 @@ class Gebruiker_model extends CI_Model {
         $query = $this->db->get('Voorstel');
         return $query->row();
     }
+<<<<<<< HEAD
+
+    function delete($id)
+    {
+
+        $this->db->where('gastsprekerID', $id);
+        $this->db->delete('Voorstel');
+
+        $this->db->where('gebruikerid', $id);
+        $this->db->delete('Gekozenantwoord');
+
+        $this->db->where('id', $id);
+        $this->db->delete('Gebruiker');
+    }
+    function update($user){
+        $this->db->where('id', $user->id);
+        $this->db->update('Gebruiker', $user);
+=======
     function getGebruikerOpNaam($zoekstring){
         $this->db->like('voornaam', $zoekstring);
         $this->db->or_like('achternaam', $zoekstring);
@@ -168,6 +186,7 @@ class Gebruiker_model extends CI_Model {
         } else {
             return $query->row();
         }
+>>>>>>> 355d246f101026e2929be009ea3e326b77ea0685
     }
     
 }

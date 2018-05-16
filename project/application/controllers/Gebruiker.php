@@ -177,6 +177,16 @@ class Gebruiker extends CI_Controller {
                     'The email has been sent!',
                     array('url' => 'admin/index', 'tekst' => 'Home'));
         }
+        public function toonMeldingPartnersToegevoegd(){
+            $this->toonMelding('Partners added',
+                    'The partners were successfully added!',
+                    array('url' => 'admin/index', 'tekst' => 'Home'));
+        }
+        public function toonMeldingPartnersMislukt(){
+            $this->toonMelding('Adding partners failed',
+                    'Please check if you uploaded the correct file!',
+                    array('url' => 'partner/index', 'tekst' => 'Back'));
+        }
         /**
          * Toont de pagina waar de gebruiker zijn wachtwoord kan resetten naar een random
          * gegenereerde cijfercode. Dit wordt getoond in de view wachtwoord_vergeten.php.

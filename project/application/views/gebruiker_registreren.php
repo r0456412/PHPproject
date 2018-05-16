@@ -30,7 +30,7 @@
         <td><?php echo form_dropdown('gender', $geslachten, '', 'id="geslacht" class="form-control form-control-lg rounded-2"'); ?></td>
     </tr>
     <tr>
-        <td><?php echo form_label('E-mail:', 'mail'); ?></td>
+        <td><?php echo form_label('Email:', 'mail'); ?></td>
         <td><?php echo form_input(array('name' => 'email','type'=>'email', 'id' => 'mail', 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true')); ?></td>
     </tr>
     <tr>

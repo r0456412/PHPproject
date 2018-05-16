@@ -61,6 +61,7 @@ $(document).ready(function(){
             </div>
         </a>
     </div>
+<<<<<<< HEAD
 </div>
 <div class="row">
     <div class="col" data-toggle="tooltip" data-placement="bottom" title="Manage the default partners, delete or add them">
