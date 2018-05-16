@@ -4,7 +4,7 @@
  * @class Wishes
  * @brief Controller-klasse voor Wens
  * 
- * Controller-klasse met alle methodes die gebruikt worden voor de Wens
+ * Controller-klasse met alle methodes die gebruikt worden voor de wens
  */
 
 class Wishes extends CI_Controller {
@@ -25,6 +25,7 @@ class Wishes extends CI_Controller {
         /**
          * Toont de pagina waar de beheerder de wensen kan aanpassen, verwijderen en een nieuwe wens toevoegen
          * 
+         * @see wish_model::getAllByWish()
          * @see wishes_beheren.php
          */
         public function beherenWishes()

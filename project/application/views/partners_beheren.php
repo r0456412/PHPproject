@@ -1,9 +1,11 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file partners_beheren.php
+ * 
+ * View die de administrator te zien krijgt nadat hij/zij op de knop Manage Partners in de homepagina van de admin klikt
+ * - Maakt gebruik van een input type="file" om excel bestand te importeren
+ * - Maakt gebruik van een formulier om een excel bestand te importeren
  */
 $attributes = array('name' => 'mijnFormulier');
 echo form_open_multipart('partner/save', $attributes);

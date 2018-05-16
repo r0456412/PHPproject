@@ -1,17 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Partner
- *
- * @author arnev
+ * @class Partner
+ * @brief Controller-klasse voor Partner
+ * 
+ * Controller-klasse met alle methodes die gebruikt worden voor de partner
  */
 class Partner extends CI_Controller {
+    /**
+    * Constructor
+    */
     public function __construct() {
         parent::__construct();
         $this->load->library('excel');
@@ -19,6 +17,11 @@ class Partner extends CI_Controller {
         $this->load->model('partner_model');
     }
     
+    /**
+     * Toont de pagina waar de beheerder een excel bestand met partners kan importeren
+     * 
+     * @see partners_beheren.php
+     */
     public function index() {
         $data['titel'] = 'Manage Partners';
         $data['auteur'] = "Lorenzo M.| <u>Arne V.D.P.</u> | Kim M. | Eloy B. | Sander J.";
@@ -30,6 +33,12 @@ class Partner extends CI_Controller {
         $this->template->load('main_master', $partials, $data);
     }
     
+    /**
+     * Zorgt er voor dat de partners uit het excel bestand worden gehaald en worden toegevoegd aan de database
+     * 
+     * @see partner_model::insert()
+     * @see gebruiker_melding.php 
+     */
     public function save(){
         if(isset($_FILES["file"]["name"]))
         {
