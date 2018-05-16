@@ -1,4 +1,13 @@
 <?php 
+/**
+ * @file ajax_mail_versturen.php
+ * 
+ * View waarin de gegevens van het geselecteerde mailsjabloon wordt weergegeven 
+ * en wordt ingevoegd in de pagina mails_versturen.php
+ * 
+ * - Krijgt $sjabloon-object binnen
+ * - Krijgt $new-variabele binnen
+ */
 if($new == "yes"){
     $inhoud = "";
 }else{

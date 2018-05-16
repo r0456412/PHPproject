@@ -16,6 +16,11 @@ class Gebruiker extends CI_Controller {
             $this->load->helper('form');
         }     
         
+        /**
+         * Toont de pagina waar een nieuwe gastspreker zich kan registreren
+         * 
+         * @see gebruiker_registreren.php
+         */
         public function index()
 	{
             $data['titel'] = 'Registration';
@@ -45,6 +50,12 @@ class Gebruiker extends CI_Controller {
             }
         }
         
+        /**
+         * Zorgt dat een nieuwe gastspreker wordt toegevoegd in de database
+         * 
+         * @see authex::registreer()
+         * @see gebruiker_melding.php
+         */
         public function registreer()
         {    
             $gebruiker = new stdClass();
@@ -176,6 +187,16 @@ class Gebruiker extends CI_Controller {
             $this->toonMelding('Email sent',
                     'The email has been sent!',
                     array('url' => 'admin/index', 'tekst' => 'Home'));
+        }
+        public function toonMeldingPartnersToegevoegd(){
+            $this->toonMelding('Partners added',
+                    'The partners were successfully added!',
+                    array('url' => 'admin/index', 'tekst' => 'Home'));
+        }
+        public function toonMeldingPartnersMislukt(){
+            $this->toonMelding('Adding partners failed',
+                    'Please check if you uploaded the correct file!',
+                    array('url' => 'partner/index', 'tekst' => 'Back'));
         }
         /**
          * Toont de pagina waar de gebruiker zijn wachtwoord kan resetten naar een random

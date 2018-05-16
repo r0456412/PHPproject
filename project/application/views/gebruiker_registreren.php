@@ -1,9 +1,10 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file gebruiker_registreren.php
+ * 
+ * View die de administrator te zien krijgt nadat hij/zij op de knop Manage Wishes in de homepagina van de admin klikt
+ * - Maakt gebruik van een formulier om een nieuwe gastspreker te registreren
  */
 ?>
 <?php
@@ -30,7 +31,7 @@
         <td><?php echo form_dropdown('gender', $geslachten, '', 'id="geslacht" class="form-control form-control-lg rounded-2"'); ?></td>
     </tr>
     <tr>
-        <td><?php echo form_label('E-mail:', 'mail'); ?></td>
+        <td><?php echo form_label('Email:', 'mail'); ?></td>
         <td><?php echo form_input(array('name' => 'email','type'=>'email', 'id' => 'mail', 'size' => '35', 'class' => 'form-control form-control-lg rounded-2', 'required'=>'true')); ?></td>
     </tr>
     <tr>

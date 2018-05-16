@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file mailsjabloon_beheren.php
+ * 
+ * View waarin de admin de mailsjablonen kan aanpassen en opslaan in de database.
+ * - Krijgt $datums-object binnen
+ * - Gebruikt een ajax functie het geselecteerde mailsjabloon te tonen.
+ */
+?>
 <script>
     function toonSjabloon ( onderwerp ) {
         $.ajax({type : "GET",

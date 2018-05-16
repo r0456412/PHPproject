@@ -11,7 +11,7 @@
 
 <?php
 if ($gebruiker != null) {
-    echo '<b>' . $gebruiker->voornaam . ', make all nesecary changes with the links below.</b>';
+    echo '<b class="welkomstekst">Hello ' . $gebruiker->voornaam . ', her you can make all nesecary changes with the links below.</b>';
 }
 ?>
 <script>
@@ -21,7 +21,7 @@ $(document).ready(function(){
 </script>
 
 <div class="row">
-    <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Here you can make the agenda">
+    <div class="col" data-toggle="tooltip" data-placement="bottom" title="Here you can make the agenda">
         <a href="../Planning/planning" >
             <div class="card admin">
                 <div class="card-header"><h6>Create agenda</h6></div>
@@ -31,7 +31,7 @@ $(document).ready(function(){
             </div>
         </a>
     </div>
-    <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Here you can mail to every user in the system">
+    <div class="col" data-toggle="tooltip" data-placement="bottom" title="Here you can mail to every user in the system">
         <a href="../Mail/mail">
             <div class="card admin">
                 <div class="card-header"><h6>Mail</h6></div>
@@ -41,7 +41,7 @@ $(document).ready(function(){
             </div>
         </a>
     </div>
-    <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Here you can see all users, the submitted wishes, ...">
+    <div class="col" data-toggle="tooltip" data-placement="bottom" title="Here you can see all users, the submitted wishes, ...">
         <a href="../Admin/usersBeheren">
             <div class="card admin">
                 <div class="card-header"><h6>Manage users</h6></div>
@@ -51,7 +51,7 @@ $(document).ready(function(){
             </div>
         </a>
     </div>
-    <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="To see and ,if needed, change the content of the homepage">
+    <div class="col" data-toggle="tooltip" data-placement="bottom" title="To see and ,if needed, change the content of the homepage">
         <a href="../admin/paginaInhoud_wijzigen">
             <div class="card admin">
                 <div class="card-header"><h6>Homepage content</h6></div>
@@ -61,8 +61,10 @@ $(document).ready(function(){
             </div>
         </a>
     </div>
-    <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Manage the default partners, delete or add them">
-        <a href="#">
+</div>
+<div class="row">
+    <div class="col" data-toggle="tooltip" data-placement="bottom" title="Manage the default partners, delete or add them">
+        <a href="../partner/index">
             <div class="card admin">
                 <div class="card-header"><h6>Manage partners</h6></div>
                 <div class="card-body">
@@ -72,7 +74,7 @@ $(document).ready(function(){
         </a>
     </div>
 
-    <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Manage the mailtemplates: change, delete or add">
+    <div class="col" data-toggle="tooltip" data-placement="bottom" title="Manage the mailtemplates: change, delete or add">
         <a href="../mailsjabloon/mailsjabloon">
             <div class="card admin">
                 <div class="card-header"><h6>Mail templates</h6></div>
@@ -82,7 +84,7 @@ $(document).ready(function(){
             </div>
         </a>
     </div>
-    <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Set the dates of this years international days">
+    <div class="col" data-toggle="tooltip" data-placement="bottom" title="Set the dates of this years international days">
         <a href="../admin/datums_wijzigen">
             <div class="card admin">
                 <div class="card-header"><h6>Set dates</h6></div>
@@ -92,7 +94,7 @@ $(document).ready(function(){
             </div>
         </a>
     </div>
-    <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Manage the wishes you want to give to the guests">
+    <div class="col" data-toggle="tooltip" data-placement="bottom" title="Manage the wishes you want to give to the guests">
         <a href="../wishes/beherenWishes">
             <div class="card admin">
                 <div class="card-header"><h6>Manage wishes</h6></div>

@@ -27,10 +27,17 @@ class Admin extends CI_Controller {
             
             $this->load->helper('form');
             $this->load->helper('notation');
+<<<<<<< HEAD
             if($gebruiker->soort == "Docent"){
                 redirect('gebruiker/toonMeldingGeenToegangDocent');
             }
 
+=======
+
+            if($gebruiker->soort == "Docent"){
+                redirect('gebruiker/toonMeldingGeenToegangDocent');
+            }
+>>>>>>> ab46548388cec4f7ba3007e7927adb2a2267faee
         }
         /**
          * Haalt informatie over de aangemelde gebruiker op via de authex

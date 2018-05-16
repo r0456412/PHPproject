@@ -1,3 +1,11 @@
+<?php
+/**
+ * @file mails_versturen.php
+ * 
+ * View waarin de admin mails kan opstellen en versturen naar andere gebruikers.
+ * - Krijgt $sjablonen-object binnen (gebruikt om dropdown op te vullen)
+ */
+?>
 <script>
     function toonSjabloon ( onderwerp ) {
         $.ajax({type : "GET",
@@ -30,9 +38,7 @@
                 url : site_url + "/mail/mailOntvangersAjax",
                 data : { users : users ,type : type},
                 success : function(result){
-                    $("#test").html(result);
-//                    $("#test").show();
-//                    alert($tester);
+                    $("#ontvangers").prepend(result);
                 },
                 error: function (xhr, status, error) {
                     alert("-- ERROR IN AJAX --\n\n" + xhr.responseText);
@@ -81,9 +87,9 @@
     </div>
 </div>
 <div class="w-50 mx-0 d-inline-block">
-    <div id="test">
+    <div>
     <p>Selected users</p>
-    <textarea class="w-100" rows="5" readonly>No receivers selected</textarea>
+    <textarea class="w-100" rows="5" readonly id="ontvangers" name="ontvangers" placeholder="No receivers selected"></textarea>
     </div>
     
     <?php
@@ -93,14 +99,16 @@
     <div id="userSearchResult"></div>
     <div>
         <?php
-        $studenten = 'onclick=voegOntvangersToe("Student","groep")';
+        $studenten = 'onclick=voegOntvangersToe("Student","gebruikers")';
         echo form_button('alleStudenten','All Students', $studenten);
-        $gastsprekers = 'onclick=voegOntvangersToe("Gastspreker","groep")';
+        $gastsprekers = 'onclick=voegOntvangersToe("Gastspreker","gebruikers")';
         echo form_button('alleGastsprekers','All lecturers', $gastsprekers);
-        $docenten = 'onclick=voegOntvangersToe("Docent","groep")';
+        $docenten = 'onclick=voegOntvangersToe("Docent","gebruikers")';
         echo form_button('alleDocenten','All teachers', $docenten);
-        $admins = 'onclick=voegOntvangersToe("Admin","groep")';
+        $admins = 'onclick=voegOntvangersToe("Admin","gebruikers")';
         echo form_button('alleAdmins','All Admins', $admins);
+        $partners = 'onclick=voegOntvangersToe("Partner","partners")';
+        echo form_button('allePartners','All Partners', $partners);
         ?>
     </div>
     <?php echo form_submit(array('name' => 'verzendKnop', 'value' => 'Send mail', 'class' => 'btn btn-lg btn-primary btn-block')); ?>
