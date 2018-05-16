@@ -148,8 +148,11 @@ class Gebruiker_model extends CI_Model {
         $query = $this->db->get('Voorstel');
         return $query->row();
     }
-<<<<<<< HEAD
 
+    /**
+     * Verwijderd een user met id=$id uit de tabel Gebruiker
+     * @param $id De id van de user die verwijderd wordt
+     */
     function delete($id)
     {
 
@@ -162,10 +165,17 @@ class Gebruiker_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete('Gebruiker');
     }
+
+
+    /**
+     * updaten van een user met inhoud=$user in de tabel Gebruiker
+     * @param $user De inhoud van de user die aangepast wordt
+     */
     function update($user){
         $this->db->where('id', $user->id);
         $this->db->update('Gebruiker', $user);
-=======
+    }
+
     function getGebruikerOpNaam($zoekstring){
         $this->db->like('voornaam', $zoekstring);
         $this->db->or_like('achternaam', $zoekstring);
@@ -186,8 +196,8 @@ class Gebruiker_model extends CI_Model {
         } else {
             return $query->row();
         }
->>>>>>> 355d246f101026e2929be009ea3e326b77ea0685
+
     }
     
 }
-?>
+}

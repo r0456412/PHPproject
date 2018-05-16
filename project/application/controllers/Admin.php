@@ -22,16 +22,15 @@ class Admin extends CI_Controller {
             if($gebruiker->soort == "Gastspreker"){
                 redirect('gebruiker/toonMeldingGeenToegangGastspreker');
             }
-<<<<<<< HEAD
+
 
             
             $this->load->helper('form');
             $this->load->helper('notation');
-=======
             if($gebruiker->soort == "Docent"){
                 redirect('gebruiker/toonMeldingGeenToegangDocent');
             }
->>>>>>> 355d246f101026e2929be009ea3e326b77ea0685
+
         }
         /**
          * Haalt informatie over de aangemelde gebruiker op via de authex
@@ -145,6 +144,13 @@ class Admin extends CI_Controller {
             redirect('gebruiker/toonMeldingWijzgingSaved');
 	}
 
+        /**
+         * Haalt de users op via het Gebruiker_model
+         * en toont het resultaat in de view users_beheren.php
+         * 
+         * @see Gebruiker_model::getAllByNaam()
+         * @see users_beheren.php
+        */
         public function usersBeheren()
         {
             $data['titel'] = 'Manage Users';
@@ -160,6 +166,14 @@ class Admin extends CI_Controller {
             $this->template->load('main_master', $partials, $data);  
         }
 
+
+        /**
+         * Haalt aan de hand van de aangeduide user de voorstellen op van die user
+         * en toont het resultaat in de view ajax_user
+         * 
+         * @see Gebruiker_model::getVoorstelByUser()
+         * @see ajax_user.php
+         */
         public function haalAjaxOp_Voorstellen(){
             $gastsprekerId = $this->input->get('id');
             $this->load->model('Gebruiker_model');
@@ -167,6 +181,14 @@ class Admin extends CI_Controller {
             $this->load->view("ajax_user", $data);
         }
 
+
+        /**
+         * Haalt aan de hand van het aangeduide voorstel de details van dit voorstel
+         * en toont het resultaat in de view ajax_voorsteldetail
+         * 
+         * @see Gebruiker_model::getVoorstel()
+         * @see ajax_voorsteldetail.php
+         */
         public function haalAjaxOp_Voorstel(){
             $id = $this->input->get('id');
             $this->load->model('Gebruiker_model');
@@ -174,30 +196,50 @@ class Admin extends CI_Controller {
             $this->load->view("ajax_voorsteldetail", $data);
         }
 
-         public function haalAjaxOp_Wishes(){
+
+        /**
+         * Haalt aan de hand van de aangeduide user de wishes op van die user
+         * en toont het resultaat in de view ajax_wishes
+         * 
+         * @see Wish_model::getVoorstelByUser()
+         * @see ajax_wishes.php
+         */
+        public function haalAjaxOp_Wishes(){
             $gastsprekerId = $this->input->get('id');
             $this->load->model('Wish_model');
             $data['wishes'] = $this->Wish_model->getAllWithAntwoorden($gastsprekerId);
             $this->load->view("ajax_wishes", $data);
         }
 
+
+        /**
+         * Delete een user aan de hand van de id die wordt doorgegeven bij het klikken op de knop
+         * en toont het resultaat in de view users_beheren
+         * 
+         * @see Gebruiker_model::delete()
+         * @see users_beheren.php
+         */
         public function deleteUser($id){
             $this->load->model('Gebruiker_model');
             $this->Gebruiker_model->delete($id);
 
         }
 
+
+        /**
+         * Past de email van de user aan bij het klikken op de 'Save'-knop
+         * en toont het resultaat in de view users_beheren
+         * 
+         * @see Gebruiker_model::update()
+         * @see users_beheren.php
+         */
         public function bewaar(){
             $this->load->model('Gebruiker_model');
             
             $user = new stdClass();
             $user->id = $this->uri->segment(3);
             $decode = urldecode($this->uri->segment(4));
-            $user->voornaam = $decode;
-            $user->achternaam = $decode;
             $user->email = $decode;
-            //echo "Jan";
-            //print_r($wish);
             
             $this->Gebruiker_model->update($user);
             

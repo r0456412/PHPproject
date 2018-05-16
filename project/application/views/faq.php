@@ -1,3 +1,12 @@
+
+<?php
+/**
+ * @file faq.php
+ * 
+ * View waar alle users veelgestelde vragen kunnen bekijken met het antwoord erop
+ * - gebruikt Bootstrap-accordion
+ */
+?>
 <div class="container">
   <div id="accordion">
     <div class="card">
