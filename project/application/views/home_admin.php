@@ -61,11 +61,10 @@ $(document).ready(function(){
             </div>
         </a>
     </div>
-<<<<<<< HEAD
 </div>
 <div class="row">
     <div class="col" data-toggle="tooltip" data-placement="bottom" title="Manage the default partners, delete or add them">
-        <a href="#">
+        <a href="../partner/index">
             <div class="card admin">
                 <div class="card-header"><h6>Manage partners</h6></div>
                 <div class="card-body">
