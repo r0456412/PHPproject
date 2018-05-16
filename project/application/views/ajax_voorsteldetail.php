@@ -1,3 +1,11 @@
+<?php
+/**
+ * @file ajax_voorsteldetail.php
+ * 
+ * View waarin de admin de details van het voorstel ophaalt waar je op klikt
+ * - krijgt $voorstel-object binnen
+ */
+ ?>
 <table class="table table-borderless">
     <tbody>
 <?php

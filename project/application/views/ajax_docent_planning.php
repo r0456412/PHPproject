@@ -15,7 +15,7 @@ echo "<table border='1'>";
 ?>
 
     <tr>
-        <th class="eerste">UUR</th>
+        <th class="eerste">HOUR</th>
         <th>APP-BIT1</th>
         <th>APP-BIT2</th>
         <th>EMDEV</th>
@@ -36,10 +36,10 @@ $counter2= 1;
                     echo "<td align='center' id=" . $counter . ">";
                     if(!empty($planning)){
                         if (count($planning)>$counter && $planning[$counter]->tabelId==$counter2) {
-                            echo "<p>Lezing: ".$voorstellen[$counter]->titel."</p>";
-                            echo "<p>Taal: ".$voorstellen[$counter]->taal."</p>";
-                            echo "<p> Gastspreker: ".$gastsprekers[$counter]->voornaam." ".$gastsprekers[$counter]->achternaam."</p>";
-                            echo "<p> Lokaal:".$lokalen[$counter]->nummer."</p>";
+                            echo "<p>Lecture: ".$voorstellen[$counter]->titel."</p>";
+                            echo "<p>Language: ".$voorstellen[$counter]->taal."</p>";
+                            echo "<p>Lecturer: ".$gastsprekers[$counter]->voornaam." ".$gastsprekers[$counter]->achternaam."</p>";
+                            echo "<p>Classroom: ".$lokalen[$counter]->nummer."</p>";
                         if (!empty($beschikbaarheid)) {
                              if (in_array($planning[$counter]->id, $beschikbaarheid)) {
                                 echo form_open('surveillant/surveillant_verwijderen', 'formulier'); 
@@ -65,9 +65,9 @@ $counter2= 1;
                             $counter++;
                     }
                     
-                    }else{echo "<p>Geen lezing.</p>";}
+                    }else{echo "<p>No lecture.</p>";}
                     
-                    }else{echo "<p>Geen lezing.</p>";}
+                    }else{echo "<p>No lecture.</p>";}
                     
                     
                     $counter2++;

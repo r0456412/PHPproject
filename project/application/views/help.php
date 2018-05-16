@@ -1,5 +1,11 @@
 
-
+<?php
+/**
+ * @file help.php
+ * 
+ * View waar elke user kan zien wat elke user kan en mag doen met de applicatie 
+ */
+?>
 
 <h1 style="text-align: center;">Help</h1>
 <p style="text-align: center;">Welcome to the help page, here we show you for every kind of user what he can do in the application</p>
@@ -15,9 +21,5 @@
 
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 

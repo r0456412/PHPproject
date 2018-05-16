@@ -250,6 +250,13 @@ class Gebruiker extends CI_Controller {
             }
         }
         
+        /**
+         * Haalt informatie over de gebruiker op via de authex
+         * en toont vervolgens de home pagina van de gastspreker 
+         * via de view faq.
+         * 
+         * @see faq.php
+         */
         public function faq(){
             $data['titel'] = 'FAQ';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
@@ -271,7 +278,14 @@ class Gebruiker extends CI_Controller {
 
             $this->template->load('main_master', $partials, $data);
         }
-        
+
+        /**
+         * Haalt informatie over de gebruiker op via de authex
+         * en toont vervolgens de home pagina van de gastspreker 
+         * via de view help.
+         * 
+         * @see help.php
+         */
          public function help(){
             $data['titel'] = 'FAQ';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | Sander J.";
