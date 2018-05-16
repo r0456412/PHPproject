@@ -62,7 +62,7 @@ $(document).ready(function(){
         </a>
     </div>
     <div class="col-md-3 mx-auto" data-toggle="tooltip" data-placement="bottom" title="Manage the default partners, delete or add them">
-        <a href="#">
+        <a href="../partner/index">
             <div class="card admin">
                 <div class="card-header"><h6>Manage partners</h6></div>
                 <div class="card-body">
