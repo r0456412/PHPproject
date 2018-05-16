@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file wachtwoord_vergeten.php
+ * 
+ * View waar een gebruiker zijn wachtwoord kan resetten
+ * - Maakt gebruik van Boodstrap cards
+ * - Maakt gebruik van een formulier
+ */
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
