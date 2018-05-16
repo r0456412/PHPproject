@@ -92,7 +92,6 @@ class Mail extends CI_Controller {
             $this->load->model('gebruiker_model');
             $this->load->model('partner_model');
             $zoekstring = $this->input->get('zoekstring');
-//            print_r($zoekstring);
             if($zoekstring !== ""){
                 $data['gebruikers'] = $this->gebruiker_model->getGebruikerOpNaam($zoekstring);
                 $data['partners'] = $this->partner_model->getPartnerOpNaam($zoekstring);
