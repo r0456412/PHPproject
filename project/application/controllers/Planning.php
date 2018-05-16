@@ -57,7 +57,7 @@ class Planning extends CI_Controller {
             $data['datums'] = $datums;
             
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | <u>Sander J.</u>";
-            $data['link'] = 'planning/planning';
+            $data['link'] = 'admin/index';
 
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning_admin');
@@ -149,22 +149,22 @@ class Planning extends CI_Controller {
         }
         public function toonMeldingVulDatumIn(){
             $this->toonMelding('Error',
-                    'Gelieve een datum in te vullen.',
+                    'Please enter a date.',
                     array('url' => 'planning/planning', 'tekst' => 'Back'));
         }
         public function planningOpgeslagen(){
             $this->toonMelding('Error',
-                    'De planning is succesvol opgeslagen.',
+                    'Succesfully saved planning.',
                     array('url' => 'planning/planning', 'tekst' => 'Back'));
         }
         public function toonMeldingGeenLokaal(){
             $this->toonMelding('Error',
-                    'De planning is niet opgeslagen. Er is een lezing ingevult maar geen lokaal. Gelieve een lokaal in te vullen als u ook een lezing invult.',
+                    'The planning has not been saved. Please enter a clasroom when you enter a proposal.',
                     array('url' => 'planning/planning', 'tekst' => 'Back'));
         }
         public function toonMeldingGeenVoorstel(){
             $this->toonMelding('Error',
-                    'De planning is niet opgeslagen. Er is een lokaal ingevult maar geen voorstel. Gelieve een voorstel in te vullen als u ook een lokaal invult.',
+                    'The planning has not been saved. Please enter a proposal when you enter a classroom.',
                     array('url' => 'planning/planning', 'tekst' => 'Back'));
         }
         /**

@@ -15,12 +15,12 @@ echo pasStylesheetAan("/css/planning.css");
 
      
         
-$voorstelOptions[0] = 'Kies een voorstel';
+$voorstelOptions[0] = 'Choose proposal';
         foreach($alleVoorstellen as $voorstel){
             $voorstelOptions[$voorstel->id] = $voorstel->titel;
         }
         
-$lokaalOptions[0] = 'Kies een lokaal';
+$lokaalOptions[0] = 'Choose a classroom';
         foreach($alleLokalen as $lokaal){
             $lokaalOptions[$lokaal->id] = $lokaal->nummer;  
         }
@@ -41,7 +41,7 @@ echo "<table border='1'>";
 ?>
 
     <tr>
-        <th class="eerste">UUR</th>
+        <th class="eerste">HOUR</th>
         <th>APP-BIT1</th>
         <th>APP-BIT2</th>
         <th>EMDEV</th>
@@ -66,13 +66,8 @@ echo "<table border='1'>";
                             echo form_dropdown('voorstel[]', $voorstelOptions, $voorstellen[$counter]->id);
                             echo form_dropdown('lokaal[]', $lokaalOptions, $lokalen[$counter]->id);
                             echo form_hidden('sessieid[]',$planning[$counter]->id);
-                            echo "<br>Surveillant: ". $surveillanten[$counter];
-//                            echo form_dropdown('beschikbaar[]',${beschikbaarheid0}[0]->sessieid);
-//                        foreach ($beschikbaarheden as $beschikbaarheid){
-//                                  
-//                            echo $beschikbaarheid->gebruikerid;
-//                            echo $beschikbaarheid->sessieid;
-//                        }
+                            echo "<br>Supervisor: ". $surveillanten[$counter];
+
                             
                             
                             

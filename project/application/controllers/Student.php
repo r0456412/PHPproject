@@ -42,7 +42,7 @@ class Student extends CI_Controller {
             $data['datums'] = $datums;
             $data['gebruiker']  = $this->authex->getGebruikerInfo();
             
-            $data['link'] = 'home';
+            $data['link'] = 'student';
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | Eloy B. | <u>Sander J.</u>";
 
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning_student');
