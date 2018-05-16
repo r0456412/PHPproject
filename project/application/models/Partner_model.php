@@ -24,11 +24,21 @@ class Partner_model extends CI_Model {
     {
         $this->db->insert_batch('Partner', $data);
     }
+    /**
+     * Retourneert alle records gesorteerd op voornaam
+     * 
+     * @return Alle records
+     */
     function getPartners(){
         $this->db->order_by('voornaam', 'asc');
         $query = $this->db->get('Partner');
         return $query->result();
     }
+    /**
+     * Retourneert partners waar  voornaam Like $zoekstring of achternaam Like $zoekstring uit de tabel Partner
+     * @param $zoekstring De opgegeven string waar op moet worden gezocht
+     * @return Gevonden partners of string "geen resultaten"
+     */
     function getPartnerOpNaam($zoekstring){
         $this->db->like('voornaam', $zoekstring);
         $this->db->or_like('achternaam', $zoekstring);
@@ -40,6 +50,11 @@ class Partner_model extends CI_Model {
             return "geen resultaten";
         }
     }
+    /**
+     * Retourneert het record met id=$id uit de tabel Partner
+     * @param $id De id van het record dat opgevraagd wordt
+     * @return Het opgevraagde record
+     */
     function getById($id) {
         // geef gebruiker-object met opgegeven $id   
         $this->db->where('id', $id);
