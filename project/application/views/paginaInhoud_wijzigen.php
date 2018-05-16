@@ -13,11 +13,11 @@
 ?>
     <div class="row">
         <div class="col">
-            <?php echo form_label('Title 1:', 'titel1'); ?>
+            <?php echo form_label('Title 1:', 'hoofding1'); ?>
             <h1>
                 <?php echo form_textarea(array('value' => $paginainhoud->hoofding1 ,'name' => 'hoofding1', 'id' => 'hoofding1', 'rows'=>'1', 'class' => 'form-control form-control-lg rounded-2')); ?>
             </h1>
-            <?php echo form_label('Title 2:', 'titel2'); ?>
+            <?php echo form_label('Title 2:', 'hoofding2'); ?>
             <h5>
                 <?php echo form_textarea(array('value' => $paginainhoud->hoofding2 ,'name' => 'hoofding2', 'id' => 'hoofding2', 'rows'=>'1', 'class' => 'form-control form-control-lg rounded-2')); ?>
             </h5>

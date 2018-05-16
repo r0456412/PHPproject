@@ -25,7 +25,7 @@ class Partner extends CI_Controller {
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
         $data['link'] = 'admin/index';
         
-        $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'partners_manage',);
+        $partials = array('hoofding' => 'main_header','menu' => 'main_menu','inhoud' => 'partners_beheren',);
 
         $this->template->load('main_master', $partials, $data);
     }

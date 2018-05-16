@@ -198,6 +198,5 @@ class Gebruiker_model extends CI_Model {
         $this->db->update('Gebruiker', $user);
 
     }
-    
 }
 ?>

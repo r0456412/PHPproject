@@ -117,6 +117,9 @@ footer {
 }
 
 @media only screen and (max-width: 991px) {
+    .homepageImage{
+        margin-bottom: 50px;
+    }
     footer{
         position: static;
         text-align: center;
