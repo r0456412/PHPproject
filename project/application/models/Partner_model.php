@@ -1,21 +1,25 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Partner_model
- *
- * @author arnev
+ * @class Partner_model
+ * @brief Model-klasse voor Partner
+ * 
+ * Model-klasse die alle methode bevat om te
+ * integrageren met de database-tabel Partner
  */
 class Partner_model extends CI_Model {
+    /**
+     * Constructor
+     */
     function __construct() {
         parent::__construct();
     }
     
+    /**
+     * Voegt de partners toe die geimporteerd werden via partners_beheren.php
+     * 
+     * @param $data Een array met de voornaam, achternaam en e-mail van de partners uit het excel bestand
+     */
     function insert($data)
     {
         $this->db->insert_batch('Partner', $data);
