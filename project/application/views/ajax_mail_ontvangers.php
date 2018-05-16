@@ -8,14 +8,11 @@
  * - Krijgt $sjabloon-object binnen
  * - Krijgt $new-variabele binnen
  */
-echo '<p>Selected users</p>
-    <textarea class="w-100" rows="5" readonly id="ontvangers" name="ontvangers">';
 if(count($gebruikers) <= 1){
-    echo $gebruikers->email;
+    echo $gebruikers->email . " &#13;&#10;";
 }else{
     foreach($gebruikers as $gebruiker){
         echo $gebruiker->email . " &#13;&#10;";
     }
 }
-echo '</textarea>';
 ?>
