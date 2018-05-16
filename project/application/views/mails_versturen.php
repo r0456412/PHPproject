@@ -101,14 +101,16 @@
     <div id="userSearchResult"></div>
     <div>
         <?php
-        $studenten = 'onclick=voegOntvangersToe("Student","groep")';
+        $studenten = 'onclick=voegOntvangersToe("Student","gebruikers")';
         echo form_button('alleStudenten','All Students', $studenten);
-        $gastsprekers = 'onclick=voegOntvangersToe("Gastspreker","groep")';
+        $gastsprekers = 'onclick=voegOntvangersToe("Gastspreker","gebruikers")';
         echo form_button('alleGastsprekers','All lecturers', $gastsprekers);
-        $docenten = 'onclick=voegOntvangersToe("Docent","groep")';
+        $docenten = 'onclick=voegOntvangersToe("Docent","gebruikers")';
         echo form_button('alleDocenten','All teachers', $docenten);
-        $admins = 'onclick=voegOntvangersToe("Admin","groep")';
+        $admins = 'onclick=voegOntvangersToe("Admin","gebruikers")';
         echo form_button('alleAdmins','All Admins', $admins);
+        $partners = 'onclick=voegOntvangersToe("Partner","partners")';
+        echo form_button('allePartners','All Partners', $partners);
         ?>
     </div>
     <?php echo form_submit(array('name' => 'verzendKnop', 'value' => 'Send mail', 'class' => 'btn btn-lg btn-primary btn-block')); ?>

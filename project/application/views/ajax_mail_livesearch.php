@@ -9,15 +9,17 @@
  * - Krijgt $leeg-variabele binnen
  */
 if($leeg !== "yes"){
-    if($gebruikers !== "geen resultaten"){
+    if($gebruikers !== "geen resultaten" and $gebruikers !== ""){
         foreach($gebruikers as $gebruiker){
             echo '<p><a href="#" onclick="voegOntvangersToe('. $gebruiker->id .', 1);">' . $gebruiker->voornaam . " " . $gebruiker->achternaam .'</a></p>';
-            //echo 'er zijn gebruikers gevonden';
-            //echo $gebruiker->voornaam . " " . $gebruiker->achternaam;
         }
-    }else{
+    }
+    if($partners !== "geen resultaten" and $partners !== ""){
+        foreach($partners as $partner){
+            echo '<p><a href="#" onclick="voegOntvangersToe('. $partner->id .', 2);">' . $partner->voornaam . " " . $partner->achternaam .'</a></p>';
+        }
+    }if($gebruikers == "geen resultaten" and $partners == "geen resultaten"){
         echo $gebruikers;
     }
-    
 }
 ?>

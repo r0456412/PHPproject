@@ -203,7 +203,7 @@ class Gastspreker extends CI_Controller {
             $data['datums'] = $datums;
             
             $data['auteur'] = "Lorenzo M.| Arne V.D.P. | Kim M. | <u>Eloy B.</u> | <u>Sander J.</u>";
-            $data['link'] = 'planning/planning';
+            $data['link'] = 'gastspreker/index';
 
             
             $partials = array('hoofding' => 'main_header', 'menu' => 'main_menu', 'inhoud' => 'planning_gastspreker');

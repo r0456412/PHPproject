@@ -90,10 +90,11 @@ class Mail extends CI_Controller {
         public function mailusersAjax()
 	{
             $this->load->model('gebruiker_model');
+            $this->load->model('partner_model');
             $zoekstring = $this->input->get('zoekstring');
-//            print_r($zoekstring);
             if($zoekstring !== ""){
                 $data['gebruikers'] = $this->gebruiker_model->getGebruikerOpNaam($zoekstring);
+                $data['partners'] = $this->partner_model->getPartnerOpNaam($zoekstring);
                 $data['leeg'] = "no";
             }else{
                 $data['leeg'] = "yes";
@@ -114,11 +115,17 @@ class Mail extends CI_Controller {
         public function mailOntvangersAjax()
 	{
             $this->load->model('gebruiker_model');
+            $this->load->model('partner_model');
             $type = $this->input->get('type');
             $users = $this->input->get('users');
             if($type == "1"){
                 $data['gebruikers'] = $this->gebruiker_model->get($users);
-            }else{
+            }elseif($type == "2"){
+                $data['gebruikers'] = $this->partner_model->getById($users);
+            }elseif($type == "partners"){
+                $data['gebruikers'] = $this->partner_model->getPartners();
+            }
+            else{
                 $data['gebruikers'] = $this->gebruiker_model->getGebruikersByFunction($users);
             }
            $this->load->view("ajax_mail_ontvangers",$data);
