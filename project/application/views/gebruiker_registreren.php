@@ -1,9 +1,10 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file gebruiker_registreren.php
+ * 
+ * View die de administrator te zien krijgt nadat hij/zij op de knop Manage Wishes in de homepagina van de admin klikt
+ * - Maakt gebruik van een formulier om een nieuwe gastspreker te registreren
  */
 ?>
 <?php
