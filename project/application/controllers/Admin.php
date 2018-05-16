@@ -22,9 +22,16 @@ class Admin extends CI_Controller {
             if($gebruiker->soort == "Gastspreker"){
                 redirect('gebruiker/toonMeldingGeenToegangGastspreker');
             }
+<<<<<<< HEAD
+
+            
+            $this->load->helper('form');
+            $this->load->helper('notation');
+=======
             if($gebruiker->soort == "Docent"){
                 redirect('gebruiker/toonMeldingGeenToegangDocent');
             }
+>>>>>>> 355d246f101026e2929be009ea3e326b77ea0685
         }
         /**
          * Haalt informatie over de aangemelde gebruiker op via de authex
@@ -174,5 +181,27 @@ class Admin extends CI_Controller {
             $this->load->view("ajax_wishes", $data);
         }
 
+        public function deleteUser($id){
+            $this->load->model('Gebruiker_model');
+            $this->Gebruiker_model->delete($id);
+
+        }
+
+        public function bewaar(){
+            $this->load->model('Gebruiker_model');
+            
+            $user = new stdClass();
+            $user->id = $this->uri->segment(3);
+            $decode = urldecode($this->uri->segment(4));
+            $user->voornaam = $decode;
+            $user->achternaam = $decode;
+            $user->email = $decode;
+            //echo "Jan";
+            //print_r($wish);
+            
+            $this->Gebruiker_model->update($user);
+            
+            redirect('admin/usersBeheren');
+        }
         
 }

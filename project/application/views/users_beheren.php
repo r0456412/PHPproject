@@ -89,4 +89,58 @@
   </div>
 </div>
 
+<hr>
+
+<h3>Users</h3>
+
+<?php
+
+$extraButton1 =  array('class' => 'btn btn-success btn-xs btn-round','data-toggle' => 'tooltip', 'title' => 'User aanpassen');
+$button1 =  form_button("knopnieuw", "<span class='glyphicon glyphicon-edit'></span>", $extraButton1);
+
+$extraButton2 =  array('class' => 'btn btn-danger btn-xs btn-round','data-toggle' => 'tooltip', 'title' => 'User verwijderen');
+$button2 =  form_button("knopnieuw", "<span class='glyphicon glyphicon-remove-sign'></span>", $extraButton2);
+
+
+?>
+<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Voornaam</th>
+        <th>Achternaam</th>
+        <th>E-mail</th>
+      </tr>
+    </thead>
+        <tbody>
+    <?php
+foreach ($users as $user) {
+        echo '<tr><td>';
+        echo form_input(array('name' => 'u'.$user->id, 'id' => 'u'.$user->id, 'value' => $user->voornaam, 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
+        echo '</td><td>';
+        echo form_input(array('name' => 'u'.$user->id, 'id' => 'u'.$user->id, 'value' => $user->achternaam, 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
+        echo '</td><td>';
+        echo form_input(array('name' => 'u'.$user->id, 'id' => 'u'.$user->id, 'value' => $user->email, 'size' => '35', 'class' => 'form-control form-control-lg rounded-2'));
+        echo '</td><td>';
+        echo form_submit('save', 'Save', "class='knop btn btn-success' id='". $user->id."'");
+        echo '</td><td>';
+        echo "<td>" . anchor ('admin/deleteUser/'.$user->id,'Delete', "class='btn btn-danger' style='margin-bottom:20px'");
+        echo '</td></tr>';
+}
+?>
+  </tbody>
+</table>
+
+<script>
+$(document).ready(function(){
+    $(".knop").click(function(){
+        var id = $(this).attr('id');
+        var user = $("#u" + id).val();
+        var encoded = escape(user);
+        window.location.href = '/PHPproject/project/index.php/admin/bewaar/' + id + '/' + encoded;
+    });
+});
+</script>
+
+
+
 
